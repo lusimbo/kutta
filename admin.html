@@ -1,0 +1,231 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>KUTTA Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .sidebar {
+            transition: transform 0.3s ease;
+        }
+        .sidebar-closed {
+            transform: translateX(-100%);
+        }
+        .sidebar-open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900" id="body">
+
+<div class="flex h-screen overflow-hidden" id="app">
+    <!-- Sidebar -->
+    <div class="sidebar fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-50 sidebar-closed lg:sidebar-open lg:relative lg:transform-none" id="sidebar">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200">
+            <h1 class="text-xl font-bold">KUTTA Admin</h1>
+            <button class="lg:hidden text-gray-400" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mt-4">
+            <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="#">
+                <i class="fas fa-tachometer-alt mr-2"></i>
+                Dashboard
+            </a>
+            <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="members.html">
+                <i class="fas fa-users mr-2"></i>
+                Members
+            </a>
+            <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="events.html">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Events
+            </a>
+            <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="admin-blog.html">
+                <i class="fas fa-blog mr-2"></i>
+                Blog
+            </a>
+            <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="projects.html">
+                <i class="fas fa-project-diagram mr-2"></i>
+                Projects
+            </a>
+            <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="inquiries.html">
+                <i class="fas fa-envelope mr-2"></i>
+                Inquiries
+            </a>
+            <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="settings.html">
+                <i class="fas fa-cog mr-2"></i>
+                Settings
+            </a>
+            <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="#" id="logoutButton">
+                <i class="fas fa-sign-out-alt mr-2"></i>
+                Logout
+            </a>
+        </nav>
+    </div>
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden lg:ml-0">
+        <!-- Header -->
+        <header class="flex items-center justify-between p-4 bg-white shadow-md">
+            <div class="flex items-center">
+                <button class="lg:hidden text-gray-400" id="openSidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="text-2xl font-bold ml-4">Dashboard</h1>
+            </div>
+            <div class="flex items-center">
+                <img alt="Profile picture of the admin" class="rounded-full" height="40" src="files/Untitled (4).jpg" width="40"/>
+            </div>
+        </header>
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto p-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Total Registered Members -->
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-blue-500 rounded-full">
+                            <i class="fas fa-users text-white"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h2 class="text-lg font-semibold">Total Members</h2>
+                            <p class="text-2xl font-bold">1,234</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Upcoming Events -->
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-green-500 rounded-full">
+                            <i class="fas fa-calendar-alt text-white"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h2 class="text-lg font-semibold">Upcoming Events</h2>
+                            <p class="text-2xl font-bold">5</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Blog Posts -->
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-yellow-500 rounded-full">
+                            <i class="fas fa-blog text-white"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h2 class="text-lg font-semibold">New Blog Posts</h2>
+                            <p class="text-2xl font-bold">12</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Unread Messages -->
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-red-500 rounded-full">
+                            <i class="fas fa-envelope text-white"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h2 class="text-lg font-semibold">Unread Messages</h2>
+                            <p class="text-2xl font-bold">8</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Charts and Graphs -->
+            <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h2 class="text-lg font-semibold mb-4">Member Growth</h2>
+                    <canvas id="memberGrowthChart"></canvas>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h2 class="text-lg font-semibold mb-4">Event Registrations</h2>
+                    <canvas id="eventRegistrationsChart"></canvas>
+                </div>
+            </div>
+            <!-- Recent Activities -->
+            <div class="mt-8 bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-lg font-semibold mb-4">Recent Activities</h2>
+                <ul>
+                    <li class="flex items-center justify-between py-2 border-b border-gray-200">
+                        <span>Leon Miewe registered for the Tech Fair</span>
+                        <span class="text-sm text-gray-500">2 hours ago</span>
+                    </li>
+                    <li class="flex items-center justify-between py-2 border-b border-gray-200">
+                        <span>Brighton published a new blog post</span>
+                        <span class="text-sm text-gray-500">5 hours ago</span>
+                    </li>
+                    <li class="flex items-center justify-between py-2 border-b border-gray-200">
+                        <span>Gregory updated the event schedule</span>
+                        <span class="text-sm text-gray-500">1 day ago</span>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.getElementById('openSidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('sidebar-closed');
+        document.getElementById('sidebar').classList.add('sidebar-open');
+    });
+
+    document.getElementById('closeSidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('sidebar-open');
+        document.getElementById('sidebar').classList.add('sidebar-closed');
+    });
+
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        window.location.href = 'befr-lgn.html';
+    });
+
+    const memberGrowthCtx = document.getElementById('memberGrowthChart').getContext('2d');
+    const memberGrowthChart = new Chart(memberGrowthCtx, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Members',
+                data: [50, 100, 150, 200, 250, 300],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const eventRegistrationsCtx = document.getElementById('eventRegistrationsChart').getContext('2d');
+    const eventRegistrationsChart = new Chart(eventRegistrationsCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Event 1', 'Event 2', 'Event 3', 'Event 4', 'Event 5'],
+            datasets: [{
+                label: 'Registrations',
+                data: [30, 50, 70, 90, 110],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

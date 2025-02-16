@@ -1,0 +1,374 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Settings | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Settings
+    </h1>
+    <!-- Tabs Navigation with Scroll Hint -->
+<div class="relative">
+    <!-- Scroll Hint -->
+    <div class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gradient-to-l from-white dark:from-gray-900 to-transparent h-full w-12 pointer-events-none flex items-center justify-center">
+        <span class="text-gray-500 dark:text-gray-400 text-sm animate-pulse">⇄ Scroll</span>
+    </div>
+
+    <!-- Scrollable Tab Navigation -->
+    <div class="flex justify-start mb-6 overflow-x-auto scrollbar-hide space-x-2 p-2">
+        <button class="tablink bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openTab(event, 'ProfileSettings')">
+            Profile Settings
+        </button>
+        <button class="tablink bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openTab(event, 'AccountSecurity')">
+            Account Security
+        </button>
+        <button class="tablink bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openTab(event, 'NotificationPreferences')">
+            Notification Preferences
+        </button>
+        <button class="tablink bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openTab(event, 'PrivacyControls')">
+            Privacy Controls
+        </button>
+        <button class="tablink bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openTab(event, 'MembershipSettings')">
+            Membership Settings
+        </button>
+        <button class="tablink bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openTab(event, 'ThemePreferences')">
+            Theme Preferences
+        </button>
+        <button class="tablink bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openTab(event, 'ConnectedDevices')">
+            Connected Devices
+        </button>
+    </div>
+</div>
+
+<!-- Tailwind CSS for Hiding Default Scrollbars -->
+<style>
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
+
+    <!-- Profile Settings -->
+    <div class="tabcontent" id="ProfileSettings">
+     <h2 class="text-2xl font-bold mb-4">
+      Profile Settings
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+       <label class="block text-gray-700">
+        Full Name
+       </label>
+       <input class="w-full p-2 border rounded" type="text" value="John Doe"/>
+      </div>
+      <div>
+       <label class="block text-gray-700">
+        Email Address
+       </label>
+       <input class="w-full p-2 border rounded" type="email" value="john.doe@example.com"/>
+      </div>
+      <div>
+       <label class="block text-gray-700">
+        Phone Number
+       </label>
+       <input class="w-full p-2 border rounded" type="text" value="+254 700 000 000"/>
+      </div>
+      <div>
+       <label class="block text-gray-700">
+        Student ID
+       </label>
+       <input class="w-full p-2 border rounded" type="text" value="KU123456"/>
+      </div>
+      <div>
+       <label class="block text-gray-700">
+        LinkedIn Profile
+       </label>
+       <input class="w-full p-2 border rounded" type="text" value="https://linkedin.com/in/johndoe"/>
+      </div>
+      <div>
+       <label class="block text-gray-700">
+        GitHub Profile
+       </label>
+       <input class="w-full p-2 border rounded" type="text" value="https://github.com/johndoe"/>
+      </div>
+      <div>
+       <label class="block text-gray-700">
+        Twitter Profile
+       </label>
+       <input class="w-full p-2 border rounded" type="text" value="https://twitter.com/johndoe"/>
+      </div>
+     </div>
+     <div class="mt-4">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Upload/Change Profile Picture
+      </button>
+     </div>
+    </div>
+    <!-- Account Security -->
+    <div class="tabcontent" id="AccountSecurity" style="display:none">
+     <h2 class="text-2xl font-bold mb-4">
+      Account Security
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+       <label class="block text-gray-700">
+        Old Password
+       </label>
+       <input class="w-full p-2 border rounded" type="password"/>
+      </div>
+      <div>
+       <label class="block text-gray-700">
+        New Password
+       </label>
+       <input class="w-full p-2 border rounded" type="password"/>
+      </div>
+      <div>
+       <label class="block text-gray-700">
+        Confirm New Password
+       </label>
+       <input class="w-full p-2 border rounded" type="password"/>
+      </div>
+     </div>
+     <div class="mt-4">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Change Password
+      </button>
+     </div>
+     <div class="mt-4">
+      <label class="flex items-center">
+       <input class="mr-2" type="checkbox"/>
+       Enable Two-Factor Authentication (2FA)
+      </label>
+     </div>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold mb-2">
+       Recent Login Activity
+      </h3>
+      <ul class="list-disc list-inside text-gray-700">
+       <li>
+        Device: Chrome on Windows, Location: Nairobi, Date: 2023-10-01
+       </li>
+       <li>
+        Device: Safari on iPhone, Location: Mombasa, Date: 2023-09-28
+       </li>
+      </ul>
+     </div>
+     <div class="mt-4">
+      <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+       Deactivate Account
+      </button>
+      <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+       Delete Account
+      </button>
+     </div>
+    </div>
+    <!-- Notification Preferences -->
+    <div class="tabcontent" id="NotificationPreferences" style="display:none">
+     <h2 class="text-2xl font-bold mb-4">
+      Notification Preferences
+     </h2>
+     <div class="flex justify-between items-center">
+      <label class="flex items-center">
+       <input class="mr-2" type="checkbox"/>
+       Email Notifications (Event updates, messages, announcements)
+      </label>
+     </div>
+     <div class="flex justify-between items-center mt-4">
+      <label class="flex items-center">
+       <input class="mr-2" type="checkbox"/>
+       SMS Notifications (Urgent alerts)
+      </label>
+     </div>
+     <div class="flex justify-between items-center mt-4">
+      <label class="flex items-center">
+       <input class="mr-2" type="checkbox"/>
+       Push Notifications (Enable/Disable on browsers &amp; mobile)
+      </label>
+     </div>
+    </div>
+    <!-- Privacy Controls -->
+    <div class="tabcontent" id="PrivacyControls" style="display:none">
+     <h2 class="text-2xl font-bold mb-4">
+      Privacy Controls
+     </h2>
+     <div class="flex justify-between items-center">
+      <label class="flex items-center">
+       <input class="mr-2" type="radio" name="profile-visibility"/>
+       Public
+      </label>
+      <label class="flex items-center">
+       <input class="mr-2" type="radio" name="profile-visibility"/>
+       Members Only
+      </label>
+      <label class="flex items-center">
+       <input class="mr-2" type="radio" name="profile-visibility"/>
+       Private
+      </label>
+     </div>
+     <div class="flex justify-between items-center mt-4">
+      <label class="flex items-center">
+       <input class="mr-2" type="radio" name="direct-messages"/>
+       Everyone
+      </label>
+      <label class="flex items-center">
+       <input class="mr-2" type="radio" name="direct-messages"/>
+       Only Connections
+      </label>
+      <label class="flex items-center">
+       <input class="mr-2" type="radio" name="direct-messages"/>
+       No One
+      </label>
+     </div>
+     <div class="mt-4">
+      <label class="flex items-center">
+       <input class="mr-2" type="checkbox"/>
+       Allow data sharing for analytics &amp; collaborations
+      </label>
+     </div>
+    </div>
+    <!-- Membership Settings -->
+    <div class="tabcontent" id="MembershipSettings" style="display:none">
+     <h2 class="text-2xl font-bold mb-4">
+      Membership &amp; Subscription Settings
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+       <label class="block text-gray-700">
+        Membership Status
+       </label>
+       <input class="w-full p-2 border rounded" readonly="" type="text" value="Active"/>
+      </div>
+      <div>
+       <label class="block text-gray-700">
+        Membership Type
+       </label>
+       <input class="w-full p-2 border rounded" readonly="" type="text" value="Student"/>
+      </div>
+     </div>
+     <div class="mt-4">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Renew Membership
+      </button>
+     </div>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold mb-2">
+       Membership Benefits &amp; Usage
+      </h3>
+      <ul class="list-disc list-inside text-gray-700">
+       <li>
+        Access to exclusive content
+       </li>
+       <li>
+        Priority event access
+       </li>
+       <li>
+        Networking opportunities
+       </li>
+      </ul>
+     </div>
+    </div>
+    <!-- Theme Preferences -->
+    <div class="tabcontent" id="ThemePreferences" style="display:none">
+     <h2 class="text-2xl font-bold mb-4">
+      Theme &amp; UI Preferences
+     </h2>
+     <div class="flex justify-between items-center">
+      <label class="flex items-center">
+       <input class="mr-2" type="checkbox"/>
+       Enable Dark Mode
+      </label>
+     </div>
+     <div class="flex justify-between items-center mt-4">
+      <label class="flex items-center">
+       <input class="mr-2" type="radio" name="font-size"/>
+       Small
+      </label>
+      <label class="flex items-center">
+       <input class="mr-2" type="radio" name="font-size"/>
+       Default
+      </label>
+      <label class="flex items-center">
+       <input class="mr-2" type="radio" name="font-size"/>
+       Large
+      </label>
+     </div>
+    </div>
+    <!-- Connected Devices & Sessions -->
+    <div class="tabcontent" id="ConnectedDevices" style="display:none">
+     <h2 class="text-2xl font-bold mb-4">
+      Connected Devices &amp; Sessions
+     </h2>
+     <div>
+      <h3 class="text-xl font-bold mb-2">
+       Active Sessions
+      </h3>
+      <ul class="list-disc list-inside text-gray-700">
+       <li>
+        Device: Chrome on Windows, Location: Nairobi, Date: 2023-10-01
+       </li>
+       <li>
+        Device: Safari on iPhone, Location: Mombasa, Date: 2023-09-28
+       </li>
+      </ul>
+      <div class="mt-4">
+       <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+        Sign Out of All Sessions
+       </button>
+      </div>
+     </div>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold mb-2">
+       Connected Apps
+      </h3>
+      <ul class="list-disc list-inside text-gray-700">
+       <li>
+        Google Analytics
+       </li>
+       <li>
+        GitHub
+       </li>
+      </ul>
+      <div class="mt-4">
+       <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+        Disconnect All Apps
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+   function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+     tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" bg-blue-700", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " bg-blue-700";
+   }
+  </script>
+ </body>
+</html>

@@ -1,0 +1,466 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Community &amp; Networking | Kenyatta University Telecommunications &amp; Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Community &amp; Networking
+    </h1>
+    <!-- Member Directory -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Member Directory
+     </h2>
+     <div class="mb-4">
+      <input class="w-full p-2 border rounded" placeholder="Search members..." type="text"/>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <div class="flex items-center mb-4">
+        <img alt="Profile Picture" class="w-12 h-12 rounded-full mr-4" height="50" src="https://storage.googleapis.com/a1aa/image/Btd13zqCKMK0DYfOrh2e823XkOmqJyfKSsVsP1g0dAo.jpg" width="50"/>
+        <div>
+         <h3 class="text-lg font-bold">
+          John Doe
+         </h3>
+         <p class="text-gray-600">
+          Software Development
+         </p>
+        </div>
+       </div>
+       <div class="flex justify-between items-center">
+        <div>
+         <a class="text-blue-600 hover:underline" href="#">
+          LinkedIn
+         </a>
+         <a class="text-blue-600 hover:underline ml-2" href="#">
+          GitHub
+         </a>
+        </div>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('messageModal')">
+         Message
+        </button>
+       </div>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <div class="flex items-center mb-4">
+        <img alt="Profile Picture" class="w-12 h-12 rounded-full mr-4" height="50" src="https://storage.googleapis.com/a1aa/image/Btd13zqCKMK0DYfOrh2e823XkOmqJyfKSsVsP1g0dAo.jpg" width="50"/>
+        <div>
+         <h3 class="text-lg font-bold">
+          Jane Smith
+         </h3>
+         <p class="text-gray-600">
+          AI &amp; Machine Learning
+         </p>
+        </div>
+       </div>
+       <div class="flex justify-between items-center">
+        <div>
+         <a class="text-blue-600 hover:underline" href="#">
+          LinkedIn
+         </a>
+         <a class="text-blue-600 hover:underline ml-2" href="#">
+          GitHub
+         </a>
+        </div>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('messageModal')">
+         Message
+        </button>
+       </div>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <div class="flex items-center mb-4">
+        <img alt="Profile Picture" class="w-12 h-12 rounded-full mr-4" height="50" src="https://storage.googleapis.com/a1aa/image/Btd13zqCKMK0DYfOrh2e823XkOmqJyfKSsVsP1g0dAo.jpg" width="50"/>
+        <div>
+         <h3 class="text-lg font-bold">
+          Michael Brown
+         </h3>
+         <p class="text-gray-600">
+          Cybersecurity
+         </p>
+        </div>
+       </div>
+       <div class="flex justify-between items-center">
+        <div>
+         <a class="text-blue-600 hover:underline" href="#">
+          LinkedIn
+         </a>
+         <a class="text-blue-600 hover:underline ml-2" href="#">
+          GitHub
+         </a>
+        </div>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('messageModal')">
+         Message
+        </button>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- Discussion Forums & Chat Groups -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Discussion Forums &amp; Chat Groups
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Tech Trends
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Discuss the latest trends in technology.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('forumModal')">
+        Join Discussion
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Career Advice
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Get and give career advice.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('forumModal')">
+        Join Discussion
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Industry Insights
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Share and learn about industry insights.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('forumModal')">
+        Join Discussion
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Club Projects
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Collaborate on club projects.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('forumModal')">
+        Join Discussion
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Mentorship & Peer Support -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Mentorship &amp; Peer Support
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Find a Mentor
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Connect with senior students or alumni for guidance.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('mentorModal')">
+        Find a Mentor
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Peer Support
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Get support from your peers.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('peerSupportModal')">
+        Get Support
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Industry Connections & Networking -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Industry Connections &amp; Networking
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Corporate Partners
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Learn about our corporate partners.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('partnersModal')">
+        View Partners
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Internship &amp; Job Listings
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Find internships and job opportunities.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('jobsModal')">
+        View Listings
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Post Availability
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Post your availability for internships or jobs.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('postAvailabilityModal')">
+        Post Now
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Member Events & Meetups -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Member Events &amp; Meetups
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Community-Driven Events
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Join hackathons, workshops, and social meetups.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('eventsModal')">
+        View Events
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Suggest Networking Events
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Suggest and create networking events.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('suggestEventModal')">
+        Suggest Event
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Gamification & Engagement Features -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Gamification &amp; Engagement Features
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Earn Badges
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Earn badges for active participation.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('badgesModal')">
+        View Badges
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Leaderboard
+       </h3>
+       <p class="text-gray-700 mb-4">
+        See top contributors in discussions.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('leaderboardModal')">
+        View Leaderboard
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="messageModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('messageModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Send a Message
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       To
+      </label>
+      <input class="w-full p-2 border rounded" readonly="" type="text" value="John Doe"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Message
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Send
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="forumModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('forumModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Join Discussion
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Topic
+      </label>
+      <input class="w-full p-2 border rounded" readonly="" type="text" value="Tech Trends"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Comment
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Post Comment
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="mentorModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('mentorModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Find a Mentor
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Select Mentor
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        John Doe - Software Development
+       </option>
+       <option>
+        Jane Smith - AI &amp; Machine Learning
+       </option>
+       <option>
+        Michael Brown - Cybersecurity
+       </option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Connect
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="peerSupportModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('peerSupportModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Get Peer Support
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Issue
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Submit
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="partnersModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('partnersModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Corporate Partners
+    </h2>
+    <p class="text-gray-700">
+     Learn about our corporate partners.
+    </p>
+    <ul class="list-disc list-inside text-gray-700">
+     <li>
+      Partner 1
+     </li>
+     <li>
+      Partner 2
+     &lt;/li
+     </li>
+    </ul>
+   </div>
+  </div>
+ </body>
+</html>

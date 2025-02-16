@@ -1,0 +1,196 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>KUTTA Blog &amp; Tech News</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="font-roboto bg-gray-100">
+  <!-- Header -->
+  <header class="bg-blue-900 text-white py-6">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Stay Updated: Tech Innovations, Trends &amp; Insights</h1>
+      <p class="mt-2">Articles by KUTTA members &amp; industry experts. Insights into telecommunications, AI, software development, cybersecurity, and more.</p>
+    </div>
+  </header>
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- Featured & Trending Articles Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4 text-black">Featured &amp; Trending Articles</h2>
+      <div class="relative">
+        <!-- Slider Container -->
+        <div id="articlesSlider" class="flex overflow-hidden space-x-4 scroll-smooth">
+          <!-- Article 1 -->
+          <div class="min-w-full md:min-w-1/3 bg-white rounded-lg shadow-md p-4">
+            <img alt="Featured article image showing a futuristic cityscape with digital elements overlay" class="w-full h-48 object-cover rounded-t-lg" src="https://storage.googleapis.com/a1aa/image/rt1j9KJxeR_hmkfYkcQIcAptT7WhsChwHSwae98xqIw.jpg"/>
+            <h3 class="text-xl font-bold mt-4 text-black">The Future of AI in Telecommunications</h3>
+            <p class="text-gray-600 mt-2">Tech News - By John Doe on Jan 1, 2023</p>
+            <p class="mt-2 text-black">Explore how AI is revolutionizing the telecommunications industry with cutting-edge innovations and applications.</p>
+            <button class="text-blue-500 mt-4 inline-block" onclick="showDetails('The Future of AI in Telecommunications', 'Explore how AI is revolutionizing the telecommunications industry with cutting-edge innovations and applications.')">Read More</button>
+          </div>
+          <!-- Article 2 -->
+          <div class="min-w-full md:min-w-1/3 bg-white rounded-lg shadow-md p-4">
+            <img alt="Featured article image showing a person coding on a laptop with multiple screens displaying code" class="w-full h-48 object-cover rounded-t-lg" src="https://storage.googleapis.com/a1aa/image/GZSfR_mIzwMNjNGDhninaPOcxwg2wlN4vFnKlDFKvRI.jpg"/>
+            <h3 class="text-xl font-bold mt-4 text-black">Top 10 Programming Languages in 2023</h3>
+            <p class="text-gray-600 mt-2">Industry Trends - By Jane Smith on Feb 15, 2023</p>
+            <p class="mt-2 text-black">Discover the most popular programming languages in 2023 and their applications in various tech fields.</p>
+            <button class="text-blue-500 mt-4 inline-block" onclick="showDetails('Top 10 Programming Languages in 2023', 'Discover the most popular programming languages in 2023 and their applications in various tech fields.')">Read More</button>
+          </div>
+          <!-- Article 3 -->
+          <div class="min-w-full md:min-w-1/3 bg-white rounded-lg shadow-md p-4">
+            <img alt="Featured article image showing a cybersecurity expert analyzing data on a digital screen" class="w-full h-48 object-cover rounded-t-lg" src="https://storage.googleapis.com/a1aa/image/ZXoXD4ScmhwhciSM0YpJ4dLdw9ROMqUNa2b12QSZ4yI.jpg"/>
+            <h3 class="text-xl font-bold mt-4 text-black">Cybersecurity Trends to Watch in 2023</h3>
+            <p class="text-gray-600 mt-2">Tech News - By Alice Johnson on Mar 10, 2023</p>
+            <p class="mt-2 text-black">Stay ahead of the curve with the latest cybersecurity trends and best practices to protect your digital assets.</p>
+            <button class="text-blue-500 mt-4 inline-block" onclick="showDetails('Cybersecurity Trends to Watch in 2023', 'Stay ahead of the curve with the latest cybersecurity trends and best practices to protect your digital assets.')">Read More</button>
+          </div>
+        </div>
+        <!-- Navigation Buttons -->
+        <button id="prevArticle" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700">&#10094;</button>
+        <button id="nextArticle" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700">&#10095;</button>
+      </div>
+    </section>
+
+    <script>
+      const slider = document.getElementById("articlesSlider");
+      
+      // Function to determine visible width (slider viewport)
+      const getVisibleWidth = () => slider.clientWidth;
+      
+      // Auto-slide function that advances the slider by one "page" width
+      function autoSlide() {
+        const totalScrollWidth = slider.scrollWidth;
+        const visibleWidth = getVisibleWidth();
+        
+        // If the slider is at the end, reset to start
+        if (slider.scrollLeft + visibleWidth >= totalScrollWidth) {
+          slider.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          slider.scrollBy({ left: visibleWidth, behavior: "smooth" });
+        }
+      }
+      
+      // Auto slide every 5 seconds
+      setInterval(autoSlide, 5000);
+      
+      // Manual navigation
+      document.getElementById("nextArticle").addEventListener("click", () => {
+        slider.scrollBy({ left: getVisibleWidth(), behavior: "smooth" });
+      });
+      
+      document.getElementById("prevArticle").addEventListener("click", () => {
+        slider.scrollBy({ left: -getVisibleWidth(), behavior: "smooth" });
+      });
+      
+      // Update slider when window is resized
+      window.addEventListener("resize", () => {
+        // Optional: adjust slider position if needed.
+      });
+
+      // Function to show details in a modal
+      function showDetails(title, content) {
+        const modal = document.createElement('div');
+        modal.classList.add('fixed', 'inset-0', 'bg-gray-900', 'bg-opacity-75', 'flex', 'items-center', 'justify-center', 'z-50');
+        modal.innerHTML = `
+          <div class="bg-white rounded-lg shadow-lg p-6 w-11/12 md:w-1/2">
+            <h2 class="text-2xl font-bold mb-4">${title}</h2>
+            <p class="mb-4">${content}</p>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-full" onclick="closeModal()">Close</button>
+          </div>
+        `;
+        document.body.appendChild(modal);
+      }
+
+      // Function to close the modal
+      function closeModal() {
+        const modal = document.querySelector('.fixed.inset-0');
+        if (modal) {
+          modal.remove();
+        }
+      }
+    </script>
+
+    <!-- Categories & Tags Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">Categories &amp; Tags</h2>
+      <div class="flex flex-wrap gap-4">
+        <a class="bg-blue-500 text-white px-4 py-2 rounded-full" href="#">📰 Tech News</a>
+        <a class="bg-blue-500 text-white px-4 py-2 rounded-full" href="#">📈 Industry Trends</a>
+        <a class="bg-blue-500 text-white px-4 py-2 rounded-full" href="#">🛠️ How-To Guides &amp; Tutorials</a>
+        <a class="bg-blue-500 text-white px-4 py-2 rounded-full" href="#">🎙️ Expert Interviews</a>
+        <a class="bg-blue-500 text-white px-4 py-2 rounded-full" href="#">📡 Telecom Innovations</a>
+      </div>
+    </section>
+
+    <!-- Blog Posts Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">Recent Blog Posts</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <img alt="Blog post image showing a person using a smartphone with 5G network" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/puFv3TVliZm3Deo3SmO_2X2PydOQ-D-fqAIaBvjwH04.jpg" width="600"/>
+          <h3 class="text-xl font-bold mt-4">Understanding 5G Technology</h3>
+          <p class="text-gray-600 mt-2">Telecom Innovations - By Michael Brown on Apr 5, 2023</p>
+          <p class="mt-2">A comprehensive guide to 5G technology, its benefits, and its impact on the telecommunications industry.</p>
+          <button class="text-blue-500 mt-4 inline-block" onclick="showDetails('Understanding 5G Technology', 'A comprehensive guide to 5G technology, its benefits, and its impact on the telecommunications industry.')">Read More</button>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <img alt="Blog post image showing a person working on a laptop with a cup of coffee" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/CHJ16FcF11sQko-hC-C8hKbRdp9Xyt9BL_-7lENrhc0.jpg" width="600"/>
+          <h3 class="text-xl font-bold mt-4">Remote Work: Tools and Tips</h3>
+          <p class="text-gray-600 mt-2">How-To Guides &amp; Tutorials - By Sarah Lee on May 20, 2023</p>
+          <p class="mt-2">Learn about the best tools and tips for staying productive and connected while working remotely.</p>
+          <button class="text-blue-500 mt-4 inline-block" onclick="showDetails('Remote Work: Tools and Tips', 'Learn about the best tools and tips for staying productive and connected while working remotely.')">Read More</button>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <img alt="Blog post image showing a group of people in a tech conference" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/abBQPwudvYR4HhD6LZq8DLZHI72vHEBJzTUAZ5pLiLo.jpg" width="600"/>
+          <h3 class="text-xl font-bold mt-4">Highlights from the 2023 Tech Conference</h3>
+          <p class="text-gray-600 mt-2">Industry News - By David Kim on Jun 15, 2023</p>
+          <p class="mt-2">An overview of the key takeaways and highlights from the 2023 Tech Conference.</p>
+          <button class="text-blue-500 mt-4 inline-block" onclick="showDetails('Highlights from the 2023 Tech Conference', 'An overview of the key takeaways and highlights from the 2023 Tech Conference.')">Read More</button>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <img alt="Blog post image showing a person analyzing data on a digital screen" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/gs4_IU9N9FK5YY8Zt_UqVyUUwDO0u0jhgp338PYGVm4.jpg" width="600"/>
+          <h3 class="text-xl font-bold mt-4">Data Science: A Beginner's Guide</h3>
+          <p class="text-gray-600 mt-2">How-To Guides &amp; Tutorials - By Emily Davis on Jul 10, 2023</p>
+          <p class="mt-2">An introductory guide to data science, including key concepts, tools, and resources for beginners.</p>
+          <button class="text-blue-500 mt-4 inline-block" onclick="showDetails('Data Science: A Beginner\'s Guide', 'An introductory guide to data science, including key concepts, tools, and resources for beginners.')">Read More</button>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <img alt="Blog post image showing a person using a VR headset" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/TEFLuY--09H3Q07fC_V7KT1FU_0bypsLXNIF0jWU6ZY.jpg" width="600"/>
+          <h3 class="text-xl font-bold mt-4">Virtual Reality: The Next Frontier</h3>
+          <p class="text-gray-600 mt-2">Tech News - By Chris Wilson on Aug 25, 2023</p>
+          <p class="mt-2">Explore the latest advancements in virtual reality technology and its potential applications.</p>
+          <button class="text-blue-500 mt-4 inline-block" onclick="showDetails('Virtual Reality: The Next Frontier', 'Explore the latest advancements in virtual reality technology and its potential applications.')">Read More</button>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <img alt="Blog post image showing a person giving a presentation on cybersecurity" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/ZDCL4uWTJ6qfS3TucW3k0f1A5DzvH9ci0HZ1d7tlRLM.jpg" width="600"/>
+          <h3 class="text-xl font-bold mt-4">Cybersecurity Best Practices</h3>
+          <p class="text-gray-600 mt-2">How-To Guides &amp; Tutorials - By Laura Martinez on Sep 30, 2023</p>
+          <p class="mt-2">Learn about the best practices for protecting your digital assets and staying safe online.</p>
+          <button class="text-blue-500 mt-4 inline-block" onclick="showDetails('Cybersecurity Best Practices', 'Learn about the best practices for protecting your digital assets and staying safe online.')">Read More</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Newsletter Subscription Section -->
+    <section class="bg-blue-900 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+        <p class="mb-4">Stay updated with the latest blog posts and tech news. Enter your email to subscribe to our newsletter.</p>
+        <form class="flex flex-col md:flex-row justify-center items-center gap-4">
+          <input class="px-4 py-2 rounded-full text-gray-900" placeholder="Enter your email" type="email"/>
+          <button class="bg-white text-blue-900 px-4 py-2 rounded-full" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2023 Kenyatta University Telecommunications &amp; Technology Association (KUTTA). All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

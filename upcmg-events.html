@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   KUTTA - Telecommunications &amp; Technology
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js">
+  </script>
+
+  <style>
+   .profile-card {
+    position: relative;
+    overflow: hidden;
+   }
+   .profile-card img {
+    transition: transform 0.3s ease;
+   }
+   .profile-card:hover img {
+    transform: scale(1.1);
+   }
+   .profile-card .info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+   }
+   .profile-card:hover .info {
+    opacity: 1;
+   }
+  </style>
+  <style>
+   .testimonial-slide {
+            transition: transform 0.5s ease-in-out;
+        }
+  </style>
+  <style>
+   bo/dy {
+            font-family: 'Roboto', sans-serif;
+        }
+        .profile-card:hover {
+            transform: scale(1.05);
+        }
+        .profile-card:hover .details {
+            opacity: 1;
+        }
+        .chairperson {
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+  </style>
+  <style>
+   .testimonial-slider {
+            display: flex;
+            overflow: hidden;
+            scroll-behavior: smooth;
+        }
+        .testimonial-card {
+            min-width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        @media (min-width: 768px) {
+            .testimonial-card {
+                min-width: 50%;
+            }
+        }
+        @media (min-width: 1024px) {
+            .testimonial-card {
+                min-width: 33.33%;
+            }
+        }
+  </style>
+  <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .slider {
+            display: flex;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .slider-track {
+            display: flex;
+            animation: scroll 80s linear infinite;
+        }
+        .slider-item {
+            flex: 0 0 auto;
+            width: 200px;
+            margin: 0 10px;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+  <style>
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #39FF14; /* Highlight active slide */
+        }
+    </style>
+  <style>
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+        }
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+        .testimonial-card {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            transition: transform 0.3s ease-in-out;
+            margin: 10px; /* Margin between testimonials */
+        }
+        .testimonial-card:hover {
+            transform: scale(1.05);
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        .carousel-btn {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* On large screens, show 2 testimonials at a time */
+        @media (min-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 48%;
+            }
+        }
+    </style>
+  <style>
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .social-icon:hover {
+            color: #00E5FF;
+            transform: scale(1.1);
+        }
+
+        .nav-link:hover {
+            color: #00E5FF;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #00E5FF, #00B4D8);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(45deg, #00B4D8, #00E5FF);
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+        }
+    </style>
+  <style>
+   @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+  </style>
+
+  <style>
+        .testimonial-slide {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 640px) {
+            .testimonial-slide {
+                scroll-snap-type: x mandatory;
+            }
+            
+            .testimonial-slide > div {
+                scroll-snap-align: start;
+            }
+        }
+
+        .active-indicator {
+            background-color: #4F46E5 !important;
+        }
+    </style>
+
+  <script>
+    // Force dark theme by default on initial load
+    document.documentElement.classList.add('dark');
+    localStorage.theme = 'dark';
+  </script>
+
+  <script>
+    tailwind.config = {
+        darkMode: 'class',
+        // ... any other existing tailwind config
+    }
+  </script>
+
+  <style>
+    /* Add smooth transitions for theme changes */
+    * {
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    /* Dark mode overrides */
+    :root {
+        color-scheme: light dark;
+    }
+    
+    .dark body {
+        background-color: #111827;
+        color: #fff;
+    }
+    
+    .dark .bg-gray-800 {
+        background-color: #1F2937;
+    }
+    
+    .dark .bg-gray-900 {
+        background-color: #111827;
+    }
+    
+    .dark .text-gray-300 {
+        color: #D1D5DB;
+    }
+    
+    .dark .glass-card {
+        background: rgba(31, 41, 55, 0.7);
+    }
+    
+    /* Light mode styles */
+    body:not(.dark) {
+        background-color: #ffffff;
+        color: #111827;
+    }
+    
+    :not(.dark) .bg-gray-800 {
+        background-color: #f3f4f6;
+    }
+    
+    :not(.dark) .bg-gray-900 {
+        background-color: #f9fafb;
+    }
+    
+    :not(.dark) .text-gray-300 {
+        color: #374151;
+    }
+    
+    :not(.dark) .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+
+  <!-- Update the CTA Section -->
+  <style>
+    /* CTA section transitions */
+    .cta-button {
+        transition: all 0.3s ease;
+    }
+
+    /* Button hover effects */
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    .dark .cta-button:hover {
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Gradient animations */
+    @keyframes gradientFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .bg-gradient-animate {
+        background-size: 200% 200%;
+        animation: gradientFlow 3s ease infinite;
+    }
+  </style>
+ </head>
+ <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+  <!-- Top Bar -->
+    <div class="bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 py-2 fixed w-full top-0 z-50 transition-colors">
+        <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="p-2 rounded-lg text-gray-300 hover:text-white transition-colors">
+                <i class="fas fa-moon text-black dark:text-white dark:hidden"></i>
+<i class="fas fa-sun text-black dark:text-white hidden dark:block"></i>
+
+            </button>
+            
+            <!-- Social Media Icons -->
+            <div class="flex space-x-4">
+                <a href="#" class="social-icon transition-all duration-300">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" class="social-icon transition-all duration-300">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="social-icon transition-all duration-300">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon transition-all duration-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon transition-all duration-300">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <!-- Contact Info -->
+            <div class="flex space-x-6">
+                <a href="mailto:info@kutta.ku.ac.ke" class="hover:text-white flex items-center space-x-2">
+                    <i class="far fa-envelope"></i>
+                    <span class="hidden lg:inline">info@kutta.ku.ac.ke</span>
+                </a>
+                <a href="tel:+254712345678" class="hover:text-white flex items-center space-x-2">
+                    <i class="fas fa-phone"></i>
+                    <span class="hidden lg:inline">+254 712 345 678</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header style="padding-top: 15px;" class="bg-gray-100 dark:bg-gray-800 fixed w-full top-8 z-40 shadow-lg transition-colors">
+        <div class="container mx-auto px-4">
+            <nav class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="" class="flex items-center text-2xl font-bold">
+    <img src="files/Free_3D_Logo_Mockup-removebg-preview.png" 
+         alt="KUTTA Logo" 
+         class="h-8 w-auto mr-2 logo-image"> 
+</a>
+
+<style>
+  /* Default (Dark Mode) */
+  .logo-image {
+      filter: none;
+  }
+
+  /* Light Mode - Change image to dark blue */
+  @media (prefers-color-scheme: light) {
+      .logo-image {
+          filter: invert(17%) sepia(96%) saturate(749%) hue-rotate(180deg) brightness(90%) contrast(120%);
+      }
+  }
+</style>
+
+
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Home</a>
+                    <a href="about.html" class="nav-link text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">About</a>
+                    
+                    <!-- Membership Dropdown -->
+                    <div class="dropdown relative group">
+                        <button class="nav-link text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 flex items-center">
+                            Membership <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                        </button>
+                        <div class="dropdown-menu absolute top-full left-0 bg-white dark:bg-gray-800 shadow-lg rounded-lg py-2 w-48">
+                            <a href="membership-benefits.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Membership Benefits</a>
+                            <a href="reg.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Registration</a>
+                            <a href="dashbd.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Member Dashboard</a>
+                        </div>
+                    </div>
+
+                    <!-- Events Dropdown -->
+                    <div class="dropdown relative group">
+                        <button class="nav-link text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 flex items-center">
+                            Events <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                        </button>
+                        <div class="dropdown-menu absolute top-full left-0 bg-white dark:bg-gray-800 shadow-lg rounded-lg py-2 w-48">
+                            <a href="upcmg-events.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Upcoming Events</a>
+                            <a href="past-events.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Past Events</a>
+                            <a href="event-calender.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Event Calendar</a>
+                            <a href="gallery.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Gallery</a>
+                            <a href="faq.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">FAQs</a>
+                            <a href="testimonial.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Testimonials</a>
+                        </div>
+                    </div>
+
+                    <!-- Projects Dropdown -->
+                    <div class="dropdown relative group">
+                        <button class="nav-link text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 flex items-center">
+                            Projects <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                        </button>
+                        <div class="dropdown-menu absolute top-full left-0 bg-white dark:bg-gray-800 shadow-lg rounded-lg py-2 w-48">
+                            <a href="student-project.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Student Projects</a>
+                            <a href="research.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Research Papers</a>
+                            <a href="industry-collb.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Industry Collaborations</a>
+                        </div>
+                    </div>
+
+                    <a href="blog.html" class="nav-link text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Blog</a>
+                    <a href="contact.html" class="nav-link text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Contact</a>
+                    <a href="sign-up.html" class="nav-link text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Sign Up</a>
+                    <a href="befr-lgn.html" class="nav-link text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Login</a>
+                    
+                    <!-- CTA Button -->
+                    <a href="join.html" class="cta-button px-6 py-2 rounded-full text-white font-semibold transition-all duration-300 shadow-lg 
+                        bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700 
+                        hover:from-blue-600 hover:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800">
+                        Join Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-bars menu-icon text-2xl"></i>
+                    <i class="fas fa-times close-icon text-2xl hidden"></i>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu fixed inset-0 transform -translate-x-full transition-all duration-300 z-50">
+                <!-- Backdrop -->
+                <div class="absolute inset-0 bg-black/50 dark:bg-black/70"></div>
+                
+                <!-- Sidebar -->
+                <div class="relative w-[80%] max-w-sm h-full bg-white dark:bg-gray-900 shadow-xl flex flex-col">
+                    <!-- Close button header -->
+                    <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+                        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Menu</h2>
+                        <button id="close-menu" class="p-2 rounded-lg text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Navigation Links -->
+                    <nav class="flex-1 overflow-y-auto py-4">
+                        <div class="space-y-2">
+                            <a href="index.html" class="block px-4 py-2.5 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                Home
+                            </a>
+                            <a href="about.html" class="block px-4 py-2.5 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                About
+                            </a>
+                            
+                            <!-- Membership Dropdown -->
+                            <div class="space-y-1">
+                                <button class="mobile-dropdown-toggle w-full px-4 py-2.5 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center justify-between">
+                                    <span>Membership</span>
+                                    <i class="fas fa-chevron-down text-sm transition-transform duration-200"></i>
+                                </button>
+                                <div class="mobile-dropdown-menu hidden">
+                                    <a href="membership-benefits.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Membership Benefits
+                                    </a>
+                                    <a href="reg.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Registration
+                                    </a>
+                                    <a href="dashbd.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Member Dashboard
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Events Dropdown -->
+                            <div class="space-y-1">
+                                <button class="mobile-dropdown-toggle w-full px-4 py-2.5 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center justify-between">
+                                    <span>Events</span>
+                                    <i class="fas fa-chevron-down text-sm transition-transform duration-200"></i>
+                                </button>
+                                <div class="mobile-dropdown-menu hidden">
+                                    <a href="upcmg-events.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Upcoming Events
+                                    </a>
+                                    <a href="past-events.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Past Events
+                                    </a>
+                                    <a href="event-calender.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Event Calendar
+                                    </a>
+                                    <a href="gallery.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Gallery
+                                    </a>
+                                    <a href="faq.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        FAQs
+                                    </a>
+                                    <a href="testimonial.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Testimonials
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Projects Dropdown -->
+                            <div class="space-y-1">
+                                <button class="mobile-dropdown-toggle w-full px-4 py-2.5 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center justify-between">
+                                    <span>Projects</span>
+                                    <i class="fas fa-chevron-down text-sm transition-transform duration-200"></i>
+                                </button>
+                                <div class="mobile-dropdown-menu hidden">
+                                    <a href="student-project.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Student Projects
+                                    </a>
+                                    <a href="research.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Research Papers
+                                    </a>
+                                    <a href="industry-collb.html" class="block px-8 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                        Industry Collaborations
+                                    </a>
+                                </div>
+                            </div>
+
+                            <a href="blog.html" class="block px-4 py-2.5 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                Blog
+                            </a>
+                            <a href="contact.html" class="block px-4 py-2.5 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                Contact
+                            </a>
+                            <a href="sign-up.html" class="block px-4 py-2.5 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                Sign Up
+                            </a>
+                            <a href="befr-lgn.html" class="block px-4 py-2.5 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                Login
+                            </a>
+                        </div>
+                    </nav>
+                    
+                    <!-- Bottom CTA -->
+                    <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                        <a href="join.html" class="block w-full py-3 px-4 rounded-lg bg-blue-600 dark:bg-blue-500 text-white text-center font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">
+                            Join Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main style="margin-top: 70px;" class="container mx-auto p-6 text-black dark:text-white">
+  <!-- Upcoming Events Section -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4 text-black dark:text-white">
+      Upcoming Events
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md">
+        <img alt="Event 1 image description" class="rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/SrsCo8jiH7_prdqjaBPQvb8lbGGr2_bq1jT3eYVat1Y.jpg" width="600"/>
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-black dark:text-white">
+            Event Name 1
+          </h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            Date: 2023-12-01
+          </p>
+          <p class="text-gray-700 dark:text-gray-300">
+            Time: 10:00 AM - 2:00 PM
+          </p>
+          <p class="text-gray-700 dark:text-gray-300">
+            Venue: Kenyatta University Main Hall
+          </p>
+          <p class="mt-2 text-black dark:text-white">
+            Join us for an insightful session on the latest trends in telecommunications.
+          </p>
+          <div class="mt-4">
+            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md">
+        <img alt="Event 2 image description" class="rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/49lprEXpH_quFM7Dq726wfwAlo61i3Q0dWBRhhPuwvg.jpg" width="600"/>
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-black dark:text-white">
+            Event Name 2
+          </h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            Date: 2023-12-05
+          </p>
+          <p class="text-gray-700 dark:text-gray-300">
+            Time: 1:00 PM - 4:00 PM
+          </p>
+          <p class="text-gray-700 dark:text-gray-300">
+            Venue: Kenyatta University Conference Room
+          </p>
+          <p class="mt-2 text-black dark:text-white">
+            A workshop on innovative technology solutions for modern challenges.
+          </p>
+          <div class="mt-4">
+            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md">
+        <img alt="Event 3 image description" class="rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/ZSNFYjGnthBsp_ay-oS9r0rV_d9I0uBgi_O0Y1IDhdI.jpg" width="600"/>
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-black dark:text-white">
+            Event Name 3
+          </h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            Date: 2023-12-10
+          </p>
+          <p class="text-gray-700 dark:text-gray-300">
+            Time: 9:00 AM - 12:00 PM
+          </p>
+          <p class="text-gray-700 dark:text-gray-300">
+            Venue: Kenyatta University Auditorium
+          </p>
+          <p class="mt-2 text-black dark:text-white">
+            Guest lecture by industry experts on the future of telecommunications.
+          </p>
+          <div class="mt-4">
+            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Calendar Section -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4 text-black dark:text-white">
+      Event Calendar
+    </h2>
+    <div class="bg-gray-200 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+      <iframe frameborder="0" height="600" scrolling="no" src="https://calendar.google.com/calendar/embed?src=your_calendar_id&amp;ctz=your_timezone" style="border: 0" width="100%"></iframe>
+    </div>
+  </section>
+
+  <!-- Past Events Section -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold mb-4 text-black dark:text-white">
+      Past Events
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md">
+        <img alt="Past Event 1 image description" class="rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/oJPA3ong59MNeGcdH2z6kOzc309sIrrfolxCLcgIVOE.jpg" width="600"/>
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-black dark:text-white">
+            Past Event 1
+          </h3>
+          <p class="mt-2 text-black dark:text-white">
+            Highlights from our recent workshop on emerging technologies.
+          </p>
+        </div>
+      </div>
+      <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md">
+        <img alt="Past Event 2 image description" class="rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/6PBP9prBsGMNxU-k-mRK_aGG7kf5HzNuHCi4nP-7zKA.jpg" width="600"/>
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-black dark:text-white">
+            Past Event 2
+          </h3>
+          <p class="mt-2 text-black dark:text-white">
+            A look back at our guest lecture series with industry leaders.
+          </p>
+        </div>
+      </div>
+      <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md">
+        <img alt="Past Event 3 image description" class="rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/C5dyhYqTpxOgYILHT6i-tXBQmIkPe8PFOGCSAp_Y5mw.jpg" width="600"/>
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-black dark:text-white">
+            Past Event 3
+          </h3>
+          <p class="mt-2 text-black dark:text-white">
+            Recap of our annual hackathon event.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+
+
+  <!-- Footer -->
+  <!-- Map of Kenyatta University -->
+<div class="w-full">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.355113147303!2d36.81873153955078!3d-1.177073899999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3f6a2df1b6b3%3A0x5b3a4a928f08fa4c!2sKenyatta%20University!5e0!3m2!1sen!2ske!4v1707164851234!5m2!1sen!2ske" 
+        width="100%" 
+        height="500" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy">
+    </iframe>
+</div>
+
+
+    <footer class="bg-gray-100 dark:bg-gray-800 py-10 transition-colors">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- About KUTTA -->
+                <div>
+                    <h2 class="text-xl font-bold mb-4">About KUTTA</h2>
+                    <p class="mb-4">KUTTA is a vibrant student-led organization at Kenyatta University, fostering innovation in telecommunications and technology through workshops, projects, and networking opportunities.</p>
+                    <a href="learn-more.html" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Learn More</a>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h2 class="text-xl font-bold mb-4">Quick Links</h2>
+                    <ul>
+                        <li><a href="index.html" class="block py-1 hover:text-blue-400">Home</a></li>
+                        <li><a href="about.html" class="block py-1 hover:text-blue-400">About Us</a></li>
+                        <li><a href="membership-benefits.html" class="block py-1 hover:text-blue-400">Membership & Registration</a></li>
+                        <li><a href="upcmg-events.html" class="block py-1 hover:text-blue-400">Events & Workshops</a></li>
+                        <li><a href="research.html" class="block py-1 hover:text-blue-400">Projects & Research</a></li>
+                        <li><a href="blog.html" class="block py-1 hover:text-blue-400">Blog & Tech News</a></li>
+                        <li><a href="contact.html" class="block py-1 hover:text-blue-400">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Information -->
+                <div>
+                    <h2 class="text-xl font-bold mb-4">Contact Information</h2>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt"></i> Kenyatta University, Nairobi, Kenya</p>
+                    <p class="mb-2"><i class="fas fa-envelope"></i> info@kutta.ku.ac.ke</p>
+                    <p class="mb-2"><i class="fas fa-phone"></i> +254 712 345 678</p>
+                    <a href="https://www.google.com/maps?q=Kenyatta+University" target="_blank" class="text-blue-400 hover:underline">View on Google Maps</a>
+                </div>
+                <!-- Social Media Links -->
+                <div>
+                    <h2 class="text-xl font-bold mb-4">Follow Us</h2>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8">
+                <!-- Newsletter Subscription -->
+                <h2 class="text-xl font-bold mb-4">Stay Updated with KUTTA 🚀</h2>
+                <form action="https://mailchimp.com" method="post" class="flex flex-col md:flex-row items-center">
+                    <input type="email" placeholder="Enter your email" 
+                        class="w-full md:w-auto flex-1 py-2 px-4 rounded mb-4 md:mb-0 md:mr-4 
+                        bg-white dark:bg-gray-700 text-gray-900 dark:text-white 
+                        border border-gray-300 dark:border-gray-600 
+                        focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 
+                        focus:border-transparent transition-colors">
+                    <button type="submit" class="bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 
+                        text-white font-bold py-2 px-4 rounded transition-colors">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+           <div class="mt-8 flex flex-col items-center text-center">
+    <!-- Legal & Privacy Links -->
+    <div class="flex space-x-4 mb-4">
+        <a href="privacy-policy.html" class="hover:text-blue-400">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-blue-400">Terms & Conditions</a>
+    </div>
+
+    <!-- Developer Credit -->
+    <a href="https://yourcompany.com" class="hover:text-blue-400 mb-4">Designed & Developed by Elijah</a>
+
+    <!-- Copyright Notice -->
+    <p>© 2024 KUTTA. All rights reserved.</p>
+</div>
+
+        </div>
+        <!-- Back to Top Button -->
+        <button id="back-to-top" class="fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 hidden">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </footer>
+  <script>
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        function updateTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                
+                // Update meta theme color for mobile browsers
+                document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#111827');
+                
+                // Update any custom theme-specific elements
+                document.querySelectorAll('[data-theme-update]').forEach(el => {
+                    el.classList.add('dark-theme');
+                });
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                
+                // Update meta theme color for mobile browsers
+                document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#ffffff');
+                
+                // Update any custom theme-specific elements
+                document.querySelectorAll('[data-theme-update]').forEach(el => {
+                    el.classList.remove('dark-theme');
+                });
+            }
+        }
+        
+        // Toggle theme on button click
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            updateTheme(!isDark);
+        });
+        
+        // Initialize theme based on localStorage or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            updateTheme(true);
+        } else {
+            updateTheme(false);
+        }
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.theme) {  // Only update if user hasn't manually set theme
+                updateTheme(e.matches);
+            }
+        });
+    </script>
+
+    <!-- Add this script before closing body tag -->
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backdrop = mobileMenu.querySelector('div:first-child');
+
+        function toggleMobileMenu(show) {
+            const body = document.body;
+            const menuIcon = mobileMenuButton.querySelector('.menu-icon');
+            const closeIcon = mobileMenuButton.querySelector('.close-icon');
+            
+            if (show) {
+                mobileMenu.classList.remove('-translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                body.style.overflow = '';
+            }
+        }
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.contains('translate-x-0');
+            toggleMobileMenu(!isOpen);
+        });
+
+        backdrop.addEventListener('click', () => toggleMobileMenu(false));
+    </script>
+
+    <!-- Add these styles -->
+    <style>
+        /* Mobile menu transitions */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Dropdown icon transition */
+        .mobile-dropdown-toggle i {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Backdrop transition */
+        .mobile-menu > div:first-child {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Sidebar transition */
+        .mobile-menu > div:last-child {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Active states */
+        .mobile-menu.translate-x-0 > div:first-child {
+            opacity: 1;
+        }
+
+        .mobile-menu.-translate-x-full > div:first-child {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Dropdown menu transition */
+        .mobile-dropdown-menu {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Focus styles for better accessibility */
+        .mobile-menu button:focus,
+        .mobile-menu a:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            ring-2 ring-blue-500;
+        }
+    </style>
+
+    
+
+    <!-- Add this script for testimonial slider functionality -->
+    <script>
+        const testimonialContainer = document.getElementById('testimonial-container');
+        const testimonials = testimonialContainer.children;
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const indicators = document.querySelectorAll('#indicator-container div');
+        
+        let currentIndex = 0;
+        const testimonialWidth = testimonials[0].offsetWidth;
+        const visibleTestimonials = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+        const maxIndex = testimonials.length - visibleTestimonials;
+
+        function updateTestimonials(index) {
+            // Ensure index is within bounds
+            currentIndex = Math.max(0, Math.min(index, maxIndex));
+            
+            // Calculate scroll position
+            const scrollPosition = currentIndex * (testimonialWidth + 16); // 16px for gap
+            
+            // Smooth scroll to position
+            testimonialContainer.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+
+            // Update indicators
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active-indicator', i === currentIndex);
+                indicator.style.backgroundColor = i === currentIndex ? '#4F46E5' : '#D1D5DB';
+            });
+
+            // Update button states
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === maxIndex;
+            
+            // Update button opacity for visual feedback
+            prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+            nextBtn.style.opacity = currentIndex === maxIndex ? '0.5' : '1';
+        }
+
+        // Event listeners for buttons
+        prevBtn.addEventListener('click', () => {
+            updateTestimonials(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            updateTestimonials(currentIndex + 1);
+        });
+
+        // Event listeners for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                updateTestimonials(index);
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Update visible testimonials count
+            const newVisibleTestimonials = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+            if (newVisibleTestimonials !== visibleTestimonials) {
+                currentIndex = 0;
+                updateTestimonials(0);
+            }
+        });
+
+        // Auto scroll functionality
+        let autoScrollInterval;
+
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                if (currentIndex < maxIndex) {
+                    updateTestimonials(currentIndex + 1);
+                } else {
+                    updateTestimonials(0);
+                }
+            }, 5000); // Change testimonial every 5 seconds
+        }
+
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+
+        // Start auto scroll
+        startAutoScroll();
+
+        // Pause on hover
+        testimonialContainer.addEventListener('mouseenter', stopAutoScroll);
+        testimonialContainer.addEventListener('mouseleave', startAutoScroll);
+
+        // Initialize
+        updateTestimonials(0);
+    </script>
+
+    <!-- Add these styles -->
+    <style>
+        /* Testimonial slider styles */
+        #testimonial-container {
+            -ms-overflow-style: none;  /* Hide scrollbar IE and Edge */
+            scrollbar-width: none;     /* Hide scrollbar Firefox */
+        }
+
+        #testimonial-container::-webkit-scrollbar {
+            display: none;  /* Hide scrollbar Chrome, Safari and Opera */
+        }
+
+        /* Button styles */
+        #prev-btn:disabled,
+        #next-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        /* Smooth transitions */
+        .testimonial-card {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Indicator styles */
+        .active-indicator {
+            transform: scale(1.2);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .testimonial-card {
+                scroll-snap-align: start;
+            }
+            #testimonial-container {
+                scroll-snap-type: x mandatory;
+            }
+        }
+    </style>
+
+    <!-- Add this script before closing body tag -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    animateOnScroll.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, observerOptions);
+
+        // Add animation classes to elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sections to animate
+            const animatedElements = document.querySelectorAll(
+                'section, .hero-slide, .profile-card, .project-card, .event-card, ' +
+                '.testimonial-card, .cta-button, h1, h2, h3, p, .glass-card, ' +
+                '.social-icon, .nav-link, img, .slider-item'
+            );
+
+            animatedElements.forEach(element => {
+                element.classList.add('animate-prepare');
+                animateOnScroll.observe(element);
+            });
+        });
+    </script>
+
+    <!-- Add these styles -->
+    <style>
+        /* Base animation styles */
+        .animate-prepare {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Different animations for different elements */
+        section.animate-prepare {
+            transform: translateY(50px);
+        }
+
+        .hero-slide.animate-prepare {
+            transform: translateY(0) scale(0.95);
+        }
+
+        .profile-card.animate-prepare {
+            transform: translateY(30px) scale(0.95);
+        }
+
+        .glass-card.animate-prepare {
+            transform: translateY(30px) translateX(-20px);
+        }
+
+        img.animate-prepare {
+            transform: scale(0.9);
+        }
+
+        /* Stagger animations for lists and grids */
+        .grid > *:nth-child(1) { transition-delay: 0.1s; }
+        .grid > *:nth-child(2) { transition-delay: 0.2s; }
+        .grid > *:nth-child(3) { transition-delay: 0.3s; }
+        .grid > *:nth-child(4) { transition-delay: 0.4s; }
+        .grid > *:nth-child(5) { transition-delay: 0.5s; }
+        .grid > *:nth-child(6) { transition-delay: 0.6s; }
+
+        /* Fade animations for text */
+        h1.animate-prepare,
+        h2.animate-prepare,
+        h3.animate-prepare {
+            transform: translateY(20px);
+            transition-duration: 0.8s;
+        }
+
+        p.animate-prepare {
+            transform: translateY(15px);
+            transition-duration: 0.7s;
+        }
+
+        /* Scale animations for buttons and icons */
+        .cta-button.animate-prepare,
+        .social-icon.animate-prepare {
+            transform: scale(0.9);
+            transition-duration: 0.5s;
+        }
+
+        /* Slide animations for cards */
+        .testimonial-card.animate-prepare {
+            transform: translateX(-30px);
+        }
+
+        .slider-item.animate-prepare {
+            transform: translateX(-20px);
+            opacity: 0;
+        }
+
+        /* Performance optimizations */
+        .animate-prepare,
+        .animate-in {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        /* Disable animations if user prefers reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-prepare {
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+
+        /* Add smooth scrolling to the page */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Optional: Add a fade-in animation to the whole page on load */
+        body {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeMenu = document.getElementById("close-menu");
+    const dropdownToggles = document.querySelectorAll(".mobile-dropdown-toggle");
+
+    // Function to toggle dropdown menus
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener("click", function () {
+            const dropdownMenu = this.nextElementSibling;
+            
+            // Close all other dropdowns before opening a new one
+            document.querySelectorAll(".mobile-dropdown-menu").forEach(menu => {
+                if (menu !== dropdownMenu) {
+                    menu.classList.add("hidden");
+                }
+            });
+
+            dropdownMenu.classList.toggle("hidden");
+            
+            // Toggle the arrow icon rotation
+            this.querySelector("i").classList.toggle("rotate-180");
+        });
+    });
+
+    // Close menu when clicking on backdrop
+    document.querySelector(".absolute.inset-0").addEventListener("click", function () {
+        mobileMenu.classList.add("-translate-x-full");
+    });
+
+    // Close menu when clicking the close button
+    closeMenu.addEventListener("click", function () {
+        mobileMenu.classList.add("-translate-x-full");
+    });
+});
+
+    </script>
+ </body>
+</html>

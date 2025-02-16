@@ -1,0 +1,433 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   KUTTA Past Events
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="font-roboto bg-gray-100">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-6">
+   <div class="container mx-auto text-center">
+    <h1 class="text-3xl font-bold">
+     A Look Back at KUTTA’s Most Impactful Events!
+    </h1>
+    <p class="mt-2">
+     Explore the highlights and memories from our past events that have shaped the future of our students.
+    </p>
+   </div>
+  </header>
+  <!-- Slideshow of Event Highlights -->
+<section class="container mx-auto mt-8 relative">
+  <div id="slider" class="w-full overflow-hidden relative">
+    <div id="sliderTrack" class="flex transition-transform duration-700 ease-in-out">
+      <div class="w-full flex-shrink-0 relative">
+        <img
+          alt="Highlight from KUTTA event with students engaging in a workshop"
+          class="w-full h-[32rem] object-cover"
+          src="https://storage.googleapis.com/a1aa/image/I2JKSISYc21jX3suJO6-51fDLtQZHdOb5NIF4IuvAAA.jpg" />
+        <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
+          <h2 class="text-xl font-bold">KUTTA Workshop 2022</h2>
+          <p>Students engaging in hands-on activities.</p>
+        </div>
+      </div>
+      <div class="w-full flex-shrink-0 relative">
+        <img
+          alt="Keynote speaker addressing the audience at KUTTA Tech Fair"
+          class="w-full h-[32rem] object-cover"
+          src="https://storage.googleapis.com/a1aa/image/M7e5MBDVwlwHgHtXKnA68Wl4Fl2tebzA-TuA_yRIqFA.jpg" />
+        <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
+          <h2 class="text-xl font-bold">KUTTA Tech Fair 2021</h2>
+          <p>Keynote speaker addressing the audience.</p>
+        </div>
+      </div>
+      <div class="w-full flex-shrink-0 relative">
+        <img
+          alt="Participants collaborating during KUTTA Hackathon"
+          class="w-full h-[32rem] object-cover"
+          src="https://storage.googleapis.com/a1aa/image/sCXeMPCA-moK1xjjRQYH4t5xjheoIzp-tHI-QvTxSW0.jpg" />
+        <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
+          <h2 class="text-xl font-bold">KUTTA Hackathon 2020</h2>
+          <p>Participants collaborating on projects.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navigation Buttons -->
+  <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700">
+    &#10094;
+  </button>
+  <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700">
+    &#10095;
+  </button>
+</section>
+
+<script>
+  // Slider functionality
+  const sliderTrack = document.getElementById('sliderTrack');
+  const slides = sliderTrack.children;
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  
+  function updateSlider() {
+    const slideWidth = sliderTrack.clientWidth;
+    sliderTrack.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+  
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+  });
+  
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlider();
+  });
+  
+  // Auto slide every 5 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+  }, 5000);
+  
+  // Recalculate slide width on window resize
+  window.addEventListener('resize', updateSlider);
+</script>
+
+  <!-- Filter & Search Functionality -->
+  <section class="container mx-auto mt-8">
+   <div class="flex justify-between items-center">
+    <div class="flex space-x-4">
+     <button class="bg-blue-600 text-white px-4 py-2 rounded">
+      All
+     </button>
+     <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded">
+      Workshops
+     </button>
+     <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded">
+      Hackathons
+     </button>
+     <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded">
+      Guest Lectures
+     </button>
+     <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded">
+      Tech Fairs
+     </button>
+    </div>
+    <div>
+     <input class="px-4 py-2 border rounded w-64" placeholder="Search events..." type="text"/>
+    </div>
+   </div>
+  </section>
+  <!-- Past Events Gallery -->
+  <section class="container mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+   <!-- Event Card -->
+   <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <img alt="Students participating in a coding workshop" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/aGfh9_jHUPblDjPP4B2Z1IAUqWcdaRdcVWH8LTKu7xA.jpg" width="400"/>
+    <div class="p-4">
+     <h3 class="text-xl font-bold">
+      Coding Workshop 2022
+     </h3>
+     <p class="text-gray-600">
+      Date: March 15, 2022 | Location: Kenyatta University
+     </p>
+     <p class="mt-2">
+      An engaging workshop where students learned the basics of coding and software development.
+     </p>
+     <p class="mt-2">
+      <strong>
+       Key Speakers:
+      </strong>
+      John Doe, Jane Smith
+     </p>
+     <div class="mt-4 flex justify-between items-center">
+      <a class="text-blue-600" href="#">
+       Read More
+      </a>
+      <a class="text-blue-600" href="#">
+       <i class="fas fa-file-download">
+       </i>
+       Download Report
+      </a>
+     </div>
+    </div>
+   </div>
+   <!-- Event Card -->
+   <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <img alt="Participants at the KUTTA Hackathon working on their projects" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/U9ZFXMsq87n6W9tdj1e3h41QqnracjrF2yca9xagmI8.jpg" width="400"/>
+    <div class="p-4">
+     <h3 class="text-xl font-bold">
+      KUTTA Hackathon 2021
+     </h3>
+     <p class="text-gray-600">
+      Date: July 20, 2021 | Location: Kenyatta University
+     </p>
+     <p class="mt-2">
+      A competitive hackathon where students developed innovative tech solutions.
+     </p>
+     <p class="mt-2">
+      <strong>
+       Key Speakers:
+      </strong>
+      Alice Johnson, Bob Brown
+     </p>
+     <div class="mt-4 flex justify-between items-center">
+      <a class="text-blue-600" href="#">
+       Read More
+      </a>
+      <a class="text-blue-600" href="#">
+       <i class="fas fa-file-download">
+       </i>
+       Download Report
+      </a>
+     </div>
+    </div>
+   </div>
+   <!-- Event Card -->
+   <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <img alt="Guest speaker giving a lecture at KUTTA event" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/UMz9IcQq22oPpp2gWOmfZoH_G0-wYD0KCaR2hWuiDg4.jpg" width="400"/>
+    <div class="p-4">
+     <h3 class="text-xl font-bold">
+      Guest Lecture Series 2020
+     </h3>
+     <p class="text-gray-600">
+      Date: November 10, 2020 | Location: Kenyatta University
+     </p>
+     <p class="mt-2">
+      A series of lectures by industry experts on the latest trends in technology.
+     </p>
+     <p class="mt-2">
+      <strong>
+       Key Speakers:
+      </strong>
+      Dr. Emily White, Prof. Mark Green
+     </p>
+     <div class="mt-4 flex justify-between items-center">
+      <a class="text-blue-600" href="#">
+       Read More
+      </a>
+      <a class="text-blue-600" href="#">
+       <i class="fas fa-file-download">
+       </i>
+       Download Report
+      </a>
+     </div>
+    </div>
+   </div>
+   <!-- Event Card -->
+   <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <img alt="Students exploring tech exhibits at the KUTTA Tech Fair" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/sUy8N_y-C2v1ra8KqC15hAX5je2CabpoczOHOtRlrnc.jpg" width="400"/>
+    <div class="p-4">
+     <h3 class="text-xl font-bold">
+      KUTTA Tech Fair 2019
+     </h3>
+     <p class="text-gray-600">
+      Date: September 5, 2019 | Location: Kenyatta University
+     </p>
+     <p class="mt-2">
+      A tech fair showcasing the latest innovations and projects by students and professionals.
+     </p>
+     <p class="mt-2">
+      <strong>
+       Key Speakers:
+      </strong>
+      Sarah Lee, Michael Brown
+     </p>
+     <div class="mt-4 flex justify-between items-center">
+      <a class="text-blue-600" href="#">
+       Read More
+      </a>
+      <a class="text-blue-600" href="#">
+       <i class="fas fa-file-download">
+       </i>
+       Download Report
+      </a>
+     </div>
+    </div>
+   </div>
+   <!-- Event Card -->
+   <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <img alt="Panel discussion during KUTTA event" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/sEckwqoo6teqptjTvqZihPjKC5vwSmZ9mJ2H1zQZZiU.jpg" width="400"/>
+    <div class="p-4">
+     <h3 class="text-xl font-bold">
+      Panel Discussion 2018
+     </h3>
+     <p class="text-gray-600">
+      Date: June 12, 2018 | Location: Kenyatta University
+     </p>
+     <p class="mt-2">
+      A panel discussion featuring experts discussing the future of telecommunications.
+     </p>
+     <p class="mt-2">
+      <strong>
+       Key Speakers:
+      </strong>
+      Dr. Robert King, Ms. Linda Grey
+     </p>
+     <div class="mt-4 flex justify-between items-center">
+      <a class="text-blue-600" href="#">
+       Read More
+      </a>
+      <a class="text-blue-600" href="#">
+       <i class="fas fa-file-download">
+       </i>
+       Download Report
+      </a>
+     </div>
+    </div>
+   </div>
+   <!-- Event Card -->
+   <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <img alt="Students participating in a hands-on workshop" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/5eKlYh20qqq6xHlKiWCU8ewvcHnDeNXadHEg5eTaZFg.jpg" width="400"/>
+    <div class="p-4">
+     <h3 class="text-xl font-bold">
+      Hands-on Workshop 2017
+     </h3>
+     <p class="text-gray-600">
+      Date: April 25, 2017 | Location: Kenyatta University
+     </p>
+     <p class="mt-2">
+      A practical workshop where students gained hands-on experience with new technologies.
+     </p>
+     <p class="mt-2">
+      <strong>
+       Key Speakers:
+      </strong>
+      Mr. James Wilson, Ms. Anna Brown
+     </p>
+     <div class="mt-4 flex justify-between items-center">
+      <a class="text-blue-600" href="#">
+       Read More
+      </a>
+      <a class="text-blue-600" href="#">
+       <i class="fas fa-file-download">
+       </i>
+       Download Report
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Testimonial Section -->
+  <section class="container mx-auto mt-8 bg-white p-8 rounded-lg shadow-lg">
+   <h2 class="text-2xl font-bold text-center">
+    What Our Attendees Say
+   </h2>
+   <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-gray-100 p-4 rounded-lg shadow">
+     <p class="italic">
+      “Attending the KUTTA Hackathon was a game-changer! I gained hands-on experience and networked with industry experts.”
+     </p>
+     <p class="mt-2 text-right font-bold">
+      – John Doe
+     </p>
+    </div>
+    <div class="bg-gray-100 p-4 rounded-lg shadow">
+     <p class="italic">
+      “The guest lectures were incredibly insightful and helped me understand the latest trends in technology.”
+     </p>
+     <p class="mt-2 text-right font-bold">
+      – Jane Smith
+     </p>
+    </div>
+    <div class="bg-gray-100 p-4 rounded-lg shadow">
+     <p class="italic">
+      “The workshops provided practical knowledge that I could immediately apply in my projects.”
+     </p>
+     <p class="mt-2 text-right font-bold">
+      – Alice Johnson
+     </p>
+    </div>
+   </div>
+  </section>
+  <!-- YouTube & Video Gallery -->
+  <section class="container mx-auto mt-8">
+   <h2 class="text-2xl font-bold text-center">
+    Event Highlights
+   </h2>
+   <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+     <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="w-full h-48" frameborder="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player">
+     </iframe>
+     <div class="p-4">
+      <h3 class="text-xl font-bold">
+       KUTTA Workshop 2022 Highlights
+      </h3>
+      <p class="mt-2">
+       Watch the highlights from our recent workshop where students learned about the latest in tech.
+      </p>
+     </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+     <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="w-full h-48" frameborder="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player">
+     </iframe>
+     <div class="p-4">
+      <h3 class="text-xl font-bold">
+       KUTTA Hackathon 2021 Recap
+      </h3>
+      <p class="mt-2">
+       Relive the excitement of our 2021 hackathon where students developed innovative solutions.
+      </p>
+     </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+     <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="w-full h-48" frameborder="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player">
+     </iframe>
+     <div class="p-4">
+      <h3 class="text-xl font-bold">
+       Guest Lecture Series 2020
+      </h3>
+      <p class="mt-2">
+       Catch up on the key insights shared by industry experts during our 2020 guest lecture series.
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Social Media Integration -->
+  <section class="container mx-auto mt-8 bg-white p-8 rounded-lg shadow-lg">
+   <h2 class="text-2xl font-bold text-center">
+    Follow Us on Social Media
+   </h2>
+   <div class="mt-6 flex justify-center space-x-4">
+    <a class="text-blue-600" href="#">
+     <i class="fab fa-twitter fa-2x">
+     </i>
+    </a>
+    <a class="text-blue-600" href="#">
+     <i class="fab fa-instagram fa-2x">
+     </i>
+    </a>
+    <a class="text-blue-600" href="#">
+     <i class="fab fa-linkedin fa-2x">
+     </i>
+    </a>
+   </div>
+   <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-gray-100 p-4 rounded-lg shadow">
+     <img alt="Twitter post from KUTTA event" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/Op1i9pEUYGtMT5x3DzPl8O66BWFO0-K4CiGAWRGz7qQ.jpg" width="400"/>
+     <p class="mt-2">
+      Check out the latest updates from our recent events on Twitter.
+     </p>
+    </div>
+    <div class="bg-gray-100 p-4 rounded-lg shadow">
+     <img alt="Instagram post from KUTTA event" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/4TPad439fb6XGI4l9M0i6W8xRx1sCqlWPK2a9qFMMQE.jpg" width="400"/>
+     <p class="mt-2">
+      Follow us on Instagram for behind-the-scenes moments and event highlights.
+     </p>
+    </div>
+    <div class="bg-gray-100 p-4 rounded-lg shadow">
+     <img alt="LinkedIn post from KUTTA event" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/9DpT8bMyrplLHGZF_U_ZafMSCsWA3n2ZCr_sRcOmo-Y.jpg" width="400"/>
+     <p class="mt-2">
+      Connect with us on LinkedIn for professional insights and event recaps.
+     </p>
+    </div>
+   </div>
+  </section>
+ </body>
+</html>

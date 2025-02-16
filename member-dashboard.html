@@ -1,0 +1,346 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>KUTTA Member Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .sidebar {
+            transition: transform 0.3s ease;
+        }
+        .sidebar-closed {
+            transform: translateX(-100%);
+        }
+        .sidebar-open {
+            transform: translateX(0);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900" id="body">
+
+<div class="flex h-screen overflow-hidden" id="app">
+    <!-- Sidebar -->
+    <div class="sidebar fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-50 sidebar-closed lg:sidebar-open lg:relative lg:transform-none overflow-y-auto" id="sidebar">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200">
+            <h1 class="text-xl font-bold">KUTTA Member</h1>
+            <button class="lg:hidden text-gray-400" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <!-- Include Lucide Icons (Working Version) -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<!-- Navigation Menu -->
+<nav class="mt-4 space-y-1">
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="#">
+        <i data-lucide="home"></i> Dashboard
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="profile.html">
+        <i data-lucide="user"></i> My Profile
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="mbrship-bnft.html">
+        <i data-lucide="gift"></i> Membership Benefits
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="evt-wbn.html">
+        <i data-lucide="calendar"></i> Events & Webinars
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="cmty-nt.html">
+        <i data-lucide="globe"></i> Community & Networking
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="lng-dvp.html">
+        <i data-lucide="book"></i> Learning & Development
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="blg-nws.html">
+        <i data-lucide="newspaper"></i> Blog & News
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="jb-intn.html">
+        <i data-lucide="briefcase"></i> Jobs & Internships
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="notifications.html">
+        <i data-lucide="bell"></i> Notifications
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="contr-vol.html">
+        <i data-lucide="bar-chart"></i> Contributions & Volunteering
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="sett.html">
+        <i data-lucide="settings"></i> Settings
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="suppt.html">
+        <i data-lucide="help-circle"></i> Support & Help
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 text-red-600 font-semibold" href="#" id="logoutButton">
+        <i data-lucide="log-out"></i> Logout
+    </a>
+</nav>
+
+<!-- Activate Lucide Icons (Ensure Icons Load) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+    });
+</script>
+
+    </div>
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden lg:ml-0">
+        <!-- Header -->
+        <header class="flex items-center justify-between p-4 bg-white shadow-md">
+            <div class="flex items-center">
+                <button class="lg:hidden text-gray-400" id="openSidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="text-2xl font-bold ml-4">Dashboard</h1>
+            </div>
+            <div class="flex items-center">
+                <img alt="Profile picture of the member" class="rounded-full" height="40" src="files/Untitled (4).jpg" width="40"/>
+            </div>
+        </header>
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto p-4">
+            <!-- Welcome Section -->
+            <section class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <div class="flex items-center">
+                    <div class="ml-4">
+                        <h2 class="text-xl font-bold">Welcome back, Member 👋</h2>
+                        <p class="text-gray-600">Gold Member</p>
+                        <button class="mt-2 bg-blue-600 text-white py-1 px-3 rounded-lg hover:bg-blue-700" onclick="openModal('quickEditModal')">Quick Edit</button>
+                    </div>
+                </div>
+            </section>
+            <!-- Membership Overview -->
+            <section class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-lg font-semibold mb-2">Membership Overview</h2>
+                <p>Membership Level: Gold Member</p>
+                <p>Expiry Date: 12/31/2023</p>
+                <button class="mt-2 bg-green-600 text-white py-1 px-3 rounded-lg hover:bg-green-700" onclick="openModal('renewMembershipModal')">Renew Membership</button>
+            </section>
+            <!-- Upcoming Events & Webinars -->
+            <section class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-lg font-semibold mb-2">Upcoming Events & Webinars</h2>
+                <ul>
+                    <li class="mb-2">Event 1 - <span class="text-gray-600">12/01/2023</span></li>
+                    <li class="mb-2">Event 2 - <span class="text-gray-600">12/15/2023</span></li>
+                </ul>
+                <button class="mt-2 bg-blue-600 text-white py-1 px-3 rounded-lg hover:bg-blue-700" onclick="openModal('registerEventModal')">Register for New Events</button>
+                <p class="mt-2 text-gray-600">Next Event in: <span class="font-bold">5 days</span></p>
+            </section>
+            <!-- Recent Blog & News Highlights -->
+            <section class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-lg font-semibold mb-2">Recent Blog & News Highlights</h2>
+                <ul>
+                    <li class="mb-2">Blog Post 1 - <span class="text-gray-600">Tech Trends 2023</span></li>
+                    <li class="mb-2">Blog Post 2 - <span class="text-gray-600">AI in Healthcare</span></li>
+                </ul>
+            </section>
+            <!-- Job & Internship Recommendations -->
+            <section class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-lg font-semibold mb-2">Job & Internship Recommendations</h2>
+                <ul>
+                    <li class="mb-2">Job 1 - <span class="text-gray-600">Software Engineer</span></li>
+                    <li class="mb-2">Internship 1 - <span class="text-gray-600">Data Analyst Intern</span></li>
+                </ul>
+            </section>
+            <!-- Learning & Development -->
+            <section class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-lg font-semibold mb-2">Learning & Development</h2>
+                <ul>
+                    <li class="mb-2">Course 1 - <span class="text-gray-600">Full Stack Development</span></li>
+                    <li class="mb-2">Course 2 - <span class="text-gray-600">Machine Learning</span></li>
+                </ul>
+            </section>
+            <!-- Community & Networking -->
+            <section class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-lg font-semibold mb-2">Community & Networking</h2>
+                <ul>
+                    <li class="mb-2">Member 1 - <span class="text-gray-600">John Doe</span></li>
+                    <li class="mb-2">Member 2 - <span class="text-gray-600">Jane Smith</span></li>
+                </ul>
+            </section>
+            <!-- Notifications & Updates -->
+            <section class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-lg font-semibold mb-2">Notifications & Updates</h2>
+                <ul>
+                    <li class="mb-2">Notification 1 - <span class="text-gray-600">Event Reminder</span></li>
+                    <li class="mb-2">Notification 2 - <span class="text-gray-600">New Message</span></li>
+                </ul>
+            </section>
+            <!-- Quick Actions -->
+            <section class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-lg font-semibold mb-2">Quick Actions</h2>
+                <div class="flex space-x-2">
+                    <button class="bg-blue-600 text-white py-1 px-3 rounded-lg hover:bg-blue-700" onclick="openModal('joinEventModal')">Join an Event</button>
+                    <button class="bg-green-600 text-white py-1 px-3 rounded-lg hover:bg-green-700" onclick="openModal('submitProjectModal')">Submit a Project</button>
+                    <button class="bg-yellow-600 text-white py-1 px-3 rounded-lg hover:bg-yellow-700" onclick="openModal('writeBlogPostModal')">Write a Blog Post</button>
+                    <button class="bg-red-600 text-white py-1 px-3 rounded-lg hover:bg-red-700" onclick="openModal('contactSupportModal')">Contact Support</button>
+                </div>
+            </section>
+            <!-- Help & Support Section -->
+            <section class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-lg font-semibold mb-2">Help & Support</h2>
+                <ul>
+                    <li class="mb-2">FAQ - <span class="text-gray-600">Frequently Asked Questions</span></li>
+                    <li class="mb-2">Live Chat - <span class="text-gray-600">Chat with Support</span></li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</div>
+
+<!-- Modals -->
+<div id="quickEditModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('quickEditModal')">&times;</span>
+        <h2>Quick Edit Profile</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="w-full p-2 border rounded mb-2">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="w-full p-2 border rounded mb-2">
+            <button type="submit" class="bg-blue-600 text-white py-1 px-3 rounded-lg hover:bg-blue-700">Save</button>
+        </form>
+    </div>
+</div>
+
+<div id="renewMembershipModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('renewMembershipModal')">&times;</span>
+        <h2>Renew Membership</h2>
+        <form>
+            <label for="membershipLevel">Membership Level:</label>
+            <select id="membershipLevel" name="membershipLevel" class="w-full p-2 border rounded mb-2">
+                <option value="gold">Gold</option>
+                <option value="silver">Silver</option>
+                <option value="bronze">Bronze</option>
+            </select>
+            <button type="submit" class="bg-green-600 text-white py-1 px-3 rounded-lg hover:bg-green-700">Renew</button>
+        </form>
+    </div>
+</div>
+
+<div id="registerEventModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('registerEventModal')">&times;</span>
+        <h2>Register for New Events</h2>
+        <form>
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" name="eventName" class="w-full p-2 border rounded mb-2">
+            <label for="eventDate">Event Date:</label>
+            <input type="date" id="eventDate" name="eventDate" class="w-full p-2 border rounded mb-2">
+            <button type="submit" class="bg-blue-600 text-white py-1 px-3 rounded-lg hover:bg-blue-700">Register</button>
+        </form>
+    </div>
+</div>
+
+<div id="joinEventModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('joinEventModal')">&times;</span>
+        <h2>Join an Event</h2>
+        <form>
+            <label for="eventCode">Event Code:</label>
+            <input type="text" id="eventCode" name="eventCode" class="w-full p-2 border rounded mb-2">
+            <button type="submit" class="bg-blue-600 text-white py-1 px-3 rounded-lg hover:bg-blue-700">Join</button>
+        </form>
+    </div>
+</div>
+
+<div id="submitProjectModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('submitProjectModal')">&times;</span>
+        <h2>Submit a Project</h2>
+        <form>
+            <label for="projectTitle">Project Title:</label>
+            <input type="text" id="projectTitle" name="projectTitle" class="w-full p-2 border rounded mb-2">
+            <label for="projectDescription">Project Description:</label>
+            <textarea id="projectDescription" name="projectDescription" class="w-full p-2 border rounded mb-2"></textarea>
+            <button type="submit" class="bg-green-600 text-white py-1 px-3 rounded-lg hover:bg-green-700">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div id="writeBlogPostModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('writeBlogPostModal')">&times;</span>
+        <h2>Write a Blog Post</h2>
+        <form>
+            <label for="blogTitle">Blog Title:</label>
+            <input type="text" id="blogTitle" name="blogTitle" class="w-full p-2 border rounded mb-2">
+            <label for="blogContent">Blog Content:</label>
+            <textarea id="blogContent" name="blogContent" class="w-full p-2 border rounded mb-2"></textarea>
+            <button type="submit" class="bg-yellow-600 text-white py-1 px-3 rounded-lg hover:bg-yellow-700">Publish</button>
+        </form>
+    </div>
+</div>
+
+<div id="contactSupportModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('contactSupportModal')">&times;</span>
+        <h2>Contact Support</h2>
+        <form>
+            <label for="issue">Describe your issue:</label>
+            <textarea id="issue" name="issue" class="w-full p-2 border rounded mb-2"></textarea>
+            <button type="submit" class="bg-red-600 text-white py-1 px-3 rounded-lg hover:bg-red-700">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('openSidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('sidebar-closed');
+        document.getElementById('sidebar').classList.add('sidebar-open');
+    });
+
+    document.getElementById('closeSidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('sidebar-open');
+        document.getElementById('sidebar').classList.add('sidebar-closed');
+    });
+
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        window.location.href = 'befr-lgn.html';
+    });
+
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+</script>
+</body>
+</html>

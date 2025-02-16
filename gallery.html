@@ -1,0 +1,468 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   KUTTA Gallery
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .lazy-loaded {
+            opacity: 1;
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100 text-gray-800">
+  <!-- Hero Section -->
+<section class="relative bg-blue-600 text-white py-20">
+  <div class="container mx-auto px-6 text-center">
+    <h1 class="text-4xl font-bold mb-4">
+      Experience KUTTA in Action – Our Journey in Pictures &amp; Videos!
+    </h1>
+    <p class="text-lg">
+      From tech fairs to industry collaborations, workshops to community outreach—relive the moments that define KUTTA. Explore our collection of images and videos capturing our innovation, learning, and teamwork!
+    </p>
+  </div>
+  <img alt="Subtle animated background" class="absolute inset-0 w-full h-full object-cover opacity-50" src="https://storage.googleapis.com/a1aa/image/VWJOger2zxANnz3gskTSbwE60zyLRmIhf15BtB5fMXg.jpg" width="1920" height="1080"/>
+</section>
+
+<!-- Events Highlights Section -->
+<section class="py-16">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Events Highlights</h2>
+    <div class="relative flex items-center justify-center">
+      <button id="prev" class="absolute left-0 p-3 bg-gray-800 text-white rounded-full">&#10094;</button>
+      <div id="gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="event-item bg-white rounded-lg shadow-lg overflow-hidden">
+          <img class="w-full h-48 object-cover" src="https://storage.googleapis.com/a1aa/image/pA9FL8WT1pAhiXdpSU1sHDdbraAWsiVS_OTLSfep4Vo.jpg" alt="Tech Fairs & Innovation Showcases">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Tech Fairs & Innovation Showcases</h3>
+            <p class="text-gray-700">Showcasing the latest in technology and innovation from our talented members.</p>
+          </div>
+        </div>
+        <div class="event-item bg-white rounded-lg shadow-lg overflow-hidden">
+          <img class="w-full h-48 object-cover" src="https://storage.googleapis.com/a1aa/image/7YUYsx1j0GSNbugZqC4ZacqrAyHEbme-FgI_VUHqn94.jpg" alt="Workshops & Training Sessions">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Workshops & Training Sessions</h3>
+            <p class="text-gray-700">Hands-on learning experiences to enhance skills and knowledge.</p>
+          </div>
+        </div>
+        <div class="event-item bg-white rounded-lg shadow-lg overflow-hidden">
+          <img class="w-full h-48 object-cover" src="https://storage.googleapis.com/a1aa/image/B5TvSNzVsa5gOLnzt3DMXF5FDpe3a8JOJg9omLW7z8I.jpg" alt="Guest Lectures & Panel Discussions">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Guest Lectures & Panel Discussions</h3>
+            <p class="text-gray-700">Insights and knowledge sharing from industry experts and thought leaders.</p>
+          </div>
+        </div>
+      </div>
+      <button id="next" class="absolute right-0 p-3 bg-gray-800 text-white rounded-full">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const gallery = document.getElementById("gallery");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    let scrollAmount = 0;
+    const scrollStep = gallery.clientWidth / 3;
+
+    prev.addEventListener("click", function () {
+      gallery.scrollLeft -= scrollStep;
+    });
+
+    next.addEventListener("click", function () {
+      gallery.scrollLeft += scrollStep;
+    });
+  });
+</script>
+
+  <!-- Interactive Gallery Grid -->
+  <section class="py-16 bg-gray-200">
+   <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">
+     Gallery
+    </h2>
+    <div class="flex justify-center mb-8">
+     <button class="px-4 py-2 bg-blue-600 text-white rounded-lg mx-2" onclick="showGallery('all')">
+      All
+     </button>
+     <button class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg mx-2" onclick="showGallery('events')">
+      Events
+     </button>
+     <button class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg mx-2" onclick="showGallery('workshops')">
+      Workshops &amp; Training
+     </button>
+     <button class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg mx-2" onclick="showGallery('industry')">
+      Industry Collaborations
+     </button>
+     <button class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg mx-2" onclick="showGallery('social')">
+      Social Gatherings
+     </button>
+     <button class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg mx-2" onclick="showGallery('community')">
+      Community Outreach
+     </button>
+    </div>
+    <div class="relative w-full overflow-hidden">
+     <div class="flex transition-transform duration-500 ease-in-out" id="gallery-container">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 flex-shrink-0 w-full" id="all">
+       <div class="relative group">
+        <img alt="Event Image 1" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/roWLvaZxkev14Y3NpXSipUrY7e891lrA-Zc13r17ORI.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Event Image 1
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Event Image 2" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/Y09ydyQNMBV1NwD68_AH1p4dDaUv51HdGWkwmNkdw24.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Event Image 2
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Event Image 3" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/UnvxzSbyEP_fvpY64cAPj7bA6M1olYMXIJ4gjcYW9BY.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Event Image 3
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Event Image 4" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/thdvG26y1oFYchUdmXCSYAImUHbTdveH5w_f26qdRzo.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Event Image 4
+         </p>
+        </div>
+       </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 flex-shrink-0 w-full hidden" id="events">
+       <div class="relative group">
+        <img alt="Event Image 1" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/roWLvaZxkev14Y3NpXSipUrY7e891lrA-Zc13r17ORI.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Event Image 1
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Event Image 2" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/Y09ydyQNMBV1NwD68_AH1p4dDaUv51HdGWkwmNkdw24.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Event Image 2
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Event Image 3" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/UnvxzSbyEP_fvpY64cAPj7bA6M1olYMXIJ4gjcYW9BY.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Event Image 3
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Event Image 4" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/thdvG26y1oFYchUdmXCSYAImUHbTdveH5w_f26qdRzo.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Event Image 4
+         </p>
+        </div>
+       </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 flex-shrink-0 w-full hidden" id="workshops">
+       <div class="relative group">
+        <img alt="Workshop Image 1" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/o3QpwtBY6hsqf-AYxCswPGtj5J8xkKGEPNCtGIpaIlA.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Workshop Image 1
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Workshop Image 2" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/_cy9WjXlUDf1bPcvY4wiO6I9LYjehaI0ZiFs9jW2JYU.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Workshop Image 2
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Workshop Image 3" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/4RVP5KOj7TscS4MMBVRh1nOmY7JBtS2KbPV1SXFekWY.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Workshop Image 3
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Workshop Image 4" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/KtW3LEZRS76mpdFFprGj2DW4knWmm5v9TVTLvlOv_kY.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Workshop Image 4
+         </p>
+        </div>
+       </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 flex-shrink-0 w-full hidden" id="industry">
+       <div class="relative group">
+        <img alt="Industry Collaboration Image 1" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/gsWTYQHbqJ5FeRaFJYARVzFUY2aZ6WDbgT7z7BV8cj8.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Industry Collaboration Image 1
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Industry Collaboration Image 2" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/PvVL3sw0Mlcwl_NROIXJYa5TAkSw4LH_A4nIZOTTjRE.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Industry Collaboration Image 2
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Industry Collaboration Image 3" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/NQIA20IBfNimbQrPUFwLkwPzQUNaxMBz3zSS_53P2eI.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Industry Collaboration Image 3
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Industry Collaboration Image 4" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/DDnObEFIZZ0UiTw3dNV10i1wFrZoxP45HUEGwkkRc2w.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Industry Collaboration Image 4
+         </p>
+        </div>
+       </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 flex-shrink-0 w-full hidden" id="social">
+       <div class="relative group">
+        <img alt="Social Gathering Image 1" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/0gKerWdpUrUrIbhVkACXmqDdT8IKzrU6tut_Tq-BqW0.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Social Gathering Image 1
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Social Gathering Image 2" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/m9NR-xQ2XBvcsee8wF73dhnm6mqeDWXuhhZUZOIUHfk.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Social Gathering Image 2
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Social Gathering Image 3" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/87GitA0i_QcQALeYxB0ncjyzh1jBFpz6lj0lbuZcnaw.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Social Gathering Image 3
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Social Gathering Image 4" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/_hyVeKWbgsXvWw_tBataqWSjZUkhONBnfRVBhp7kkbA.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Social Gathering Image 4
+         </p>
+        </div>
+       </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 flex-shrink-0 w-full hidden" id="community">
+       <div class="relative group">
+        <img alt="Community Outreach Image 1" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/Ndeg14LihZ4ySU2WmmuhCyh1mhS4FXVJ8DkiLhe6Vew.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Community Outreach Image 1
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Community Outreach Image 2" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/MW6VpLNtV0pjS5jFBoMjuksEPhG9bv5sEcO64bQSBO0.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Community Outreach Image 2
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Community Outreach Image 3" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/7x4ivzJw5ueR6_yWT8B56hPQbjnFdUuODmANUbmFog0.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Community Outreach Image 3
+         </p>
+        </div>
+       </div>
+       <div class="relative group">
+        <img alt="Community Outreach Image 4" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/uLs_O9nXR9PlZLbEU6ChmVld7U9U8MmBH5TP0JPaytg.jpg" width="600"/>
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+         <p class="text-white text-lg">
+          Community Outreach Image 4
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="flex justify-center mt-4">
+      <button class="px-4 py-2 bg-gray-400 text-white rounded-l-lg" id="prevBtn">
+       ←
+      </button>
+      <button class="px-4 py-2 bg-gray-400 text-white rounded-r-lg" id="nextBtn">
+       →
+      </button>
+     </div>
+    </div>
+   </div>
+  </section>
+  <script>
+   let index = 0;
+    const container = document.getElementById("gallery-container");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    prevBtn.addEventListener("click", () => {
+      index = Math.max(index - 1, 0);
+      container.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    nextBtn.addEventListener("click", () => {
+      index = Math.min(index + 1, 1); // Adjust based on total sections
+      container.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    function showGallery(section) {
+      const sections = ['all', 'events', 'workshops', 'industry', 'social', 'community'];
+      sections.forEach(sec => {
+        document.getElementById(sec).classList.add('hidden');
+      });
+      document.getElementById(section).classList.remove('hidden');
+    }
+  </script>
+
+  <!-- Featured Video Section -->
+  <section class="py-16">
+   <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">
+     Featured Videos
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="w-full h-48" frameborder="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Interview with KUTTA Leaders">
+      </iframe>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2">
+        Interview with KUTTA Leaders
+       </h3>
+       <p class="text-gray-700">
+        Insights and experiences shared by the leaders of KUTTA.
+       </p>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="w-full h-48" frameborder="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Hackathon Highlights">
+      </iframe>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2">
+        Hackathon Highlights
+       </h3>
+       <p class="text-gray-700">
+        Exciting moments from our recent hackathons and coding competitions.
+       </p>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="w-full h-48" frameborder="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Tech Project Demonstrations">
+      </iframe>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2">
+        Tech Project Demonstrations
+       </h3>
+       <p class="text-gray-700">
+        Showcasing innovative tech projects by our talented members.
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Testimonials & Memories Section -->
+  <section class="py-16 bg-gray-200">
+   <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">
+     Testimonials &amp; Memories
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="bg-white rounded-lg shadow-lg p-6">
+      <img alt="John Doe, Alumni" class="w-16 h-16 rounded-full mx-auto mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/5drY6h1i-7IE0dm5ZPzYbAYlZ2RmKCC-oB97qxQW3co.jpg" width="100"/>
+      <p class="text-lg italic mb-4">
+       "Being a part of KUTTA gave me exposure to industry experts and hands-on experience that shaped my career in tech!"
+      </p>
+      <p class="text-right font-bold">
+       — John Doe, Alumni
+      </p>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg p-6">
+      <img alt="Jane Smith, Member" class="w-16 h-16 rounded-full mx-auto mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/2ihZ6Ef5g7N0WdXrb5dO889BrecvHghYW1i1b1kpVk8.jpg" width="100"/>
+      <p class="text-lg italic mb-4">
+       "KUTTA's workshops and training sessions were instrumental in my professional development."
+      </p>
+      <p class="text-right font-bold">
+       — Jane Smith, Member
+      </p>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg p-6">
+      <img alt="Michael Brown, Industry Partner" class="w-16 h-16 rounded-full mx-auto mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/GVpI84afbFiAluuQ5aAvPa9JcKZCWEhPlVxzSP68hPU.jpg" width="100"/>
+      <p class="text-lg italic mb-4">
+       "Collaborating with KUTTA has been a rewarding experience for our company."
+      </p>
+      <p class="text-right font-bold">
+       — Michael Brown, Industry Partner
+      </p>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg p-6">
+      <img alt="Emily Davis, Volunteer" class="w-16 h-16 rounded-full mx-auto mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/p96o3vIwq_ZlDekbnWE1kuyVKrtcZrqNMXC2zNpI3f8.jpg" width="100"/>
+      <p class="text-lg italic mb-4">
+       "Volunteering with KUTTA has been an enriching experience, allowing me to give back to the community."
+      </p>
+      <p class="text-right font-bold">
+       — Emily Davis, Volunteer
+      </p>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg p-6">
+      <img alt="Chris Johnson, Event Organizer" class="w-16 h-16 rounded-full mx-auto mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/Ww71kL5mZrH9hV5Sf3QRNBckzllLcFOCdiSwZFDImW4.jpg" width="100"/>
+      <p class="text-lg italic mb-4">
+       "Organizing events with KUTTA has been a fantastic journey, filled with learning and growth."
+      </p>
+      <p class="text-right font-bold">
+       — Chris Johnson, Event Organizer
+      </p>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg p-6">
+      <img alt="Sarah Lee, Participant" class="w-16 h-16 rounded-full mx-auto mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/KkwDAaPu3Y-LpITtFMKXXxQdOjISk649mxb7WJD2XW8.jpg" width="100"/>
+      <p class="text-lg italic mb-4">
+       "Participating in KUTTA's hackathons has been an exhilarating experience, pushing my limits and expanding my
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+ </body>
+</html>

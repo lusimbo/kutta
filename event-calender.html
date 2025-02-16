@@ -1,0 +1,300 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   KUTTA Event Calendar
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="font-roboto bg-gray-100">
+  <header class="bg-blue-600 text-white p-4">
+   <div class="container mx-auto flex justify-between items-center">
+    <h1 class="text-2xl font-bold">
+     📅 Stay Updated with KUTTA's Tech Events &amp; Workshops!
+    </h1>
+    <nav>
+     <ul class="flex space-x-4">
+      <li>
+       <a class="hover:underline" href="index.html">
+        Home
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="upcmg-events.html">
+        Events
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="about.html">
+        About
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="contact.html">
+        Contact
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <main class="container mx-auto p-4">
+   <section class="mb-8">
+    <h2 class="text-xl font-bold mb-4">
+     Interactive Event Calendar
+    </h2>
+    <div class="bg-white p-4 rounded shadow">
+     <!-- Calendar will be implemented here -->
+     <div class="flex justify-between items-center mb-4">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded">
+       Monthly View
+      </button>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded">
+       Weekly View
+      </button>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded">
+       Daily View
+      </button>
+     </div>
+     <div class="grid grid-cols-7 gap-4">
+      <!-- Example of a day in the calendar -->
+      <div class="bg-gray-200 p-2 rounded">
+       <div class="text-center font-bold">
+        1
+       </div>
+       <div class="mt-2">
+        <button class="bg-blue-500 text-white px-2 py-1 rounded w-full" onclick="openModal('Event 1', '2023-10-01', '10:00 AM', 'Kenyatta University, Nairobi', 'Description of Event 1', 'Speaker 1', 'https://maps.google.com')">
+         Event 1
+        </button>
+       </div>
+      </div>
+      <!-- Repeat for other days -->
+     </div>
+    </div>
+   </section>
+   <section class="mb-8">
+    <h2 class="text-xl font-bold mb-4">
+     Filter &amp; Search Events
+    </h2>
+    <div class="bg-white p-4 rounded shadow flex space-x-4">
+     <input class="border p-2 rounded w-full" placeholder="Search by name or date" type="text"/>
+     <select class="border p-2 rounded">
+      <option value="">
+       All Categories
+      </option>
+      <option value="workshops">
+       Workshops
+      </option>
+      <option value="hackathons">
+       Hackathons
+      </option>
+      <option value="lectures">
+       Guest Lectures
+      </option>
+      <option value="fairs">
+       Tech Fairs
+      </option>
+     </select>
+     <button class="bg-blue-500 text-white px-4 py-2 rounded">
+      Search
+     </button>
+    </div>
+   </section>
+   <section class="mb-8">
+    <h2 class="text-xl font-bold mb-4">
+     Upcoming &amp; Featured Events
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+     <div class="bg-white p-4 rounded shadow">
+      <img alt="Image of a tech workshop event" height="200" src="https://storage.googleapis.com/a1aa/image/yFB6SOirmO_IBNRBjrL8Xmqd7z1lUGhTPrQOzSLsvQY.jpg" width="300"/>
+      <h3 class="text-lg font-bold mt-2">
+       Tech Workshop
+      </h3>
+      <p class="text-gray-600">
+       Date: 2023-10-15
+      </p>
+      <p class="text-gray-600">
+       Location: Kenyatta University, Nairobi
+      </p>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+       Register
+      </button>
+     </div>
+     <div class="bg-white p-4 rounded shadow">
+      <img alt="Image of a hackathon event" height="200" src="https://storage.googleapis.com/a1aa/image/rKIeFJjwRAuoR1MqQfyWH1-w1IL7nrv7F7Tvnnit37s.jpg" width="300"/>
+      <h3 class="text-lg font-bold mt-2">
+       Hackathon
+      </h3>
+      <p class="text-gray-600">
+       Date: 2023-11-01
+      </p>
+      <p class="text-gray-600">
+       Location: Kenyatta University, Nairobi
+      </p>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+       Register
+      </button>
+     </div>
+     <div class="bg-white p-4 rounded shadow">
+      <img alt="Image of a guest lecture event" height="200" src="https://storage.googleapis.com/a1aa/image/g0ifZF5QT2OjotoM22IsRF-ucB4yvm5ldLSMu2jk2ec.jpg" width="300"/>
+      <h3 class="text-lg font-bold mt-2">
+       Guest Lecture
+      </h3>
+      <p class="text-gray-600">
+       Date: 2023-12-05
+      </p>
+      <p class="text-gray-600">
+       Location: Kenyatta University, Nairobi
+      </p>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+       Register
+      </button>
+     </div>
+    </div>
+   </section>
+   <section class="mb-8">
+    <h2 class="text-xl font-bold mb-4">
+     Past Events
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+     <div class="bg-white p-4 rounded shadow">
+      <img alt="Image of a past tech workshop event" height="200" src="https://storage.googleapis.com/a1aa/image/q7Fv3GcSyxeMA0CG3_YYPwfr8RrzqWGow-iZoy8QNXM.jpg" width="300"/>
+      <h3 class="text-lg font-bold mt-2">
+       Past Tech Workshop
+      </h3>
+      <p class="text-gray-600">
+       Date: 2023-09-10
+      </p>
+      <a class="text-blue-500 hover:underline" href="#">
+       View Recap
+      </a>
+     </div>
+     <div class="bg-white p-4 rounded shadow">
+      <img alt="Image of a past hackathon event" height="200" src="https://storage.googleapis.com/a1aa/image/dbu6z0BlC1GYWpyhAZvJlBZjIGyif4_t2aG14cFPprQ.jpg" width="300"/>
+      <h3 class="text-lg font-bold mt-2">
+       Past Hackathon
+      </h3>
+      <p class="text-gray-600">
+       Date: 2023-08-20
+      </p>
+      <a class="text-blue-500 hover:underline" href="#">
+       View Recap
+      </a>
+     </div>
+     <div class="bg-white p-4 rounded shadow">
+      <img alt="Image of a past guest lecture event" height="200" src="https://storage.googleapis.com/a1aa/image/D3eYBjk22oIXxn7kFxKLC-mTHbFvqn3ejFRYT6oXC4M.jpg" width="300"/>
+      <h3 class="text-lg font-bold mt-2">
+       Past Guest Lecture
+      </h3>
+      <p class="text-gray-600">
+       Date: 2023-07-15
+      </p>
+      <a class="text-blue-500 hover:underline" href="#">
+       View Recap
+      </a>
+     </div>
+    </div>
+   </section>
+   <section class="mb-8">
+    <h2 class="text-xl font-bold mb-4">
+     Social Media &amp; Video Integration
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+     <div class="bg-white p-4 rounded shadow">
+      <h3 class="text-lg font-bold mb-2">
+       Follow Us on Twitter
+      </h3>
+      <a class="twitter-timeline" href="https://twitter.com/KUTTA_Tech">
+       Tweets by KUTTA_Tech
+      </a>
+      <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+      </script>
+     </div>
+     <div class="bg-white p-4 rounded shadow">
+      <h3 class="text-lg font-bold mb-2">
+       Follow Us on LinkedIn
+      </h3>
+      <script async="" defer="" src="https://platform.linkedin.com/badges/js/profile.js" type="text/javascript">
+      </script>
+      <div class="LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="vertical" data-vanity="kutta-tech" data-version="v1">
+       <a class="LI-simple-link" href="https://ke.linkedin.com/in/kutta-tech?trk=profile-badge">
+        KUTTA Tech
+       </a>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="mb-8">
+    <h2 class="text-xl font-bold mb-4">
+     YouTube &amp; Video Integration
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+     <div class="bg-white p-4 rounded shadow">
+      <h3 class="text-lg font-bold mb-2">
+       Past Event Recordings
+      </h3>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY" title="YouTube video player" width="100%">
+      </iframe>
+     </div>
+     <div class="bg-white p-4 rounded shadow">
+      <h3 class="text-lg font-bold mb-2">
+       Live Stream
+      </h3>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="200" src="https://www.youtube.com/embed/live_stream?channel=UC4R8DWoMoI7CAwX8_LjQHig" title="YouTube live stream" width="100%">
+      </iframe>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="bg-blue-600 text-white p-4">
+   <div class="container mx-auto text-center">
+    <p>
+     © 2023 Kenyatta University Telecommunications &amp; Technology Association (KUTTA). All rights reserved.
+    </p>
+   </div>
+  </footer>
+  <!-- Modal -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" id="eventModal">
+   <div class="bg-white p-4 rounded shadow-lg w-11/12 md:w-1/2">
+    <h3 class="text-xl font-bold mb-2" id="modalTitle">
+    </h3>
+    <p class="text-gray-600" id="modalDate">
+    </p>
+    <p class="text-gray-600" id="modalTime">
+    </p>
+    <p class="text-gray-600" id="modalLocation">
+    </p>
+    <p class="text-gray-600 mb-4" id="modalDescription">
+    </p>
+    <p class="text-gray-600 mb-4" id="modalSpeakers">
+    </p>
+    <a class="text-blue-500 hover:underline mb-4 block" href="#" id="modalMapLink" target="_blank">
+     View on Google Maps
+    </a>
+    <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="closeModal()">
+     Close
+    </button>
+   </div>
+  </div>
+  <script>
+   function openModal(title, date, time, location, description, speakers, mapLink) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDate').innerText = 'Date: ' + date;
+            document.getElementById('modalTime').innerText = 'Time: ' + time;
+            document.getElementById('modalLocation').innerText = 'Location: ' + location;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('modalSpeakers').innerText = 'Speakers: ' + speakers;
+            document.getElementById('modalMapLink').href = mapLink;
+            document.getElementById('eventModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('eventModal').classList.add('hidden');
+        }
+  </script>
+ </body>
+</html>

@@ -1,0 +1,420 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Support & Help | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const modals = document.querySelectorAll(".modal");
+    const closeButtons = document.querySelectorAll(".close");
+
+    closeButtons.forEach((button) => {
+     button.addEventListener("click", function () {
+      const modal = button.closest(".modal");
+      modal.style.display = "none";
+     });
+    });
+
+    window.onclick = function (event) {
+     modals.forEach((modal) => {
+      if (event.target == modal) {
+       modal.style.display = "none";
+      }
+     });
+    };
+   });
+
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+   }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Support &amp; Help
+    </h1>
+    <!-- Frequently Asked Questions (FAQs) -->
+<div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+  <h2 class="text-xl font-bold mb-4">Frequently Asked Questions (FAQs)</h2>
+  <div class="mb-4">
+    <input class="w-full p-2 border rounded" placeholder="Search FAQs..." type="text"/>
+  </div>
+  
+  <div class="mb-4">
+    <h3 class="text-lg font-bold mb-2">Membership & Registration</h3>
+    <ul class="list-disc list-inside text-gray-700">
+      <li>
+        <a class="text-blue-600 hover:underline cursor-pointer" onclick="toggleAnswer(this)">How to join KUTTA?</a>
+        <div class="hidden bg-blue-100 p-2 rounded mt-2">You can join KUTTA by visiting our website and filling out the membership form.</div>
+      </li>
+      <li>
+        <a class="text-blue-600 hover:underline cursor-pointer" onclick="toggleAnswer(this)">How to renew my membership?</a>
+        <div class="hidden bg-blue-100 p-2 rounded mt-2">Membership renewal can be done through your profile settings on our website.</div>
+      </li>
+      <li>
+        <a class="text-blue-600 hover:underline cursor-pointer" onclick="toggleAnswer(this)">How to cancel my membership?</a>
+        <div class="hidden bg-blue-100 p-2 rounded mt-2">To cancel, go to account settings and click on 'Cancel Membership'.</div>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="mb-4">
+    <h3 class="text-lg font-bold mb-2">Events & Webinars</h3>
+    <ul class="list-disc list-inside text-gray-700">
+      <li>
+        <a class="text-blue-600 hover:underline cursor-pointer" onclick="toggleAnswer(this)">How to register for an event?</a>
+        <div class="hidden bg-green-100 p-2 rounded mt-2">You can register for an event through the Events section on our website.</div>
+      </li>
+      <li>
+        <a class="text-blue-600 hover:underline cursor-pointer" onclick="toggleAnswer(this)">How to attend a webinar?</a>
+        <div class="hidden bg-green-100 p-2 rounded mt-2">After registering, you will receive a link via email to join the webinar.</div>
+      </li>
+      <li>
+        <a class="text-blue-600 hover:underline cursor-pointer" onclick="toggleAnswer(this)">How to get event materials?</a>
+        <div class="hidden bg-green-100 p-2 rounded mt-2">Event materials are available for download on the event page after the webinar.</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function toggleAnswer(element) {
+    let answer = element.nextElementSibling;
+    answer.classList.toggle("hidden");
+  }
+</script>
+
+    <!-- Contact Support -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Contact Support
+     </h2>
+     <div class="mb-4">
+      <h3 class="text-lg font-bold mb-2">
+       Live Chat Support
+      </h3>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('liveChatModal')">
+       Start Live Chat
+      </button>
+     </div>
+     <div class="mb-4">
+      <h3 class="text-lg font-bold mb-2">
+       Email Support
+      </h3>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('emailSupportModal')">
+       Email Support
+      </button>
+     </div>
+     <div class="mb-4">
+      <h3 class="text-lg font-bold mb-2">
+       Phone Support
+      </h3>
+      <p class="text-gray-700">
+       Call us at +254 700 000 000
+      </p>
+     </div>
+     <div class="mb-4">
+      <h3 class="text-lg font-bold mb-2">
+       WhatsApp Support
+      </h3>
+      <p class="text-gray-700">
+       Message us on WhatsApp at +254 700 000 000
+      </p>
+     </div>
+     <p class="text-gray-700">
+      Average response time: 24 hours
+     </p>
+    </div>
+    <!-- Help Desk & Ticketing System -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Help Desk &amp; Ticketing System
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Submit a ticket for any issues you encounter and track the status of your request.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('ticketingModal')">
+      Submit a Ticket
+     </button>
+    </div>
+    <!-- Community Forum & Peer Support -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Community Forum &amp; Peer Support
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Join the community forum to ask questions, share knowledge, and get support from fellow members.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('forumModal')">
+      Join Forum
+     </button>
+    </div>
+    <!-- Video Tutorials & Guides -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Video Tutorials &amp; Guides
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Watch step-by-step video guides on common issues and learn how to use the platform effectively.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('videoTutorialsModal')">
+      Watch Tutorials
+     </button>
+    </div>
+    <!-- Chatbot for Instant Assistance -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Chatbot for Instant Assistance
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Get instant answers to common queries with our AI-powered chatbot. Escalate issues to a human agent if needed.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('chatbotModal')">
+      Start Chatbot
+     </button>
+    </div>
+    <!-- Status Page for Platform Updates & Issues -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Status Page for Platform Updates &amp; Issues
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Get real-time updates on website status, outages, or scheduled maintenance. Subscribe to alerts for major platform issues.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('statusPageModal')">
+      View Status Page
+     </button>
+    </div>
+    <!-- Feedback & Issue Reporting -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Feedback &amp; Issue Reporting
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Report bugs, suggest improvements, or give feedback. Rate the quality of support you receive.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('feedbackModal')">
+      Give Feedback
+     </button>
+    </div>
+    <!-- Accessibility & Inclusive Support -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Accessibility &amp; Inclusive Support
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Support for screen readers and text-to-speech for visually impaired users. Language selection for multilingual support.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('accessibilityModal')">
+      View Accessibility Options
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="liveChatModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('liveChatModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Live Chat Support
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Start a live chat with our support team.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Start Chat
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="emailSupportModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('emailSupportModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Email Support
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Name
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter your name"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Email
+      </label>
+      <input class="w-full p-2 border rounded" type="email" placeholder="Enter your email"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Issue Details
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Describe your issue...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Submit
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="ticketingModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('ticketingModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Submit a Ticket
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Name
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter your name"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Email
+      </label>
+      <input class="w-full p-2 border rounded" type="email" placeholder="Enter your email"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Issue Details
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Describe your issue...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Submit
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="forumModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('forumModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Community Forum
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Join the community forum to ask questions, share knowledge, and get support from fellow members.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Join Forum
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="videoTutorialsModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('videoTutorialsModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Video Tutorials &amp; Guides
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Watch step-by-step video guides on common issues and learn how to use the platform effectively.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Watch Tutorials
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="chatbotModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('chatbotModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Chatbot for Instant Assistance
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Get instant answers to common queries with our AI-powered chatbot. Escalate issues to a human agent if needed.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Start Chatbot
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="statusPageModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('statusPageModal')">
+     &times;
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Status Page for Platform Updates &amp; Issues
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Get real-time updates on website status, outages, or scheduled maintenance. Subscribe to alerts for major platform issues.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+     <li>Real-time monitoring</li>
+     <li>Instant notifications</li>
+     <li>Scheduled maintenance updates</li>
+    </ul>
+    <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="subscribeToAlerts()">
+     Subscribe to Alerts
+    </button>
+   </div>
+  </div>
+
+<script>
+function subscribeToAlerts() {
+    alert('You have subscribed to status alerts!');
+}
+</script>

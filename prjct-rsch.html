@@ -1,0 +1,478 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   KUTTA Projects &amp; Research
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .hover-zoom:hover img {
+            transform: scale(1.05);
+        }
+        .hover-zoom img {
+            transition: transform 0.3s ease;
+        }
+        .hover-glow:hover {
+            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.5);
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100 text-gray-900">
+  <!-- Header -->
+  <header class="bg-white shadow">
+   <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+    <h1 class="text-3xl font-bold text-purple-700">
+     KUTTA Projects &amp; Research
+    </h1>
+    <nav>
+     <ul class="flex space-x-4">
+      <li>
+       <a class="text-gray-700 hover:text-purple-700" href="#">
+        Home
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-700 hover:text-purple-700" href="#">
+        About
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-700 hover:text-purple-700" href="#">
+        Membership
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-700 hover:text-purple-700" href="#">
+        Events
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-700 hover:text-purple-700" href="#">
+        Projects
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-700 hover:text-purple-700" href="#">
+        Blog
+       </a>
+      </li>
+      <li>
+       <a class="text-gray-700 hover:text-purple-700" href="#">
+        Contact
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <!-- Search and Filter -->
+  <section class="container mx-auto px-4 py-6">
+   <div class="flex justify-between items-center">
+    <input class="w-full max-w-md px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="Search projects..." type="text"/>
+    <div class="ml-4">
+     <button class="px-4 py-2 bg-purple-700 text-white rounded-md hover:bg-purple-800">
+      Load More
+     </button>
+    </div>
+   </div>
+   <div class="mt-4 flex space-x-2">
+    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">
+     All
+    </button>
+    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">
+     AI
+    </button>
+    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">
+     IoT
+    </button>
+    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">
+     Web Development
+    </button>
+    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">
+     Robotics
+    </button>
+    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">
+     5G Networks
+    </button>
+   </div>
+  </section>
+  <!-- Project Showcase -->
+  <section class="container mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+   <!-- Project Card -->
+   <div class="bg-white rounded-lg shadow hover-glow hover-zoom">
+    <img alt="Screenshot of Project 1 showcasing a web application interface" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/1_mDXOzwJc5UiIuNmRUq1O3YuzqaAHoQtAg-ggBN-f4.jpg" width="600"/>
+    <div class="p-4">
+     <h2 class="text-xl font-bold text-purple-700">
+      <a href="#">
+       Project Title 1
+      </a>
+     </h2>
+     <p class="text-gray-700 mt-2">
+      Brief description of the project goes here. It should be concise and informative.
+     </p>
+     <div class="mt-4">
+      <h3 class="text-gray-900 font-semibold">
+       Contributors:
+      </h3>
+      <div class="flex items-center mt-2">
+       <img alt="Profile picture of John Doe" class="w-10 h-10 rounded-full" height="100" src="https://storage.googleapis.com/a1aa/image/X5eFddAkxv8IkWDIV5OmHTnpOATqPDnkNxlz0l9ymuQ.jpg" width="100"/>
+       <span class="ml-2 text-gray-700">
+        John Doe, 3rd Year
+       </span>
+      </div>
+      <div class="flex items-center mt-2">
+       <img alt="Profile picture of Jane Smith" class="w-10 h-10 rounded-full" height="100" src="https://storage.googleapis.com/a1aa/image/Hjme7xA0f4NuPJkZdVEFADk8R6jD4JbHWPXYiQmZgzw.jpg" width="100"/>
+       <span class="ml-2 text-gray-700">
+        Jane Smith, 2nd Year
+       </span>
+      </div>
+     </div>
+     <div class="mt-4">
+      <h3 class="text-gray-900 font-semibold">
+       Technology Stack:
+      </h3>
+      <div class="flex space-x-2 mt-2">
+       <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+        Python
+       </span>
+       <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+        React
+       </span>
+       <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+        AI
+       </span>
+      </div>
+     </div>
+     <div class="mt-4 flex space-x-2">
+      <a class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" href="#">
+       GitHub
+      </a>
+      <a class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600" href="#">
+       Live Demo
+      </a>
+     </div>
+    </div>
+   </div>
+   <!-- Repeat similar project cards for other projects -->
+   <!-- Project Card -->
+   <div class="bg-white rounded-lg shadow hover-glow hover-zoom">
+    <img alt="Screenshot of Project 2 showcasing a mobile application interface" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/FO0MrMMwWrg1WthHUMbhBmgi5pYlcZ-4p4-ip99Kauw.jpg" width="600"/>
+    <div class="p-4">
+     <h2 class="text-xl font-bold text-purple-700">
+      <a href="#">
+       Project Title 2
+      </a>
+     </h2>
+     <p class="text-gray-700 mt-2">
+      Brief description of the project goes here. It should be concise and informative.
+     </p>
+     <div class="mt-4">
+      <h3 class="text-gray-900 font-semibold">
+       Contributors:
+      </h3>
+      <div class="flex items-center mt-2">
+       <img alt="Profile picture of Alice Johnson" class="w-10 h-10 rounded-full" height="100" src="https://storage.googleapis.com/a1aa/image/iGXxI7v9RhYWbmCbAwjjjSOClt7iA_68ra_NUhK8q3M.jpg" width="100"/>
+       <span class="ml-2 text-gray-700">
+        Alice Johnson, 4th Year
+       </span>
+      </div>
+      <div class="flex items-center mt-2">
+       <img alt="Profile picture of Bob Brown" class="w-10 h-10 rounded-full" height="100" src="https://storage.googleapis.com/a1aa/image/NDwIIwnNFu70Uk3vPh8-hoMcnmP2KUd3QPDFmc3NuBA.jpg" width="100"/>
+       <span class="ml-2 text-gray-700">
+        Bob Brown, 1st Year
+       </span>
+      </div>
+     </div>
+     <div class="mt-4">
+      <h3 class="text-gray-900 font-semibold">
+       Technology Stack:
+      </h3>
+      <div class="flex space-x-2 mt-2">
+       <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+        Java
+       </span>
+       <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+        Kotlin
+       </span>
+       <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+        Firebase
+       </span>
+      </div>
+     </div>
+     <div class="mt-4 flex space-x-2">
+      <a class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" href="#">
+       GitHub
+      </a>
+      <a class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600" href="#">
+       Live Demo
+      </a>
+     </div>
+    </div>
+   </div>
+   <!-- Project Card -->
+   <div class="bg-white rounded-lg shadow hover-glow hover-zoom">
+    <img alt="Screenshot of Project 3 showcasing a data visualization dashboard" class="w-full h-48 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/k9lCsRcR2O8hCd4b1D4e5OfNq_GGMl2s1iym4X0sZKg.jpg" width="600"/>
+    <div class="p-4">
+     <h2 class="text-xl font-bold text-purple-700">
+      <a href="#">
+       Project Title 3
+      </a>
+     </h2>
+     <p class="text-gray-700 mt-2">
+      Brief description of the project goes here. It should be concise and informative.
+     </p>
+     <div class="mt-4">
+      <h3 class="text-gray-900 font-semibold">
+       Contributors:
+      </h3>
+      <div class="flex items-center mt-2">
+       <img alt="Profile picture of Charlie Davis" class="w-10 h-10 rounded-full" height="100" src="https://storage.googleapis.com/a1aa/image/1i8l3YhHZtswOLZeIrdiCUG2RHa6ND_pvHi2xXfgI3A.jpg" width="100"/>
+       <span class="ml-2 text-gray-700">
+        Charlie Davis, 2nd Year
+       </span>
+      </div>
+      <div class="flex items-center mt-2">
+       <img alt="Profile picture of Dana Evans" class="w-10 h-10 rounded-full" height="100" src="https://storage.googleapis.com/a1aa/image/6b499SKKNgJzAOgqG01uSRIGiZvpmJQbDmNAs_ryiNY.jpg" width="100"/>
+       <span class="ml-2 text-gray-700">
+        Dana Evans, 3rd Year
+       </span>
+      </div>
+     </div>
+     <div class="mt-4">
+      <h3 class="text-gray-900 font-semibold">
+       Technology Stack:
+      </h3>
+      <div class="flex space-x-2 mt-2">
+       <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+        Django
+       </span>
+       <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+        React
+       </span>
+       <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+        D3.js
+       </span>
+      </div>
+     </div>
+     <div class="mt-4 flex space-x-2">
+      <a class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" href="#">
+       GitHub
+      </a>
+      <a class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600" href="#">
+       Live Demo
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Research Papers & Case Studies -->
+  <section class="container mx-auto px-4 py-6">
+   <h2 class="text-2xl font-bold text-purple-700 mb-4">
+    Featured Research Papers &amp; Case Studies
+   </h2>
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Research Card -->
+    <div class="bg-white rounded-lg shadow hover-glow">
+     <div class="p-4">
+      <h3 class="text-xl font-bold text-purple-700">
+       <a href="#">
+        Research Paper Title 1
+       </a>
+      </h3>
+      <p class="text-gray-700 mt-2">
+       Abstract or brief summary of the research paper goes here. It should be concise and informative.
+      </p>
+      <div class="mt-4">
+       <h4 class="text-gray-900 font-semibold">
+        Authors:
+       </h4>
+       <p class="text-gray-700">
+        John Doe, Jane Smith
+       </p>
+      </div>
+      <div class="mt-4">
+       <h4 class="text-gray-900 font-semibold">
+        Category:
+       </h4>
+       <div class="flex space-x-2 mt-2">
+        <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+         Telecom Networks
+        </span>
+        <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+         AI in Telecommunications
+        </span>
+       </div>
+      </div>
+      <div class="mt-4">
+       <h4 class="text-gray-900 font-semibold">
+        Publication:
+       </h4>
+       <p class="text-gray-700">
+        IEEE Conference 2023
+       </p>
+      </div>
+      <div class="mt-4 flex space-x-2">
+       <a class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" href="#">
+        Download PDF
+       </a>
+       <a class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600" href="#">
+        View Full Research
+       </a>
+      </div>
+     </div>
+    </div>
+    <!-- Repeat similar research cards for other research papers -->
+    <!-- Research Card -->
+    <div class="bg-white rounded-lg shadow hover-glow">
+     <div class="p-4">
+      <h3 class="text-xl font-bold text-purple-700">
+       <a href="#">
+        Research Paper Title 2
+       </a>
+      </h3>
+      <p class="text-gray-700 mt-2">
+       Abstract or brief summary of the research paper goes here. It should be concise and informative.
+      </p>
+      <div class="mt-4">
+       <h4 class="text-gray-900 font-semibold">
+        Authors:
+       </h4>
+       <p class="text-gray-700">
+        Alice Johnson, Bob Brown
+       </p>
+      </div>
+      <div class="mt-4">
+       <h4 class="text-gray-900 font-semibold">
+        Category:
+       </h4>
+       <div class="flex space-x-2 mt-2">
+        <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+         AI in Telecommunications
+        </span>
+        <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+         Machine Learning
+        </span>
+       </div>
+      </div>
+      <div class="mt-4">
+       <h4 class="text-gray-900 font-semibold">
+        Publication:
+       </h4>
+       <p class="text-gray-700">
+        Springer Journal 2023
+       </p>
+      </div>
+      <div class="mt-4 flex space-x-2">
+       <a class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" href="#">
+        Download PDF
+       </a>
+       <a class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600" href="#">
+        View Full Research
+       </a>
+      </div>
+     </div>
+    </div>
+    <!-- Research Card -->
+    <div class="bg-white rounded-lg shadow hover-glow">
+     <div class="p-4">
+      <h3 class="text-xl font-bold text-purple-700">
+       <a href="#">
+        Research Paper Title 3
+       </a>
+      </h3>
+      <p class="text-gray-700 mt-2">
+       Abstract or brief summary of the research paper goes here. It should be concise and informative.
+      </p>
+      <div class="mt-4">
+       <h4 class="text-gray-900 font-semibold">
+        Authors:
+       </h4>
+       <p class="text-gray-700">
+        Charlie Davis, Dana Evans
+       </p>
+      </div>
+      <div class="mt-4">
+       <h4 class="text-gray-900 font-semibold">
+        Category:
+       </h4>
+       <div class="flex space-x-2 mt-2">
+        <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+         Telecom Networks
+        </span>
+        <span class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+         5G Networks
+        </span>
+       </div>
+      </div>
+      <div class="mt-4">
+       <h4 class="text-gray-900 font-semibold">
+        Publication:
+       </h4>
+       <p class="text-gray-700">
+        ACM Conference 2023
+       </p>
+      </div>
+      <div class="mt-4 flex space-x-2">
+       <a class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" href="#">
+        Download PDF
+       </a>
+       <a class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600" href="#">
+        View Full Research
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="mt-6 text-center">
+    <button class="px-4 py-2 bg-purple-700 text-white rounded-md hover:bg-purple-800">
+     Submit Your Research
+    </button>
+   </div>
+  </section>
+  <!-- Industry Collaborations & Innovations -->
+  <section class="container mx-auto px-4 py-6">
+   <h2 class="text-2xl font-bold text-purple-700 mb-4">
+    Industry Collaborations &amp; Innovations
+   </h2>
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Collaboration Card -->
+    <div class="bg-white rounded-lg shadow hover-glow">
+     <div class="p-4">
+      <div class="flex items-center">
+       <img alt="Logo of XYZ Telecom" class="w-24 h-12 object-contain grayscale hover:grayscale-0" height="50" src="https://storage.googleapis.com/a1aa/image/gUQYm-zBQvuqRZiejn0ji_bmqRe-EtBdLPEpRDmEx_g.jpg" width="100"/>
+       <h3 class="text-xl font-bold text-purple-700 ml-4">
+        <a href="#">
+         5G Research with XYZ Telecom
+        </a>
+       </h3>
+      </div>
+      <p class="text-gray-700 mt-2">
+       Details about the collaboration and its impact on the industry and students.
+      </p>
+     </div>
+    </div>
+    <!-- Repeat similar collaboration cards for other collaborations -->
+    <!-- Collaboration Card -->
+    <div class="bg-white rounded-lg shadow hover-glow">
+     <div class="p-4">
+      <div class="flex items-center">
+       <img alt="Logo of ABC Innovations" class="w-24 h-12 object-contain grayscale hover:grayscale-0" height="50" src="https://storage.googleapis.com/a1aa/image/aYddhrwfbV0Giu3r90gNIc_iSGGDdN8KnSdx_AoDFvQ.jpg" width="100"/>
+       <h3 class="text-xl font-bold text-purple-700 ml-4">
+        <a href="#">
+         IoT Project with ABC
+        </a>
+       </h3>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+ </body>
+</html>

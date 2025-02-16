@@ -1,0 +1,498 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Contributions & Volunteering | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const modals = document.querySelectorAll(".modal");
+    const closeButtons = document.querySelectorAll(".close");
+
+    closeButtons.forEach((button) => {
+     button.addEventListener("click", function () {
+      const modal = button.closest(".modal");
+      modal.style.display = "none";
+     });
+    });
+
+    window.onclick = function (event) {
+     modals.forEach((modal) => {
+      if (event.target == modal) {
+       modal.style.display = "none";
+      }
+     });
+    };
+   });
+
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+   }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Contributions &amp; Volunteering
+    </h1>
+    <!-- Contribution Opportunities -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Contribution Opportunities
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Technical Support
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Contribute your skills in web development, graphic design, cybersecurity, AI projects, and more.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('technicalSupportModal')">
+        Contribute Now
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Event Planning
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Assist in organizing webinars, workshops, and networking events.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('eventPlanningModal')">
+        Contribute Now
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Content Creation
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Write articles, blog posts, or create video tutorials.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('contentCreationModal')">
+        Contribute Now
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Mentorship Programs
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Help guide junior members or students.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('mentorshipProgramsModal')">
+        Contribute Now
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Financial Contributions
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Donate to support events, projects, and scholarships.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('financialContributionsModal')">
+        Contribute Now
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Volunteering Opportunities -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Volunteering Opportunities
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Community Outreach
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Participate in tech training sessions and school mentorship programs.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('communityOutreachModal')">
+        Volunteer Now
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Event Support
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Assist with onsite or virtual event support.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('eventSupportModal')">
+        Volunteer Now
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Research &amp; Innovation
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Assist with research papers or new tech projects.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('researchInnovationModal')">
+        Volunteer Now
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Administrative Support
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Help manage club activities and administrative tasks.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('administrativeSupportModal')">
+        Volunteer Now
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Contribution & Volunteer Tracking -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Contribution &amp; Volunteer Tracking
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Track your past contributions and volunteer hours. Earn badges and recognition levels for your efforts.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('trackingModal')">
+      View My Contributions
+     </button>
+    </div>
+    <!-- Recognition & Rewards -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Recognition &amp; Rewards
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Showcase top contributors and volunteers on a leaderboard. Award certificates or digital badges for outstanding contributions.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('recognitionModal')">
+      View Leaderboard
+     </button>
+    </div>
+    <!-- Testimonials & Success Stories -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Testimonials &amp; Success Stories
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Read real stories from members who benefited from volunteering and contributions. Share your experiences through text or video submissions.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('testimonialsModal')">
+      View Testimonials
+     </button>
+    </div>
+    <!-- Seamless Registration & Participation -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Seamless Registration &amp; Participation
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Easily sign up for volunteering opportunities and contribute ideas or resources with one click.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('registrationModal')">
+      Sign Up Now
+     </button>
+    </div>
+    <!-- Notifications & Reminders -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Notifications &amp; Reminders
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Receive automated reminders for upcoming volunteer events and notifications about new contribution opportunities.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('notificationsModal')">
+      Manage Notifications
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="technicalSupportModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('technicalSupportModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Contribute to Technical Support
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Skills
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Describe your technical skills and how you can contribute...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Submit
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="eventPlanningModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('eventPlanningModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Contribute to Event Planning
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Experience
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Describe your experience in event planning and how you can contribute...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Submit
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="contentCreationModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('contentCreationModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Contribute to Content Creation
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Ideas
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Describe your content creation ideas and how you can contribute...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Submit
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="mentorshipProgramsModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('mentorshipProgramsModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Contribute to Mentorship Programs
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Mentorship Experience
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Describe your mentorship experience and how you can contribute...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Submit
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="financialContributionsModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('financialContributionsModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Make a Financial Contribution
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Contribution Amount
+      </label>
+      <input class="w-full p-2 border rounded" type="number" placeholder="Enter amount..."/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Payment Method
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Credit Card
+       </option>
+       <option>
+        PayPal
+       </option>
+       <option>
+        Mobile Money
+       </option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Donate
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="communityOutreachModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('communityOutreachModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Volunteer for Community Outreach
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Skills
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Describe your skills and how you can contribute to community outreach...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Volunteer
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="eventSupportModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('eventSupportModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Volunteer for Event Support
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Experience
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Describe your experience in event support and how you can contribute...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Volunteer
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="researchInnovationModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('researchInnovationModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Volunteer for Research &amp; Innovation
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Skills
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Describe your skills and how you can contribute to research and innovation...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Volunteer
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="administrativeSupportModal">
+   <div class="modal-content">
+      <span class="close" onclick="closeModal('administrativeSupportModal')">&times;</span>
+      <h2 class="text-xl font-bold mb-4">Administrative Support</h2>
+      <p class="text-gray-700 mb-4">Help manage club activities and administrative tasks by contributing your time and expertise.</p>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="closeModal('administrativeSupportModal')">Close</button>
+   </div>
+</div>
+
+<!-- Additional Modals for other sections -->
+<div class="modal" id="trackingModal">
+   <div class="modal-content">
+      <span class="close" onclick="closeModal('trackingModal')">&times;</span>
+      <h2 class="text-xl font-bold mb-4">Contribution & Volunteer Tracking</h2>
+      <p class="text-gray-700 mb-4">Track your past contributions and volunteer hours. Earn badges and recognition levels for your efforts.</p>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="closeModal('trackingModal')">Close</button>
+   </div>
+</div>
+
+<div class="modal" id="recognitionModal">
+   <div class="modal-content">
+      <span class="close" onclick="closeModal('recognitionModal')">&times;</span>
+      <h2 class="text-xl font-bold mb-4">Recognition & Rewards</h2>
+      <p class="text-gray-700 mb-4">Showcase top contributors and volunteers on a leaderboard. Award certificates or digital badges for outstanding contributions.</p>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="closeModal('recognitionModal')">Close</button>
+   </div>
+</div>
+
+<div class="modal" id="testimonialsModal">
+   <div class="modal-content">
+      <span class="close" onclick="closeModal('testimonialsModal')">&times;</span>
+      <h2 class="text-xl font-bold mb-4">Testimonials & Success Stories</h2>
+      <p class="text-gray-700 mb-4">Read real stories from members who benefited from contributions and volunteering efforts.</p>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="closeModal('testimonialsModal')">Close</button>
+   </div>
+</div>
+
+<script>
+   function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+   }
+</script>
+
+</body>
+</html>
+
+   

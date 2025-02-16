@@ -1,0 +1,660 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Projects | Admin Dashboard | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const modals = document.querySelectorAll(".modal");
+    const closeButtons = document.querySelectorAll(".close");
+
+    closeButtons.forEach((button) => {
+     button.addEventListener("click", function () {
+      const modal = button.closest(".modal");
+      modal.style.display = "none";
+     });
+    });
+
+    window.onclick = function (event) {
+     modals.forEach((modal) => {
+      if (event.target == modal) {
+       modal.style.display = "none";
+      }
+     });
+    };
+   });
+
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+   }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Projects
+    </h1>
+    <!-- Project Dashboard Overview -->
+    <!-- Project Dashboard Overview -->
+<div class="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-md mb-6">
+    <h2 class="text-xl font-bold mb-4 text-center sm:text-left">Project Dashboard Overview</h2>
+
+    <!-- Project Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow-md text-center">
+            <h3 class="text-lg font-bold mb-2">Total Projects</h3>
+            <p class="text-3xl font-bold text-blue-600">30</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md text-center">
+            <h3 class="text-lg font-bold mb-2">Ongoing Projects</h3>
+            <p class="text-3xl font-bold text-green-600">15</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md text-center">
+            <h3 class="text-lg font-bold mb-2">Completed Projects</h3>
+            <p class="text-3xl font-bold text-yellow-600">10</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md text-center">
+            <h3 class="text-lg font-bold mb-2">Pending Approvals</h3>
+            <p class="text-3xl font-bold text-red-600">5</p>
+        </div>
+    </div>
+
+    <!-- Chart Container -->
+    <div class="mt-6 flex justify-center">
+        <canvas id="projectsChart" class="w-full max-w-sm"></canvas>
+    </div>
+</div>
+
+<!-- Chart.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Get chart canvas
+    var ctx = document.getElementById('projectsChart').getContext('2d');
+
+    // Create chart
+    var projectsChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Ongoing', 'Completed', 'Pending Approvals'],
+            datasets: [{
+                label: 'Project Breakdown',
+                data: [15, 10, 5], // Data values
+                backgroundColor: ['#16a34a', '#facc15', '#dc2626'], // Colors
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+
+    <!-- Add, Edit, & Manage Projects -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Add, Edit, &amp; Manage Projects
+     </h2>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mb-4" onclick="openModal('createProjectModal')">
+      Add New Project
+     </button>
+     <div class="overflow-x-auto">
+      <table class="min-w-full bg-white">
+       <thead>
+        <tr>
+         <th class="py-2 px-4 border-b">
+          Project Title
+         </th>
+         <th class="py-2 px-4 border-b">
+          Category
+         </th>
+         <th class="py-2 px-4 border-b">
+          Status
+         </th>
+         <th class="py-2 px-4 border-b">
+          Actions
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="py-2 px-4 border-b">
+          AI Research Project
+         </td>
+         <td class="py-2 px-4 border-b">
+          Research
+         </td>
+         <td class="py-2 px-4 border-b">
+          Ongoing
+         </td>
+         <td class="py-2 px-4 border-b">
+          <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700" onclick="openModal('editProjectModal')">
+           Edit
+          </button>
+          <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">
+           Delete
+          </button>
+         </td>
+        </tr>
+        <tr>
+         <td class="py-2 px-4 border-b">
+          IoT Development
+         </td>
+         <td class="py-2 px-4 border-b">
+          Development
+         </td>
+         <td class="py-2 px-4 border-b">
+          Completed
+         </td>
+         <td class="py-2 px-4 border-b">
+          <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700" onclick="openModal('editProjectModal')">
+           Edit
+          </button>
+          <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">
+           Delete
+          </button>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <!-- Collaboration & Team Management -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Collaboration &amp; Team Management
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Allow multiple users to collaborate on projects, enable real-time updates &amp; discussions, and provide a chat or comment section for contributors.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('collaborationModal')">
+      Manage Collaboration
+     </button>
+    </div>
+    <!-- Project Categories & Filtering -->
+<div class="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-md mb-6">
+    <h2 class="text-xl font-bold mb-4 text-center sm:text-left">Project Categories & Filtering</h2>
+
+    <!-- Manage Categories Button -->
+    <div class="mb-4 flex justify-center sm:justify-start">
+        <button class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onclick="openModal('manageCategoriesModal')">
+            Manage Categories
+        </button>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            Filter by Year
+        </button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            Filter by Category
+        </button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            Filter by Status
+        </button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            Filter by Department
+        </button>
+    </div>
+</div>
+
+    <!-- Project Visibility & Showcase -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Project Visibility &amp; Showcase
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Allow projects to be public or private, enable featured projects to appear on the homepage, and implement a showcase page for completed projects with detailed case studies.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('visibilityModal')">
+      Manage Visibility
+     </button>
+    </div>
+    <!-- Progress Tracking & Reporting -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Progress Tracking &amp; Reporting
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Enable progress tracking with milestones, display percentage completion bars for ongoing projects, and generate project reports.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('progressTrackingModal')">
+      Track Progress
+     </button>
+    </div>
+    <!-- Comments, Ratings, & Feedback -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Comments, Ratings, &amp; Feedback
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Allow users to comment on projects, implement a rating system for completed projects, and enable peer &amp; faculty reviews for research projects.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('feedbackModal')">
+      Manage Feedback
+     </button>
+    </div>
+    <!-- Notifications & Updates -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Notifications &amp; Updates
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Notify members when a project reaches a new milestone, send alerts for new projects added, and allow team members to receive real-time updates.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('notificationsModal')">
+      Manage Notifications
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="createProjectModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('createProjectModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Add New Project
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Project Title
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter project title"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Description
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Enter project description...">
+</textarea>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Category
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Research
+       </option>
+       <option>
+        Development
+       </option>
+       <option>
+        AI
+       </option>
+       <option>
+        IoT
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Project Leader
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter project leader"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Team Members
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter team members separated by commas"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Start Date
+      </label>
+      <input class="w-full p-2 border rounded" type="date"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Expected Completion Date
+      </label>
+      <input class="w-full p-2 border rounded" type="date"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Project Status
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Ongoing
+       </option>
+       <option>
+        Completed
+       </option>
+       <option>
+        On Hold
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Project Documentation &amp; Files
+      </label>
+      <input class="w-full p-2 border rounded" type="file"/>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Create Project
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="editProjectModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('editProjectModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Edit Project
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Project Title
+      </label>
+      <input class="w-full p-2 border rounded" type="text" value="AI Research Project"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Description
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4">
+Research on AI advancements...
+</textarea>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Category
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Research
+       </option>
+       <option>
+        Development
+       </option>
+       <option>
+        AI
+       </option>
+       <option>
+        IoT
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Project Leader
+      </label>
+      <input class="w-full p-2 border rounded" type="text" value="John Doe"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Team Members
+      </label>
+      <input class="w-full p-2 border rounded" type="text" value="Jane Smith, Michael Brown"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Start Date
+      </label>
+      <input class="w-full p-2 border rounded" type="date" value="2023-01-01"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Expected Completion Date
+      </label>
+      <input class="w-full p-2 border rounded" type="date" value="2023-12-31"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Project Status
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Ongoing
+       </option>
+       <option>
+        Completed
+       </option>
+       <option>
+        On Hold
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Project Documentation &amp; Files
+      </label>
+      <input class="w-full p-2 border rounded" type="file"/>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Update Project
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="collaborationModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('collaborationModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Collaboration &amp; Team Management
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Allow multiple users to collaborate on projects, enable real-time updates &amp; discussions, and provide a chat or comment section for contributors.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+         Manage Collaboration
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="manageCategoriesModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('manageCategoriesModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Manage Categories
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Category Name
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter category name"/>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Add Category
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="visibilityModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('visibilityModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Manage Visibility
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Project Visibility
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Public
+       </option>
+       <option>
+        Private
+       </option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Update Visibility
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="progressTrackingModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('progressTrackingModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Track Progress
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Milestone
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter milestone"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Completion Percentage
+      </label>
+      <input class="w-full p-2 border rounded" type="number" placeholder="Enter completion percentage"/>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Update Progress
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="feedbackModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('feedbackModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Manage Feedback
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Comment
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Enter your comment..."></textarea>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Rating
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        1
+       </option>
+       <option>
+        2
+       </option>
+       <option>
+        3
+       </option>
+       <option>
+        4
+       </option>
+       <option>
+        5
+       </option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Submit Feedback
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="notificationsModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('notificationsModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Manage Notifications
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Notification Type
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Milestone Reached
+       </option>
+       <option>
+        New Project Added
+       </option>
+       <option>
+        Real-time Updates
+       </option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Update Notifications
+     </button>
+    </form>
+   </div>
+  </div>
+ </body>
+</html>

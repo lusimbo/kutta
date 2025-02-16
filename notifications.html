@@ -1,0 +1,264 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Notifications | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+   .notification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e2e8f0;
+   }
+   .notification:hover {
+    background-color: #f1f5f9;
+   }
+   .notification.unread {
+    font-weight: bold;
+   }
+   .notification .timestamp {
+    font-size: 0.875rem;
+    color: #6b7280;
+   }
+  </style>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const notificationBell = document.getElementById("notificationBell");
+    const notificationDropdown = document.getElementById("notificationDropdown");
+    const markAllReadBtn = document.getElementById("markAllReadBtn");
+    const deleteAllBtn = document.getElementById("deleteAllBtn");
+
+    notificationBell.addEventListener("click", function () {
+     notificationDropdown.classList.toggle("hidden");
+    });
+
+    markAllReadBtn.addEventListener("click", function () {
+     const notifications = document.querySelectorAll(".notification");
+     notifications.forEach((notification) => {
+      notification.classList.remove("unread");
+     });
+    });
+
+    deleteAllBtn.addEventListener("click", function () {
+     const notifications = document.querySelectorAll(".notification");
+     notifications.forEach((notification) => {
+      notification.remove();
+     });
+    });
+   });
+
+   function markAsRead(notificationId) {
+    const notification = document.getElementById(notificationId);
+    notification.classList.remove("unread");
+   }
+
+   function deleteNotification(notificationId) {
+    const notification = document.getElementById(notificationId);
+    notification.remove();
+   }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <div class="flex justify-between items-center mb-4">
+     <h1 class="text-3xl font-bold">
+      Notifications
+     </h1>
+     <div class="relative">
+      <button class="relative" id="notificationBell">
+       <i class="fas fa-bell text-2xl text-gray-700">
+       </i>
+       <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full px-1">
+        3
+       </span>
+      </button>
+      <div class="absolute right-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg hidden" id="notificationDropdown">
+       <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+        <span class="font-bold text-gray-700">
+         Notifications
+        </span>
+        <div>
+         <button class="text-blue-600 hover:underline mr-2" id="markAllReadBtn">
+          Mark all as read
+         </button>
+         <button class="text-red-600 hover:underline" id="deleteAllBtn">
+          Delete all
+         </button>
+        </div>
+       </div>
+       <div class="max-h-60 overflow-y-auto">
+        <div class="notification unread" id="notification1">
+         <div>
+          <p>
+           New job posting: Software Developer at Google
+          </p>
+          <span class="timestamp">
+           5 min ago
+          </span>
+         </div>
+         <div>
+          <button class="text-blue-600 hover:underline" onclick="markAsRead('notification1')">
+           Mark as read
+          </button>
+          <button class="text-red-600 hover:underline ml-2" onclick="deleteNotification('notification1')">
+           Delete
+          </button>
+         </div>
+        </div>
+        <div class="notification unread" id="notification2">
+         <div>
+          <p>
+           Event reminder: Tech Meetup 2023 tomorrow
+          </p>
+          <span class="timestamp">
+           1 hour ago
+          </span>
+         </div>
+         <div>
+          <button class="text-blue-600 hover:underline" onclick="markAsRead('notification2')">
+           Mark as read
+          </button>
+          <button class="text-red-600 hover:underline ml-2" onclick="deleteNotification('notification2')">
+           Delete
+          </button>
+         </div>
+        </div>
+        <div class="notification unread" id="notification3">
+         <div>
+          <p>
+           New message from John Doe
+          </p>
+          <span class="timestamp">
+           2 hours ago
+          </span>
+         </div>
+         <div>
+          <button class="text-blue-600 hover:underline" onclick="markAsRead('notification3')">
+           Mark as read
+          </button>
+          <button class="text-red-600 hover:underline ml-2" onclick="deleteNotification('notification3')">
+           Delete
+          </button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- Notification Settings -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Notification Settings
+     </h2>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Email Notifications
+       </label>
+       <div class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Enable email notifications for critical updates
+        </span>
+       </div>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Push Notifications
+       </label>
+       <div class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Enable push notifications for mobile &amp; desktop
+        </span>
+       </div>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Notification Categories
+       </label>
+       <div class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         General Announcements
+        </span>
+       </div>
+       <div class="flex items-center mt-2">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Job &amp; Internship Alerts
+        </span>
+       </div>
+       <div class="flex items-center mt-2">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Event &amp; Webinar Updates
+        </span>
+       </div>
+       <div class="flex items-center mt-2">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Community Interactions
+        </span>
+       </div>
+       <div class="flex items-center mt-2">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         System Alerts
+        </span>
+       </div>
+      </div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Save Settings
+      </button>
+     </form>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

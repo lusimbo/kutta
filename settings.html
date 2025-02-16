@@ -1,0 +1,607 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Settings | Admin Dashboard | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const modals = document.querySelectorAll(".modal");
+    const closeButtons = document.querySelectorAll(".close");
+
+    closeButtons.forEach((button) => {
+     button.addEventListener("click", function () {
+      const modal = button.closest(".modal");
+      modal.style.display = "none";
+     });
+    });
+
+    window.onclick = function (event) {
+     modals.forEach((modal) => {
+      if (event.target == modal) {
+       modal.style.display = "none";
+      }
+     });
+    };
+   });
+
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+   }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Settings
+    </h1>
+    <!-- General Settings -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      General Settings
+     </h2>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Organization Name
+       </label>
+       <input class="w-full p-2 border rounded" type="text" placeholder="Kenyatta University Telecommunications & Technology Association (KUTTA)"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Logo
+       </label>
+       <input class="w-full p-2 border rounded" type="file"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Tagline
+       </label>
+       <input class="w-full p-2 border rounded" type="text" placeholder="Innovating the Future"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Contact Information
+       </label>
+       <input class="w-full p-2 border rounded mb-2" type="text" placeholder="Email"/>
+       <input class="w-full p-2 border rounded mb-2" type="text" placeholder="Phone"/>
+       <input class="w-full p-2 border rounded" type="text" placeholder="Address"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Website Theme
+       </label>
+       <div class="flex items-center">
+        <input class="mr-2" type="radio" name="theme"/>
+        <span>
+         Light Mode
+        </span>
+       </div>
+       <div class="flex items-center mt-2">
+        <input class="mr-2" type="radio" name="theme"/>
+        <span>
+         Dark Mode
+        </span>
+       </div>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Language &amp; Localization
+       </label>
+       <select class="w-full p-2 border rounded">
+        <option>
+         English
+        </option>
+        <option>
+         Swahili
+        </option>
+       </select>
+      </div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Save Changes
+      </button>
+     </form>
+    </div>
+    <!-- User Management Settings -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      User Management Settings
+     </h2>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Admin Roles &amp; Permissions
+       </label>
+       <select class="w-full p-2 border rounded">
+        <option>
+         Super Admin
+        </option>
+        <option>
+         Editor
+        </option>
+        <option>
+         Moderator
+        </option>
+       </select>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Add Admin User
+       </label>
+       <input class="w-full p-2 border rounded mb-2" type="text" placeholder="Name"/>
+       <input class="w-full p-2 border rounded mb-2" type="email" placeholder="Email"/>
+       <input class="w-full p-2 border rounded" type="password" placeholder="Password"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Password Policies
+       </label>
+       <div class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Minimum Length: 8 Characters
+        </span>
+       </div>
+       <div class="flex items-center mt-2">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Must Include Numbers &amp; Symbols
+        </span>
+       </div>
+       <div class="flex items-center mt-2">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Password Expiration: 90 Days
+        </span>
+       </div>
+      </div>
+      <div class="mb-4">
+       <label class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        Enable Two-Factor Authentication (2FA)
+       </label>
+      </div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Save Changes
+      </button>
+     </form>
+    </div>
+    <!-- Privacy & Security Settings -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Privacy &amp; Security Settings
+     </h2>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Data Privacy Settings
+       </label>
+       <div class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         User Data Retention: 1 Year
+        </span>
+       </div>
+       <div class="flex items-center mt-2">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Access Control: Admin Only
+        </span>
+       </div>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Activity Logs
+       </label>
+       <div class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Track Admin Actions
+        </span>
+       </div>
+      </div>
+      <div class="mb-4">
+       <label class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        Enable Public Profile Visibility
+       </label>
+      </div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Save Changes
+      </button>
+     </form>
+    </div>
+    <!-- Membership & Subscription Settings -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Membership &amp; Subscription Settings
+     </h2>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Membership Tiers
+       </label>
+       <select class="w-full p-2 border rounded">
+        <option>
+         Student
+        </option>
+        <option>
+         Professional
+        </option>
+        <option>
+         Lifetime
+        </option>
+       </select>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Membership Fees
+       </label>
+       <input class="w-full p-2 border rounded mb-2" type="text" placeholder="Enter fee for Student"/>
+       <input class="w-full p-2 border rounded mb-2" type="text" placeholder="Enter fee for Professional"/>
+       <input class="w-full p-2 border rounded" type="text" placeholder="Enter fee for Lifetime"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Renewal Cycles
+       </label>
+       <select class="w-full p-2 border rounded">
+        <option>
+         Monthly
+        </option>
+        <option>
+         Yearly
+        </option>
+       </select>
+      </div>
+      <div class="mb-4">
+       <label class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        Enable Auto-Renewal
+       </label>
+      </div>
+      <div class="mb-4">
+       <label class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        Enable Manual Renewal
+       </label>
+      </div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Save Changes
+      </button>
+     </form>
+    </div>
+    <!-- Notifications & Email Settings -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Notifications &amp; Email Settings
+     </h2>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Email Notifications
+       </label>
+       <div class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         New Inquiries
+        </span>
+       </div>
+       <div class="flex items-center mt-2">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Membership Updates
+        </span>
+       </div>
+       <div class="flex items-center mt-2">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Event Notifications
+        </span>
+       </div>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        System Alerts
+       </label>
+       <div class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        <span>
+         Critical Updates
+        </span>
+       </div>
+      </div>
+      <div class="mb-4">
+       <label class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        Enable Push Notifications
+       </label>
+      </div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Save Changes
+      </button>
+     </form>
+    </div>
+    <!-- Events & Blog Configuration -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Events &amp; Blog Configuration
+     </h2>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Event Submission Guidelines
+       </label>
+       <textarea class="w-full p-2 border rounded" rows="4" placeholder="Enter event submission guidelines...">
+</textarea>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Blog Categories
+       </label>
+       <input class="w-full p-2 border rounded mb-2" type="text" placeholder="Enter blog category"/>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Add Category
+       </button>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Content Approval Workflows
+       </label>
+       <select class="w-full p-2 border rounded">
+        <option>
+         Auto-Approve
+        </option>
+        <option>
+         Manual Approval
+        </option>
+       </select>
+      </div>
+      <div class="mb-4">
+       <label class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        Enable Comments on Blog Posts
+       </label>
+      </div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Save Changes
+      </button>
+     </form>
+    </div>
+    <!-- System Backup & Restore -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      System Backup &amp; Restore
+     </h2>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Backup Frequency
+       </label>
+       <select class="w-full p-2 border rounded">
+        <option>
+         Daily
+        </option>
+        <option>
+         Weekly
+        </option>
+        <option>
+         Monthly
+        </option>
+       </select>
+      </div>
+      <div class="mb-4">
+       <label class="flex items-center">
+        <input class="mr-2" type="checkbox"/>
+        Enable Automatic Backups
+       </label>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Manual Backup
+       </label>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Backup Now
+       </button>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Restore Previous Version
+       </label>
+       <select class="w-full p-2 border rounded">
+        <option>
+         Select Backup Date
+        </option>
+       </select>
+      </div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Restore
+      </button>
+     </form>
+    </div>
+    <!-- Payment & Billing Settings -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Payment &amp; Billing Settings
+     </h2>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Payment Gateways
+       </label>
+       <select class="w-full p-2 border rounded">
+        <option>
+         PayPal
+        </option>
+        <option>
+         MPesa
+        </option>
+        <option>
+         Stripe
+        </option>
+       </select>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Membership Payment Options
+       </label>
+       <select class="w-full p-2 border rounded">
+        <option>
+         Credit Card
+        </option>
+        <option>
+         Mobile Money
+        </option>
+        <option>
+         Bank Transfer
+        </option>
+       </select>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Event Ticket Payment Options
+       </label>
+       <select class="w-full p-2 border rounded">
+        <option>
+         Credit Card
+        </option>
+        <option>
+         Mobile Money
+        </option>
+        <option>
+         Bank Transfer
+        </option>
+       </select>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Transaction History
+       </label>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        View Transactions
+       </button>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Invoices
+       </label>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        View Invoices
+       </button>
+      </div>
+     </form>
+    </div>
+    <!-- API & Integration Settings -->
+<div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+ <h2 class="text-xl font-bold mb-4">
+  API &amp; Integration Settings
+ </h2>
+ <form>
+  <div class="mb-4">
+   <label class="block text-gray-700">
+    Third-Party Integrations
+   </label>
+   <select class="w-full p-2 border rounded">
+    <option>
+     Google Analytics
+    </option>
+    <option>
+     Facebook
+    </option>
+    <option>
+     Twitter
+    </option>
+    <option>
+     LinkedIn
+    </option>
+    <option>
+     Mailchimp
+    </option>
+   </select>
+  </div>
+  <div class="mb-4">
+   <label class="block text-gray-700">
+    API Key
+   </label>
+   <input class="w-full p-2 border rounded" type="text" placeholder="Enter your API key"/>
+  </div>
+  <div class="mb-4">
+   <label class="block text-gray-700">
+    API Secret
+   </label>
+   <input class="w-full p-2 border rounded" type="text" placeholder="Enter your API secret"/>
+  </div>
+  <div class="mb-4">
+   <label class="block text-gray-700">
+    Webhook URL
+   </label>
+   <input class="w-full p-2 border rounded" type="text" placeholder="Enter your webhook URL"/>
+  </div>
+  <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+   Save Changes
+  </button>
+ </form>
+</div>
+<!-- End of API & Integration Settings -->
+ <!-- End of API & Integration Settings -->
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white p-4 mt-6">
+ <div class="container mx-auto text-center">
+  <p class="text-sm">
+   &copy; 2025 Kenyatta University Telecommunications & Technology Association (KUTTA). All rights reserved.
+  </p>
+ </div>
+</footer>
+<!-- End of Footer -->
+
+</div>
+</body>
+</html>
+       

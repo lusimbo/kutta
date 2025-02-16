@@ -1,0 +1,523 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Events & Webinars | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Events & Webinars
+    </h1>
+    <!-- Overview of Events & Webinars -->
+    <div class="text-center mb-6">
+     <h2 class="text-2xl font-semibold mb-2">
+      Welcome to KUTTA Events & Webinars!
+     </h2>
+     <p class="text-gray-700">
+      Stay updated with our latest tech meetups, coding boot camps, industry talks, hackathons, and networking events.
+     </p>
+     <div class="mt-4">
+      <input class="w-full p-2 border rounded" placeholder="Search events..." type="text"/>
+     </div>
+     <div class="mt-4 flex justify-center space-x-4">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('filterDateModal')">
+       Filter by Date
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('filterCategoryModal')">
+       Filter by Category
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('filterTypeModal')">
+       Filter by Event Type
+      </button>
+     </div>
+    </div>
+    <!-- Upcoming Events & Webinars -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Upcoming Events & Webinars
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Tech Meetup 2023
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Date: October 15, 2023
+       </p>
+       <p class="text-gray-600 mb-2">
+        Time: 10:00 AM - 4:00 PM
+       </p>
+       <p class="text-gray-600 mb-2">
+        Location: Kenyatta University, Nairobi
+       </p>
+       <p class="text-gray-700 mb-4">
+        Join us for an exciting day of tech talks, networking, and hands-on workshops.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('registerModal')">
+        Register Now
+       </button>
+       <div class="mt-4">
+        <span class="text-gray-600">
+         Add to:
+        </span>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('googleCalendarModal')">
+         Google Calendar
+        </button>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('downloadReminderModal')">
+         Download Reminder
+        </button>
+       </div>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Coding Bootcamp
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Date: November 5, 2023
+       </p>
+       <p class="text-gray-600 mb-2">
+        Time: 9:00 AM - 5:00 PM
+       </p>
+       <p class="text-gray-600 mb-2">
+        Location: Online (Zoom)
+       </p>
+       <p class="text-gray-700 mb-4">
+        Enhance your coding skills with our intensive bootcamp covering various programming languages.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('registerModal')">
+        Register Now
+       </button>
+       <div class="mt-4">
+        <span class="text-gray-600">
+         Add to:
+        </span>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('googleCalendarModal')">
+         Google Calendar
+        </button>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('downloadReminderModal')">
+         Download Reminder
+        </button>
+       </div>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Industry Talk: AI in 2023
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Date: December 1, 2023
+       </p>
+       <p class="text-gray-600 mb-2">
+        Time: 2:00 PM - 3:30 PM
+       </p>
+       <p class="text-gray-600 mb-2">
+        Location: Kenyatta University, Nairobi
+       </p>
+       <p class="text-gray-700 mb-4">
+        Learn about the latest advancements in AI from industry experts.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('registerModal')">
+        Register Now
+       </button>
+       <div class="mt-4">
+        <span class="text-gray-600">
+         Add to:
+        </span>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('googleCalendarModal')">
+         Google Calendar
+        </button>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('downloadReminderModal')">
+         Download Reminder
+        </button>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- Past Events & Webinars -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Past Events & Webinars
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Hackathon 2022
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Date: September 20, 2022
+       </p>
+       <p class="text-gray-700 mb-4">
+        A thrilling 48-hour hackathon where participants developed innovative solutions.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('viewSummaryModal')">
+        View Summary
+       </button>
+       <div class="mt-4">
+        <span class="text-gray-600">
+         Resources:
+        </span>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('recordedSessionModal')">
+         Recorded Session
+        </button>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('presentationSlidesModal')">
+         Presentation Slides
+        </button>
+       </div>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Networking Seminar
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Date: August 15, 2022
+       </p>
+       <p class="text-gray-700 mb-4">
+        An insightful seminar on networking strategies and career growth.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('viewSummaryModal')">
+        View Summary
+       </button>
+       <div class="mt-4">
+        <span class="text-gray-600">
+         Resources:
+        </span>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('recordedSessionModal')">
+         Recorded Session
+        </button>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('presentationSlidesModal')">
+         Presentation Slides
+        </button>
+       </div>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        AI Workshop
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Date: July 10, 2022
+       </p>
+       <p class="text-gray-700 mb-4">
+        A hands-on workshop exploring the fundamentals of artificial intelligence.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('viewSummaryModal')">
+        View Summary
+       </button>
+       <div class="mt-4">
+        <span class="text-gray-600">
+         Resources:
+        </span>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('recordedSessionModal')">
+         Recorded Session
+        </button>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('presentationSlidesModal')">
+         Presentation Slides
+        </button>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- Live Webinars & Virtual Meetups -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Live Webinars & Virtual Meetups
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Live Webinar: Cloud Computing
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Date: October 10, 2023
+       </p>
+       <p class="text-gray-600 mb-2">
+        Time: 3:00 PM - 4:30 PM
+       </p>
+       <p class="text-gray-700 mb-4">
+        Join our live webinar to learn about the latest trends in cloud computing.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('joinNowModal')">
+        Join Now
+       </button>
+       <div class="mt-4">
+        <span class="text-gray-600">
+         Current Attendees:
+        </span>
+        <p class="text-gray-700">
+         150
+        </p>
+       </div>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Virtual Meetup: Tech Innovations
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Date: October 20, 2023
+       </p>
+       <p class="text-gray-600 mb-2">
+        Time: 5:00 PM - 6:30 PM
+       </p>
+       <p class="text-gray-700 mb-4">
+        Connect with tech enthusiasts and discuss the latest innovations.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('joinNowModal')">
+        Join Now
+       </button>
+       <div class="mt-4">
+        <span class="text-gray-600">
+         Current Attendees:
+        </span>
+        <p class="text-gray-700">
+         200
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- Event Registration & Ticketing -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Event Registration & Ticketing
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Register for Tech Meetup 2023
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Event Capacity: 300
+       </p>
+       <p class="text-gray-600 mb-2">
+        Remaining Slots: 50
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('registerModal')">
+        Register Now
+       </button>
+       <div class="mt-4">
+        <span class="text-gray-600">
+         Your Registration ID:
+        </span>
+        <p class="text-gray-700">
+         123456
+        </p>
+        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 mt-2" onclick="openModal('downloadQRModal')">
+         Download QR Code
+        </button>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- Notifications & Reminders -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Notifications & Reminders
+     </h2>
+     <div class="flex justify-between items-center">
+      <label class="flex items-center">
+       <input class="mr-2" type="checkbox"/>
+       Enable Email Notifications for Events
+      </label>
+     </div>
+     <div class="flex justify-between items-center mt-4">
+      <label class="flex items-center">
+       <input class="mr-2" type="checkbox"/>
+       Enable SMS Notifications for Urgent Alerts
+      </label>
+     </div>
+     <div class="flex justify-between items-center mt-4">
+      <label class="flex items-center">
+       <input class="mr-2" type="checkbox"/>
+       Enable Push Notifications for Webinars
+      </label>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="filterDateModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('filterDateModal')">
+     &times;
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Filter by Date
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Select Date Range
+      </label>
+      <input class="w-full p-2 border rounded" type="date"/>
+      <input class="w-full p-2 border rounded mt-2" type="date"/>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Apply Filter
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="filterCategoryModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('filterCategoryModal')">
+     &times;
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Filter by Category
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Select Category
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Tech Meetups
+       </option>
+         <!-- Continue filterCategoryModal -->
+       <option>
+        Coding Bootcamps
+       </option>
+       <option>
+        Industry Talks
+       </option>
+       <option>
+        Hackathons
+       </option>
+       <option>
+        Networking Events
+       </option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Apply Filter
+     </button>
+    </form>
+   </div>
+  </div>
+
+  <!-- Filter by Type Modal -->
+  <div class="modal" id="filterTypeModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('filterTypeModal')">&times;</span>
+    <h2 class="text-2xl font-bold mb-4">Filter by Event Type</h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">Select Event Type</label>
+      <select class="w-full p-2 border rounded">
+       <option>In-Person</option>
+       <option>Online</option>
+       <option>Hybrid</option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Apply Filter
+     </button>
+    </form>
+   </div>
+  </div>
+
+  <!-- Registration Modal -->
+  <div class="modal" id="registerModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('registerModal')">&times;</span>
+    <h2 class="text-2xl font-bold mb-4">Event Registration</h2>
+    <form>
+     <div class="mb-4">
+      <input class="w-full p-2 border rounded mb-2" placeholder="Full Name" type="text">
+      <input class="w-full p-2 border rounded" placeholder="Email Address" type="email">
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Complete Registration
+     </button>
+    </form>
+   </div>
+  </div>
+
+  <!-- Google Calendar Modal -->
+  <div class="modal" id="googleCalendarModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('googleCalendarModal')">&times;</span>
+    <h2 class="text-2xl font-bold mb-4">Add to Google Calendar</h2>
+    <p class="mb-4">Event has been added to your Google Calendar.</p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Open Calendar
+    </button>
+   </div>
+  </div>
+
+  <!-- Remaining Modals -->
+  <div class="modal" id="downloadReminderModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('downloadReminderModal')">&times;</span>
+    <h2 class="text-2xl font-bold mb-4">Download Reminder</h2>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Download .ics File
+    </button>
+   </div>
+  </div>
+
+  <!-- Add remaining modals with similar structure -->
+  <script>
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+   }
+
+   function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+   }
+
+   window.onclick = function(event) {
+    if (event.target.className === 'modal') {
+     event.target.style.display = 'none';
+    }
+   }
+  </script>
+ </body>
+</html>

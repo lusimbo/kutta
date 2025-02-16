@@ -1,0 +1,464 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Jobs & Interviews | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Jobs &amp; Interviews
+    </h1>
+    <!-- Job Listings & Opportunities -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Job Listings &amp; Opportunities
+     </h2>
+     <div class="mb-4">
+      <input class="w-full p-2 border rounded" placeholder="Search jobs..." type="text"/>
+     </div>
+     <div class="flex justify-center space-x-4 mb-4">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Location
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Experience Level
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Industry
+      </button>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Software Developer
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Company: Google
+       </p>
+       <p class="text-gray-600 mb-2">
+        Location: Nairobi, Kenya
+       </p>
+       <p class="text-gray-600 mb-2">
+        Experience Level: Entry
+       </p>
+       <p class="text-gray-700 mb-4">
+        Join our team to develop innovative software solutions.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('applyModal')">
+        Apply Now
+       </button>
+       <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('bookmarkModal')">
+        Bookmark
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Network Engineer
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Company: Safaricom
+       </p>
+       <p class="text-gray-600 mb-2">
+        Location: Nairobi, Kenya
+       </p>
+       <p class="text-gray-600 mb-2">
+        Experience Level: Mid
+       </p>
+       <p class="text-gray-700 mb-4">
+        Design and manage our network infrastructure.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('applyModal')">
+        Apply Now
+       </button>
+       <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('bookmarkModal')">
+        Bookmark
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Cybersecurity Analyst
+       </h3>
+       <p class="text-gray-600 mb-2">
+        Company: IBM
+       </p>
+       <p class="text-gray-600 mb-2">
+        Location: Nairobi, Kenya
+       </p>
+       <p class="text-gray-600 mb-2">
+        Experience Level: Senior
+       </p>
+       <p class="text-gray-700 mb-4">
+        Protect our systems from cyber threats.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('applyModal')">
+        Apply Now
+       </button>
+       <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 ml-2" onclick="openModal('bookmarkModal')">
+        Bookmark
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Resume & Cover Letter Builder -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Resume &amp; Cover Letter Builder
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Generate professional resumes and cover letters with our pre-designed templates tailored for the tech industry.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('resumeBuilderModal')">
+      Build Your Resume
+     </button>
+    </div>
+    <!-- Interview Preparation Resources -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Interview Preparation Resources
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Technical Interview Questions
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Common technical interview questions and answers.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('technicalQuestionsModal')">
+        View Questions
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Behavioral Interview Questions
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Common behavioral interview questions and answers.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('behavioralQuestionsModal')">
+        View Questions
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Company-Specific Interviews
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Interview experiences from top companies like Google, Safaricom, IBM, and more.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('companyInterviewsModal')">
+        View Experiences
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Mock Interview Practice
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Practice mock interviews with AI-based or peer-to-peer sessions.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('mockInterviewModal')">
+        Start Practice
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Salary Negotiation Tips
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Tips on salary negotiation and workplace professionalism.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('salaryNegotiationModal')">
+        View Tips
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Employer & Recruiter Connections -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Employer &amp; Recruiter Connections
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Company Profiles
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Showcase of top tech employers.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('companyProfilesModal')">
+        View Profiles
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Networking with Recruiters
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Opportunities to network with recruiters.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('networkingModal')">
+        Start Networking
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Alumni Job Referrals
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Get job referrals and mentorship from alumni.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('alumniReferralsModal')">
+        Get Referrals
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Job Alerts & Notifications -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Job Alerts &amp; Notifications
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Set up job alerts based on your interests and receive real-time notifications when new job openings match your profile.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('jobAlertsModal')">
+      Set Up Alerts
+     </button>
+    </div>
+    <!-- Career Growth & Industry Insights -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Career Growth &amp; Industry Insights
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Career Blogs
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Read success stories and career advice from professionals in the field.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('careerBlogsModal')">
+        Read Blogs
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        In-Demand Tech Skills
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Insights into in-demand tech skills and certifications.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('techSkillsModal')">
+        View Insights
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Tech Salary Reports
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Explore tech salary reports and job market trends.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('salaryReportsModal')">
+        View Reports
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Events & Career Webinars -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Events &amp; Career Webinars
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Virtual Job Fairs
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Join virtual job fairs and career expos.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('jobFairsModal')">
+        View Events
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Webinars with Hiring Managers
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Exclusive webinars with hiring managers and HR experts.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('webinarsModal')">
+        View Webinars
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Live Q&amp;A Sessions
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Live Q&amp;A sessions with industry leaders.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('qaSessionsModal')">
+        Join Sessions
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Bookmark & Save Jobs -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Bookmark &amp; Save Jobs
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Save job postings for later applications and track your applied jobs with the "Application Status" feature.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('bookmarkJobsModal')">
+      View Saved Jobs
+     </button>
+    </div>
+    <!-- Social Media & LinkedIn Integration -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Social Media &amp; LinkedIn Integration
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Connect your LinkedIn profile for easier job applications and share job listings on social platforms with one click.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('linkedinIntegrationModal')">
+      Connect LinkedIn
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="applyModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('applyModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Apply for Job
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Full Name
+      </label>
+      <input class="w-full p-2 border rounded" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Email Address
+      </label>
+      <input class="w-full p-2 border rounded" type="email"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Upload Resume
+      </label>
+      <input class="w-full p-2 border rounded" type="file"/>
+     </div>
+          <h2 class="text-xl font-bold mb-4">
+      Employer & Recruiter Connections
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Connect with recruiters and potential employers for networking opportunities.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('recruiterModal')">
+      Connect Now
+     </button>
+    </div>
+   </div>
+  </div>
+  
+  <!-- Modal for Applying to Jobs -->
+  <div class="modal" id="applyModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('applyModal')">&times;</span>
+    <h2 class="text-xl font-bold mb-4">Apply for Job</h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">Full Name</label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter your full name"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">Email Address</label>
+      <input class="w-full p-2 border rounded" type="email" placeholder="Enter your email"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">Upload Resume</label>
+      <input class="w-full p-2 border rounded" type="file"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">Cover Letter</label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Write a short cover letter"></textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">Submit Application</button>
+    </form>
+   </div>
+  </div>
+  
+  <script>
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+   }
+   function closeModal(modalId) {
+    document.getElementById(modalId).style.display = "none";
+   }
+  </script>
+ </body>
+</html>
+
+     

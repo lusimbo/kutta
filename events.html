@@ -1,0 +1,541 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Events | Admin Dashboard | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const modals = document.querySelectorAll(".modal");
+    const closeButtons = document.querySelectorAll(".close");
+
+    closeButtons.forEach((button) => {
+     button.addEventListener("click", function () {
+      const modal = button.closest(".modal");
+      modal.style.display = "none";
+     });
+    });
+
+    window.onclick = function (event) {
+     modals.forEach((modal) => {
+      if (event.target == modal) {
+       modal.style.display = "none";
+      }
+     });
+    };
+   });
+
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+   }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Events
+    </h1>
+    <!-- Events Dashboard Overview -->
+<div class="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-md mb-6">
+    <h2 class="text-xl font-bold mb-4">Events Overview</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h3 class="text-lg font-bold mb-2">Total Events Hosted</h3>
+            <p class="text-3xl font-bold text-blue-600">50</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h3 class="text-lg font-bold mb-2">Upcoming Events</h3>
+            <p class="text-3xl font-bold text-green-600">5</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h3 class="text-lg font-bold mb-2">Past Events Summary</h3>
+            <p class="text-3xl font-bold text-yellow-600">45</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h3 class="text-lg font-bold mb-2">Pending Approvals</h3>
+            <p class="text-3xl font-bold text-red-600">2</p>
+        </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="mt-6">
+        <canvas id="eventsChart" class="h-48 sm:h-90 w-full"></canvas>
+    </div>
+</div>
+
+<!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var ctx = document.getElementById("eventsChart").getContext("2d");
+        var eventsChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["Total Hosted", "Upcoming", "Past Events", "Pending Approvals"],
+                datasets: [{
+                    label: "Event Statistics",
+                    data: [50, 5, 45, 2],
+                    backgroundColor: ["#2563eb", "#16a34a", "#eab308", "#dc2626"],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    });
+</script>
+
+    <!-- Event Creation & Management -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Event Creation &amp; Management
+     </h2>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mb-4" onclick="openModal('createEventModal')">
+      Add New Event
+     </button>
+     <div class="overflow-x-auto">
+      <table class="min-w-full bg-white">
+       <thead>
+        <tr>
+         <th class="py-2 px-4 border-b">
+          Event Name
+         </th>
+         <th class="py-2 px-4 border-b">
+          Date &amp; Time
+         </th>
+         <th class="py-2 px-4 border-b">
+          Location
+         </th>
+         <th class="py-2 px-4 border-b">
+          Status
+         </th>
+         <th class="py-2 px-4 border-b">
+          Actions
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="py-2 px-4 border-b">
+          Tech Meetup 2023
+         </td>
+         <td class="py-2 px-4 border-b">
+          October 15, 2023 - 10:00 AM
+         </td>
+         <td class="py-2 px-4 border-b">
+          Kenyatta University, Nairobi
+         </td>
+         <td class="py-2 px-4 border-b">
+          Upcoming
+         </td>
+         <td class="py-2 px-4 border-b">
+          <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700" onclick="openModal('editEventModal')">
+           Edit
+          </button>
+          <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">
+           Delete
+          </button>
+         </td>
+        </tr>
+        <tr>
+         <td class="py-2 px-4 border-b">
+          Coding Bootcamp
+         </td>
+         <td class="py-2 px-4 border-b">
+          November 5, 2023 - 9:00 AM
+         </td>
+         <td class="py-2 px-4 border-b">
+          Online (Zoom)
+         </td>
+         <td class="py-2 px-4 border-b">
+          Upcoming
+         </td>
+         <td class="py-2 px-4 border-b">
+          <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700" onclick="openModal('editEventModal')">
+           Edit
+          </button>
+          <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">
+           Delete
+          </button>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <!-- Event Registration & Attendance Tracking -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Event Registration &amp; Attendance Tracking
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Allow members to RSVP or register online, track registration numbers in real-time, and generate QR codes for check-in at physical events.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('registrationModal')">
+      View Registrations
+     </button>
+    </div>
+    <!-- Event Promotion & Sharing -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Event Promotion &amp; Sharing
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Enable social media & email sharing, generate custom event links, and embed event countdown timers on the homepage.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('promotionModal')">
+      Promote Event
+     </button>
+    </div>
+    <!-- Event Engagement & Interactivity -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Event Engagement &amp; Interactivity
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Integrate live Q&amp;A sessions, polls, and feedback forms. Offer live streaming options for virtual events and enable event discussion forums for pre/post-event engagement.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('engagementModal')">
+      Engage Members
+     </button>
+    </div>
+    <!-- Post-Event Reports & Feedback -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Post-Event Reports &amp; Feedback
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Collect event feedback via survey forms, display event impact reports, and allow members to upload photos & testimonials from the event.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('postEventModal')">
+      View Reports
+     </button>
+    </div>
+    <!-- Automated Notifications & Reminders -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Automated Notifications &amp; Reminders
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Send event reminders to registered members, notify last-minute changes or cancellations, and display live updates for ongoing events.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('notificationsModal')">
+      Manage Notifications
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="createEventModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('createEventModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Add New Event
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Event Name
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter event name"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Short Description
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Enter short description...">
+</textarea>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Event Date &amp; Time
+      </label>
+      <input class="w-full p-2 border rounded" type="datetime-local"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Event Location
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter event location"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Guest Speakers or Facilitators
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter guest speakers or facilitators"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Target Audience
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter target audience"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Event Banner or Featured Image
+      </label>
+      <input class="w-full p-2 border rounded" type="file"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Registration Requirements
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Open to all
+       </option>
+       <option>
+        Members only
+       </option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Create Event
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="editEventModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('editEventModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Edit Event
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Event Name
+      </label>
+      <input class="w-full p-2 border rounded" type="text" value="Tech Meetup 2023"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Short Description
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4">
+Join us for an exciting day of tech talks, networking, and hands-on workshops.
+</textarea>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Event Date &amp; Time
+      </label>
+      <input class="w-full p-2 border rounded" type="datetime-local" value="2023-10-15T10:00"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Event Location
+      </label>
+      <input class="w-full p-2 border rounded" type="text" value="Kenyatta University, Nairobi"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Guest Speakers or Facilitators
+      </label>
+      <input class="w-full p-2 border rounded" type="text" value="John Doe, Jane Smith"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Target Audience
+      </label>
+      <input class="w-full p-2 border rounded" type="text" value="Students, Alumni, Professionals"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Event Banner or Featured Image
+      </label>
+      <input class="w-full p-2 border rounded" type="file"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Registration Requirements
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Open to all
+       </option>
+       <option>
+        Members only
+       </option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Update Event
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="registrationModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('registrationModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Event Registration &amp; Attendance Tracking
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Allow members to RSVP or register online, track registration numbers in real-time, and generate QR codes for check-in at physical events.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     View Registrations
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="promotionModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('promotionModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Event Promotion &amp; Sharing
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Enable social media &amp; email sharing, generate custom event links, and embed event countdown timers on the homepage.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Promote Event
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="engagementModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('engagementModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Event Engagement &amp; Interactivity
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Integrate live Q&amp;A sessions, polls, and feedback forms. Offer live streaming options for virtual events and enable event discussion forums for pre/post-event engagement.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Engage Members
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="postEventModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('postEventModal')">×</span>
+    <h2 class="text-2">Add New Event</h2>
+    <form id="eventForm" onsubmit="return submitEventForm();">
+        <!-- Event Name -->
+        <div class="form-group">
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" name="eventName" placeholder="Enter event name" required>
+        </div>
+
+        <!-- Short Description -->
+        <div class="form-group">
+            <label for="eventDescription">Short Description:</label>
+            <textarea id="eventDescription" name="eventDescription" rows="4" placeholder="Describe the event briefly..." required></textarea>
+        </div>
+
+        <!-- Event Date & Time -->
+        <div class="form-group">
+            <label for="eventDateTime">Event Date & Time:</label>
+            <input type="datetime-local" id="eventDateTime" name="eventDateTime" required>
+        </div>
+
+        <!-- Event Location -->
+        <div class="form-group">
+            <label for="eventLocation">Event Location:</label>
+            <input type="text" id="eventLocation" name="eventLocation" placeholder="Enter location (e.g., Kenyatta University)" required>
+        </div>
+
+        <!-- Guest Speakers or Facilitators -->
+        <div class="form-group">
+            <label for="guestSpeakers">Guest Speakers or Facilitators:</label>
+            <input type="text" id="guestSpeakers" name="guestSpeakers" placeholder="Enter names of speakers/facilitators">
+        </div>
+
+        <!-- Target Audience -->
+        <div class="form-group">
+            <label for="targetAudience">Target Audience:</label>
+            <select id="targetAudience" name="targetAudience" required>
+                <option value="all">Open to all</option>
+                <option value="members-only">Members only</option>
+            </select>
+        </div>
+
+        <!-- Event Banner or Featured Image -->
+        <div class="form-group">
+            <label for="eventBanner">Event Banner or Featured Image:</label>
+            <input type="file" id="eventBanner" name="eventBanner" accept="image/*">
+        </div>
+
+        <!-- Registration Requirements -->
+        <div class="form-group">
+            <label>Registration Requirements:</label><br>
+            <label><input type="radio" name="registrationType" value="open-to-all" checked> Open to all</label><br>
+            <label><input type="radio" name="registrationType" value="members-only"> Members only</label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit" class="btn-primary">Create Event</button>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
+
+    

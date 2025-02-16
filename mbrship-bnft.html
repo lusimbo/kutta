@@ -1,0 +1,381 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Membership Benefits | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Membership Benefits
+    </h1>
+    <!-- Overview of Membership Benefits -->
+    <div class="text-center mb-6">
+     <h2 class="text-2xl font-semibold mb-2">
+      Welcome to KUTTA Membership!
+     </h2>
+     <p class="text-gray-700">
+      As a valued member of the Kenyatta University Telecommunications & Technology Association (KUTTA), you enjoy a range of exclusive benefits designed to enhance your academic and professional journey.
+     </p>
+     <div class="mt-4">
+      <span class="text-lg font-bold text-blue-600">
+       Membership Level: Premium
+      </span>
+      <div class="w-full bg-gray-200 rounded-full h-4 mt-2">
+       <div class="bg-blue-600 h-4 rounded-full" style="width: 75%">
+       </div>
+      </div>
+      <p class="text-gray-600 mt-2">
+       Validity: Until December 31, 2023
+      </p>
+     </div>
+    </div>
+    <!-- Exclusive Access to Events -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Exclusive Access to Events
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex items-center">
+       <i class="fas fa-ticket-alt text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Free or discounted entry to tech fairs, hackathons, and networking events.
+       </p>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-calendar-alt text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Early registration for workshops, guest lectures, and industry meetups.
+       </p>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-star text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        VIP access to special mentorship programs and panel discussions.
+       </p>
+      </div>
+     </div>
+    </div>
+    <!-- Learning & Development Opportunities -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Learning & Development Opportunities
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex items-center">
+       <i class="fas fa-book text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Free access to premium tutorials, coding challenges, and research materials.
+       </p>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-certificate text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Discounts on certifications, online courses, and professional training programs.
+       </p>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-graduation-cap text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Priority access to internships, scholarships, and educational grants.
+       </p>
+      </div>
+     </div>
+    </div>
+    <!-- Networking & Career Growth -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Networking & Career Growth
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex items-center">
+       <i class="fas fa-users text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Direct connection with industry leaders, alumni, and potential employers.
+       </p>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-handshake text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Participation in mentorship programs with successful professionals.
+       </p>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-briefcase text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Priority job referrals, internship opportunities, and career workshops.
+       </p>
+      </div>
+     </div>
+    </div>
+    <!-- Tech Resources & Tools -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Tech Resources & Tools
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex items-center">
+       <i class="fas fa-laptop-code text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Free or discounted access to software tools, cloud services, and tech libraries.
+       </p>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-code-branch text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Access to KUTTA's private GitHub repository, exclusive templates, and frameworks.
+       </p>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-tools text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Discounts on laptops, coding tools, and tech accessories (if available).
+       </p>
+      </div>
+     </div>
+    </div>
+    <!-- Community & Collaboration -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Community & Collaboration
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex items-center">
+       <i class="fas fa-comments text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Join exclusive members-only forums and discussion boards.
+       </p>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-project-diagram text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Opportunity to collaborate on major student projects & research initiatives.
+       </p>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-newspaper text-blue-600 text-3xl mr-4">
+       </i>
+       <p class="text-gray-700">
+        Get featured in KUTTA’s newsletters, tech blog, and social media.
+       </p>
+      </div>
+     </div>
+    </div>
+    <!-- Membership Renewal & Upgrade Options -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Membership Renewal & Upgrade Options
+     </h2>
+     <div class="text-center">
+      <p class="text-gray-700">
+       Your membership is valid until December 31, 2023.
+      </p>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-4" onclick="openModal('renewModal')">
+       Renew Membership
+      </button>
+      <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mt-4" onclick="openModal('upgradeModal')">
+       Upgrade Membership
+      </button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Renew Membership Modal -->
+  <div class="modal" id="renewModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('renewModal')">
+     &times;
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Renew Membership
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Membership Level
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Standard
+       </option>
+       <option>
+        Premium
+       </option>
+       <option>
+        Executive
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Payment Method
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Credit Card
+       </option>
+       <option>
+        PayPal
+       </option>
+       <option>
+        Mobile Money
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Card Number
+      </label>
+      <input class="w-full p-2 border rounded" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Expiry Date
+      </label>
+      <input class="w-full p-2 border rounded" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       CVV
+      </label>
+      <input class="w-full p-2 border rounded" type="text"/>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Renew Now
+     </button>
+    </form>
+   </div>
+  </div>
+  <!-- Upgrade Membership Modal -->
+  <div class="modal" id="upgradeModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('upgradeModal')">
+     &times;
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Upgrade Membership
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Select New Membership Level
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Premium
+       </option>
+       <option>
+        Executive
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Payment Method
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Credit Card
+       </option>
+       <option>
+        PayPal
+       </option>
+       <option>
+        Mobile Money
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Card Number
+      </label>
+      <input class="w-full p-2 border rounded" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Expiry Date
+      </label>
+      <input class="w-full p-2 border rounded" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       CVV
+      </label>
+      <input class="w-full p-2 border rounded" type="text"/>
+     </div>
+     <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+      Upgrade Now
+     </button>
+    </form>
+   </div>
+  </div>
+  <script>
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+   }
+   function closeModal(modalId) {
+    document.getElementById(modalId).style.display = "none";
+   }
+  </script>
+ </body>
+</html>

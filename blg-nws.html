@@ -1,0 +1,466 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Blog & News | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Blog &amp; News
+    </h1>
+    <!-- Latest Tech News & Industry Updates -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Latest Tech News &amp; Industry Updates
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Emerging Tech Trends
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Stay updated with the latest trends in AI, Cybersecurity, IoT, Blockchain, and more.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('techTrendsModal')">
+        Read More
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Innovations in Telecommunications
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Discover the latest innovations in telecommunications and networking.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('telecomModal')">
+        Read More
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        University Tech Developments
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Get the latest updates on tech developments at Kenyatta University.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('universityTechModal')">
+        Read More
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Blog Articles by KUTTA Members -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Blog Articles by KUTTA Members
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Software Development
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Articles on the latest in software development.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('softwareDevModal')">
+        Read Articles
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Networking &amp; Telecommunications
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Insights on networking and telecommunications.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('networkingModal')">
+        Read Articles
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Cybersecurity
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Stay informed on the latest in cybersecurity.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('cybersecurityModal')">
+        Read Articles
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        AI &amp; Machine Learning
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Explore articles on AI and machine learning.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('aiModal')">
+        Read Articles
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Student Innovations
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Discover innovative projects by KUTTA students.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('studentInnovationsModal')">
+        Read Articles
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Career &amp; Professional Growth
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Tips and advice for career and professional growth.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('careerGrowthModal')">
+        Read Articles
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Featured Articles & Guest Posts -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Featured Articles &amp; Guest Posts
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Top Blogs by Students
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Highlighting top-performing blogs by KUTTA students.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('topBlogsModal')">
+        Read Articles
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Insights from Industry Professionals
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Articles and insights from industry professionals.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('industryInsightsModal')">
+        Read Articles
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Tutorials & How-To Guides -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Tutorials &amp; How-To Guides
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Beginner Tutorials
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Step-by-step guides for beginners.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('beginnerTutorialsModal')">
+        View Tutorials
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Intermediate Tutorials
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Guides for intermediate learners.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('intermediateTutorialsModal')">
+        View Tutorials
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Advanced Tutorials
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Advanced guides and how-tos.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('advancedTutorialsModal')">
+        View Tutorials
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Interviews & Thought Leadership -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Interviews &amp; Thought Leadership
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Q&amp;A with Industry Experts
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Exclusive Q&amp;A sessions with industry experts.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('qaModal')">
+        Read Interviews
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Success Stories
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Success stories and career advice from KUTTA graduates.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('successStoriesModal')">
+        Read Stories
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Events & Announcements Section -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Events &amp; Announcements
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Upcoming Events
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Announcements for upcoming tech events, webinars, and hackathons.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('upcomingEventsModal')">
+        View Events
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Event Recaps
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Recaps and photo highlights from past events.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('eventRecapsModal')">
+        View Recaps
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Trending & Popular Posts Section -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Trending &amp; Popular Posts
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Most Read Posts
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Displays the most-read blog posts.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('mostReadModal')">
+        View Posts
+       </button>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover-border">
+       <h3 class="text-lg font-bold mb-2">
+        Most Discussed Posts
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Displays the most-discussed blog posts.
+       </p>
+       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('mostDiscussedModal')">
+        View Posts
+       </button>
+      </div>
+     </div>
+    </div>
+    <!-- Newsletter Subscription -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Newsletter Subscription
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Subscribe to our weekly/monthly newsletter for the latest updates.
+     </p>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700">
+        Email Address
+       </label>
+       <input class="w-full p-2 border rounded" type="email" placeholder="Enter your email"/>
+      </div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Subscribe
+      </button>
+     </form>
+    </div>
+    <!-- Search & Filter Functionality -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Search &amp; Filter
+     </h2>
+     <div class="mb-4">
+      <input class="w-full p-2 border rounded" placeholder="Search articles..." type="text"/>
+     </div>
+     <div class="flex justify-center space-x-4">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Category
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Date
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Popularity
+      </button>
+     </div>
+    </div>
+    <!-- Social Sharing & Engagement -->
+<div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+  <h2 class="text-xl font-bold mb-4">
+    Social Sharing &amp; Engagement
+  </h2>
+  <p class="text-gray-700 mb-4">
+    Share articles on social media and engage with the community.
+  </p>
+  <div class="flex flex-wrap justify-center gap-4">
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full sm:w-auto">
+      Share on LinkedIn
+    </button>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full sm:w-auto">
+      Share on Twitter
+    </button>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full sm:w-auto">
+      Share on Facebook
+    </button>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full sm:w-auto">
+      Share on WhatsApp
+    </button>
+  </div>
+</div>
+
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="techTrendsModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('techTrendsModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Emerging Tech Trends
+    </h2>
+    <p class="text-gray-700">
+     Stay updated with the latest trends in AI, Cybersecurity, IoT, Blockchain, and more.
+    </p>
+   </div>
+  </div
+    <!-- Remaining Modals -->
+  <div class="modal" id="telecomModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('telecomModal')">×</span>
+    <h2 class="text-2xl font-bold mb-4">Innovations in Telecommunications</h2>
+    <p class="text-gray-700">Discover the latest innovations in telecommunications and networking.</p>
+   </div>
+  </div>
+
+  <div class="modal" id="universityTechModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('universityTechModal')">×</span>
+    <h2 class="text-2xl font-bold mb-4">University Tech Developments</h2>
+    <p class="text-gray-700">Get the latest updates on tech developments at Kenyatta University.</p>
+   </div>
+  </div>
+
+  <!-- Add similar modals for other sections -->
+  <div class="modal" id="softwareDevModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('softwareDevModal')">×</span>
+    <h2 class="text-2xl font-bold mb-4">Software Development</h2>
+    <p class="text-gray-700">Articles on the latest in software development.</p>
+   </div>
+  </div>
+
+  <!-- Add remaining modals following the same pattern for:
+       networkingModal, cybersecurityModal, aiModal,
+       studentInnovationsModal, careerGrowthModal, topBlogsModal,
+       industryInsightsModal, beginnerTutorialsModal,
+       intermediateTutorialsModal, advancedTutorialsModal,
+       qaModal, successStoriesModal, upcomingEventsModal,
+       eventRecapsModal, mostReadModal, mostDiscussedModal -->
+  
+  <!-- JavaScript for Modal Handling -->
+  <script>
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+   }
+
+   function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+   }
+
+   // Close modal when clicking outside
+   window.onclick = function(event) {
+    if (event.target.className === 'modal') {
+     event.target.style.display = 'none';
+    }
+   }
+  </script>
+ </body>
+</html>

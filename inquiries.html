@@ -1,0 +1,467 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Inquiries | Admin Dashboard | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const modals = document.querySelectorAll(".modal");
+    const closeButtons = document.querySelectorAll(".close");
+
+    closeButtons.forEach((button) => {
+     button.addEventListener("click", function () {
+      const modal = button.closest(".modal");
+      modal.style.display = "none";
+     });
+    });
+
+    window.onclick = function (event) {
+     modals.forEach((modal) => {
+      if (event.target == modal) {
+       modal.style.display = "none";
+      }
+     });
+    };
+   });
+
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+   }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Inquiries
+    </h1>
+    <!-- Inquiry Dashboard Overview -->
+    <!-- Inquiry Dashboard Overview -->
+<div class="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-md mb-6">
+    <h2 class="text-xl font-bold mb-4 text-center sm:text-left">Inquiry Dashboard Overview</h2>
+
+    <!-- Inquiry Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h3 class="text-lg font-bold mb-2">Total Inquiries</h3>
+            <p class="text-3xl font-bold text-blue-600">120</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h3 class="text-lg font-bold mb-2">New Inquiries</h3>
+            <p class="text-3xl font-bold text-green-600">30</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h3 class="text-lg font-bold mb-2">Pending Inquiries</h3>
+            <p class="text-3xl font-bold text-yellow-600">20</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h3 class="text-lg font-bold mb-2">Resolved Inquiries</h3>
+            <p class="text-3xl font-bold text-red-600">70</p>
+        </div>
+    </div>
+
+    <!-- Inquiry Chart -->
+    <div class="mt-6">
+        <canvas id="inquiriesChart" class="h-96"></canvas> <!-- Increased Height -->
+    </div>
+</div>
+
+<!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Inquiry Data for Chart
+    const ctx = document.getElementById('inquiriesChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Total', 'New', 'Pending', 'Resolved'],
+            datasets: [{
+                label: 'Inquiries',
+                data: [120, 30, 20, 70],
+                backgroundColor: ['#2563eb', '#16a34a', '#eab308', '#dc2626'],
+                borderColor: ['#1e40af', '#15803d', '#ca8a04', '#b91c1c'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // Allows height customization
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+
+    <!-- Inquiry Submission & Categorization -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Inquiry Submission &amp; Categorization
+     </h2>
+     <div class="mb-4">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('submitInquiryModal')">
+       Submit New Inquiry
+      </button>
+     </div>
+     <div class="flex justify-center space-x-4 mb-4">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Category
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Status
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Date
+      </button>
+     </div>
+     <div class="overflow-x-auto">
+      <table class="min-w-full bg-white">
+       <thead>
+        <tr>
+         <th class="py-2 px-4 border-b">
+          Inquiry Type
+         </th>
+         <th class="py-2 px-4 border-b">
+          Submitted By
+         </th>
+         <th class="py-2 px-4 border-b">
+          Date Submitted
+         </th>
+         <th class="py-2 px-4 border-b">
+          Status
+         </th>
+         <th class="py-2 px-4 border-b">
+          Actions
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="py-2 px-4 border-b">
+          General Information
+         </td>
+         <td class="py-2 px-4 border-b">
+          John Doe
+         </td>
+         <td class="py-2 px-4 border-b">
+          2023-10-01
+         </td>
+         <td class="py-2 px-4 border-b">
+          Pending
+         </td>
+         <td class="py-2 px-4 border-b">
+          <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700" onclick="openModal('viewInquiryModal')">
+           View
+          </button>
+          <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">
+           Delete
+          </button>
+         </td>
+        </tr>
+        <tr>
+         <td class="py-2 px-4 border-b">
+          Membership &amp; Registration
+         </td>
+         <td class="py-2 px-4 border-b">
+          Jane Smith
+         </td>
+         <td class="py-2 px-4 border-b">
+          2023-09-28
+         </td>
+         <td class="py-2 px-4 border-b">
+          Resolved
+         </td>
+         <td class="py-2 px-4 border-b">
+          <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700" onclick="openModal('viewInquiryModal')">
+           View
+          </button>
+          <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">
+           Delete
+          </button>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <!-- Inquiry Management & Response System -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Inquiry Management &amp; Response System
+     </h2>
+     <p class="text-gray-700 mb-4">
+      View, assign, and respond to inquiries. Mark inquiries as "Resolved" or "Pending." Attach files or links in responses.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('manageInquiriesModal')">
+      Manage Inquiries
+     </button>
+    </div>
+    <!-- Automated & Quick Responses -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Automated &amp; Quick Responses
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Implement AI-powered or pre-defined quick responses for common inquiries. Send automated acknowledgment emails when an inquiry is submitted.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('quickResponsesModal')">
+      Manage Quick Responses
+     </button>
+    </div>
+    <!-- Inquiry History & Follow-Ups -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Inquiry History &amp; Follow-Ups
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Maintain a record of all past inquiries and responses. Enable follow-up messages for unresolved issues.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('historyModal')">
+      View Inquiry History
+     </button>
+    </div>
+    <!-- Notifications & Alerts -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Notifications &amp; Alerts
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Send real-time notifications to admins for new inquiries. Notify users when their inquiries receive responses.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('notificationsModal')">
+      Manage Notifications
+     </button>
+    </div>
+    <!-- User Feedback & Ratings on Responses -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      User Feedback &amp; Ratings on Responses
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Allow users to rate the response quality and enable a comment section for follow-up questions.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('feedbackModal')">
+      Manage Feedback
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="submitInquiryModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('submitInquiryModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Submit New Inquiry
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Inquiry Type
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        General Information
+       </option>
+       <option>
+        Membership &amp; Registration
+       </option>
+       <option>
+        Event-Related Queries
+       </option>
+       <option>
+        Technical Support &amp; Website Issues
+       </option>
+       <option>
+        Collaboration &amp; Partnership Requests
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Name
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter your name"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Your Email
+      </label>
+      <input class="w-full p-2 border rounded" type="email" placeholder="Enter your email"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Inquiry Details
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Enter your inquiry details...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Submit Inquiry
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="viewInquiryModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('viewInquiryModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     View Inquiry
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Inquiry Type: General Information
+    </p>
+    <p class="text-gray-700 mb-4">
+     Submitted By: John Doe
+    </p>
+    <p class="text-gray-700 mb-4">
+     Date Submitted: 2023-10-01
+    </p>
+    <p class="text-gray-700 mb-4">
+     Inquiry Details: I would like to know more about the upcoming events.
+    </p>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Response
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Enter your response...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Send Response
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="manageInquiriesModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('manageInquiriesModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Manage Inquiries
+    </h2>
+    <p class="text-gray-700 mb-4">
+     View, assign, and respond to inquiries. Mark inquiries as "Resolved" or "Pending." Attach files or links in responses.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Manage Inquiries
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="quickResponsesModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('quickResponsesModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Automated &amp; Quick Responses
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Implement AI-powered or pre-defined quick responses for common inquiries. Send automated acknowledgment emails when an inquiry is submitted.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Manage Quick Responses
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="historyModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('historyModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Inquiry History &amp; Follow-Ups
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Maintain a record of all past inquiries and responses. Enable follow-up messages for unresolved issues.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     View Inquiry History
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="notificationsModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('notificationsModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Notifications &amp; Alerts
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Send real-time notifications to admins for new inquiries. Notify users when their inquiries receive responses.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Manage Notifications
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="feedbackModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('feedbackModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     User Feedback &amp; Ratings on Responses
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Allow users to rate the response quality and enable a comment section for follow-up questions.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Manage Feedback
+    </button>
+   </div>
+  </div>
+ </body>
+</html>

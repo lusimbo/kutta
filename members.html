@@ -1,0 +1,479 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Members | Admin Dashboard | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const modals = document.querySelectorAll(".modal");
+    const closeButtons = document.querySelectorAll(".close");
+
+    closeButtons.forEach((button) => {
+     button.addEventListener("click", function () {
+      const modal = button.closest(".modal");
+      modal.style.display = "none";
+     });
+    });
+
+    window.onclick = function (event) {
+     modals.forEach((modal) => {
+      if (event.target == modal) {
+       modal.style.display = "none";
+      }
+     });
+    };
+   });
+
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+   }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Members
+    </h1>
+    <!-- Members Overview Dashboard -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">Members Overview</h2>
+
+  <!-- Stats Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+      <h3 class="text-lg font-semibold mb-2 text-gray-700">Total Members</h3>
+      <p class="text-4xl font-extrabold text-blue-600">1,234</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+      <h3 class="text-lg font-semibold mb-2 text-gray-700">Active Members</h3>
+      <p class="text-4xl font-extrabold text-green-600">567</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+      <h3 class="text-lg font-semibold mb-2 text-gray-700">New Sign-ups</h3>
+      <p class="text-4xl font-extrabold text-yellow-600">45</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+      <h3 class="text-lg font-semibold mb-2 text-gray-700">Pending Approvals</h3>
+      <p class="text-4xl font-extrabold text-red-600">12</p>
+    </div>
+  </div>
+
+  <!-- Chart Section -->
+  <div class="mt-8">
+    <h3 class="text-xl font-bold text-gray-800 mb-4">Member Activity</h3>
+    <div class="w-full h-80"> <!-- Reduced height -->
+      <canvas id="membersChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById('membersChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Total Members', 'Active Members', 'New Sign-ups', 'Pending Approvals'],
+        datasets: [{
+          label: 'Members Stats',
+          data: [1234, 567, 45, 12],
+          backgroundColor: ['#2563eb', '#16a34a', '#ca8a04', '#dc2626'],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false, // Ensure custom height applies
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  });
+</script>
+
+    <!-- Member List & Search Functionality -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Member List
+     </h2>
+     <div class="mb-4">
+      <input class="w-full p-2 border rounded" placeholder="Search members..." type="text"/>
+     </div>
+     <div class="flex justify-center space-x-4 mb-4">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Role
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Status
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+       Filter by Date
+      </button>
+     </div>
+     <div class="overflow-x-auto">
+      <table class="min-w-full bg-white">
+       <thead>
+        <tr>
+         <th class="py-2 px-4 border-b">
+          Name
+         </th>
+         <th class="py-2 px-4 border-b">
+          Email
+         </th>
+         <th class="py-2 px-4 border-b">
+          Role
+         </th>
+         <th class="py-2 px-4 border-b">
+          Status
+         </th>
+         <th class="py-2 px-4 border-b">
+          Actions
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="py-2 px-4 border-b">
+          John Doe
+         </td>
+         <td class="py-2 px-4 border-b">
+          john.doe@example.com
+         </td>
+         <td class="py-2 px-4 border-b">
+          Student
+         </td>
+         <td class="py-2 px-4 border-b">
+          Active
+         </td>
+         <td class="py-2 px-4 border-b">
+          <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700" onclick="openModal('memberProfileModal')">
+           View
+          </button>
+         </td>
+        </tr>
+        <tr>
+         <td class="py-2 px-4 border-b">
+          Jane Smith
+         </td>
+         <td class="py-2 px-4 border-b">
+          jane.smith@example.com
+         </td>
+         <td class="py-2 px-4 border-b">
+          Alumni
+         </td>
+         <td class="py-2 px-4 border-b">
+          Pending
+         </td>
+         <td class="py-2 px-4 border-b">
+          <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700" onclick="openModal('memberProfileModal')">
+           View
+          </button>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <!-- Bulk Actions & Member Invitations -->
+<div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+    <h2 class="text-xl font-bold mb-4">
+        Bulk Actions &amp; Member Invitations
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full" onclick="openModal('bulkEmailModal')">
+            Send Bulk Email
+        </button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full" onclick="openModal('exportDataModal')">
+            Export Member Data
+        </button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full" onclick="openModal('inviteMembersModal')">
+            Invite New Members
+        </button>
+    </div>
+</div>
+
+    <!-- Membership Payments & Renewals -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Membership Payments &amp; Renewals
+     </h2>
+     <p class="text-gray-700 mb-4">
+      View membership payment history, send reminders for renewal, and process payments directly.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('paymentsModal')">
+      View Payments
+     </button>
+    </div>
+    <!-- Engagement & Communication Tools -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Engagement &amp; Communication Tools
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Send personalized messages, announce events, and track member participation.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('engagementModal')">
+      Engage Members
+     </button>
+    </div>
+    <!-- Moderation & Compliance -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Moderation &amp; Compliance
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Review reports on misconduct, issue warnings, and keep a history of actions taken on each member.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('moderationModal')">
+      Moderate Members
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="memberProfileModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('memberProfileModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Member Profile
+    </h2>
+    <div class="mb-4">
+     <img alt="Profile Picture" class="w-24 h-24 rounded-full mx-auto" height="100" src="https://storage.googleapis.com/a1aa/image/Btd13zqCKMK0DYfOrh2e823XkOmqJyfKSsVsP1g0dAo.jpg" width="100"/>
+    </div>
+    <div class="mb-4">
+     <h3 class="text-lg font-bold">
+      John Doe
+     </h3>
+     <p class="text-gray-700">
+      Email: john.doe@example.com
+     </p>
+     <p class="text-gray-700">
+      Role: Student
+     </p>
+     <p class="text-gray-700">
+      Membership Type: Active
+     </p>
+     <p class="text-gray-700">
+      Expiry Date: 2023-12-31
+     </p>
+    </div>
+    <div class="mb-4">
+     <h3 class="text-lg font-bold">
+      Participation History
+     </h3>
+     <ul class="list-disc list-inside text-gray-700">
+      <li>
+       Attended Tech Meetup 2023
+      </li>
+      <li>
+       Contributed to AI Project
+      </li>
+     </ul>
+    </div>
+    <div class="mb-4">
+     <h3 class="text-lg font-bold">
+      Activity Log
+     </h3>
+     <ul class="list-disc list-inside text-gray-700">
+      <li>
+       Last login: 2023-10-01
+      </li>
+      <li>
+       Updated profile: 2023-09-28
+      </li>
+     </ul>
+    </div>
+    <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 w-full">
+        Edit Details
+    </button>
+    <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 w-full">
+        Approve Membership
+    </button>
+    <button class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 w-full">
+        Suspend Member
+    </button>
+</div>
+
+   </div>
+  </div>
+  <div class="modal" id="bulkEmailModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('bulkEmailModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Send Bulk Email
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Subject
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter email subject"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Message
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Enter email message...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Send Email
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="exportDataModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('exportDataModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Export Member Data
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Export member data in CSV or Excel format.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Export CSV
+    </button>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 ml-2">
+     Export Excel
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="inviteMembersModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('inviteMembersModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Invite New Members
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Email Addresses
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Enter email addresses separated by commas...">
+</textarea>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Custom Message
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="4" placeholder="Enter custom welcome message...">
+</textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Send Invitations
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="paymentsModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('paymentsModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Membership Payments &amp; Renewals
+    </h2>
+    <p class="text-gray-700 mb-4">
+     View membership payment history, send reminders for renewal, and process payments directly.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     View Payments
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="engagementModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('engagementModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Engagement &amp; Communication Tools
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Send personalized messages, announce events, and track member participation.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Engage Members
+    </button>
+   </div>
+  </div>
+  <div class="modal" id="moderationModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('moderationModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Moderation &amp; Compliance
+    </h2>
+    <p class="text-gray-700 mb-4">
+     Review reports on misconduct, issue warnings, and keep a history of actions taken on each member.
+    </p>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+     Moderate Members
+    </button>
+   </div>
+  </div>
+ </body>
+</html>

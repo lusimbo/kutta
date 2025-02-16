@@ -1,0 +1,310 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   KUTTA Projects
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+ </head>
+ <body class="font-roboto bg-gray-100">
+  <section class="container mx-auto p-6">
+   <div class="text-center mb-12">
+    <h2 class="text-4xl font-bold text-gray-800">
+     KUTTA Projects
+    </h2>
+    <p class="text-gray-600 mt-4">
+     Showcasing innovations, research, and collaborations in telecommunications and technology.
+    </p>
+   </div>
+   <!-- Search and Filter -->
+   <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+    <div class="relative w-full md:w-1/3 mb-4 md:mb-0">
+     <input class="w-full p-3 border border-gray-300 rounded-lg" placeholder="Search projects..." type="text"/>
+     <i class="fas fa-search absolute top-3 right-3 text-gray-400">
+     </i>
+    </div>
+    <div class="flex space-x-4">
+     <button class="px-4 py-2 bg-blue-500 text-white rounded-lg">
+      All
+     </button>
+     <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg">
+      AI
+     </button>
+     <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg">
+      IoT
+     </button>
+     <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg">
+      Networking
+     </button>
+    </div>
+   </div>
+   <!-- Featured Projects -->
+   <div class="mb-12">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6">
+     Featured Projects
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+     <!-- Project Card -->
+     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img alt="Image of a featured project showcasing an innovative AI solution" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/n9ErVI700KnpLeRz6SCIyh0JO_nlVaHuuvSlhnTYREc.jpg" width="600"/>
+      <div class="p-6">
+       <h4 class="text-xl font-bold text-gray-800">
+        AI-Powered Chatbot
+       </h4>
+       <p class="text-gray-600 mt-2">
+        An AI chatbot designed to assist students with academic queries.
+       </p>
+       <span class="inline-block bg-green-200 text-green-800 text-xs px-2 py-1 rounded-full mt-4">
+        Ongoing
+       </span>
+      </div>
+     </div>
+     <!-- Repeat for other featured projects -->
+     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img alt="Image of a featured project showcasing an IoT-based smart home system" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/TgZqeKmiVHALYxclQuas3lUWOL-gAx55Z_2X66WK1aU.jpg" width="600"/>
+      <div class="p-6">
+       <h4 class="text-xl font-bold text-gray-800">
+        Smart Home System
+       </h4>
+       <p class="text-gray-600 mt-2">
+        An IoT-based system for automating home appliances.
+       </p>
+       <span class="inline-block bg-blue-200 text-blue-800 text-xs px-2 py-1 rounded-full mt-4">
+        Completed
+       </span>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img alt="Image of a featured project showcasing a networking solution for rural areas" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/NXR6NJuhv00LQq4fFi3U_U8NVTvGGafYL2syP2bCbIw.jpg" width="600"/>
+      <div class="p-6">
+       <h4 class="text-xl font-bold text-gray-800">
+        Rural Networking
+       </h4>
+       <p class="text-gray-600 mt-2">
+        A project aimed at providing internet access to rural areas.
+       </p>
+       <span class="inline-block bg-green-200 text-green-800 text-xs px-2 py-1 rounded-full mt-4">
+        Ongoing
+       </span>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- Recent Projects -->
+   <div class="mb-12">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6">
+     Recent Projects
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+     <!-- Project Card -->
+     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img alt="Image of a recent project showcasing a new AI algorithm" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/a-LqYzKk9XV92E4s3OQEEr5hxld7EgFCK1syg0vUiFo.jpg" width="600"/>
+      <div class="p-6">
+       <h4 class="text-xl font-bold text-gray-800">
+        AI Algorithm
+       </h4>
+       <p class="text-gray-600 mt-2">
+        A new AI algorithm for data analysis.
+       </p>
+       <span class="inline-block bg-blue-200 text-blue-800 text-xs px-2 py-1 rounded-full mt-4">
+        Completed
+       </span>
+      </div>
+     </div>
+     <!-- Repeat for other recent projects -->
+     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img alt="Image of a recent project showcasing a smart agriculture system" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/2M_LwUNyqHvY4Tbs07pRk2p3lat0lPFmpKnSpxGWv1A.jpg" width="600"/>
+      <div class="p-6">
+       <h4 class="text-xl font-bold text-gray-800">
+        Smart Agriculture
+       </h4>
+       <p class="text-gray-600 mt-2">
+        An IoT-based system for smart agriculture.
+       </p>
+       <span class="inline-block bg-green-200 text-green-800 text-xs px-2 py-1 rounded-full mt-4">
+        Ongoing
+       </span>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img alt="Image of a recent project showcasing a new networking protocol" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/EkeuhH4S8lfRgr1DYdLYp7hylxMDCAnj9ih1rlVZfNY.jpg" width="600"/>
+      <div class="p-6">
+       <h4 class="text-xl font-bold text-gray-800">
+        Networking Protocol
+       </h4>
+       <p class="text-gray-600 mt-2">
+        A new protocol for efficient data transfer.
+       </p>
+       <span class="inline-block bg-blue-200 text-blue-800 text-xs px-2 py-1 rounded-full mt-4">
+        Completed
+       </span>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- Call-to-Action -->
+   <div class="text-center mt-12">
+    <button class="px-6 py-3 bg-blue-500 text-white rounded-lg mr-4" id="viewAllProjectsBtn">
+     View All Projects
+    </button>
+    <button class="px-6 py-3 bg-green-500 text-white rounded-lg" id="submitProjectBtn">
+     Submit Your Project
+    </button>
+   </div>
+  </section>
+  <!-- View All Projects Modal -->
+  <div class="modal" id="viewAllProjectsModal">
+   <div class="modal-content">
+    <span class="close" id="closeViewAllProjectsModal">
+     &times;
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     All Projects
+    </h2>
+    <p>
+     Here you can view all the projects by KUTTA members.
+    </p>
+    <!-- Add content for viewing all projects -->
+   </div>
+  </div>
+  <!-- Submit Project Modal -->
+  <div class="modal" id="submitProjectModal">
+   <div class="modal-content">
+    <span class="close" id="closeSubmitProjectModal">
+     &times;
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Submit Your Project
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="projectTitle">
+       Project Title
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="projectTitle" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="projectDescription">
+       Project Description
+      </label>
+      <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="projectDescription">
+      </textarea>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="projectCategory">
+       Project Category
+      </label>
+      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="projectCategory">
+       <option>
+        AI
+       </option>
+       <option>
+        IoT
+       </option>
+       <option>
+        Networking
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="projectStatus">
+       Project Status
+      </label>
+      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="projectStatus">
+       <option>
+        Ongoing
+       </option>
+       <option>
+        Completed
+       </option>
+      </select>
+     </div>
+     <div class="flex items-center justify-between">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+       Submit
+      </button>
+     </div>
+    </form>
+   </div>
+  </div>
+  <script>
+   // Get the modals
+   var viewAllProjectsModal = document.getElementById("viewAllProjectsModal");
+   var submitProjectModal = document.getElementById("submitProjectModal");
+
+   // Get the buttons that open the modals
+   var viewAllProjectsBtn = document.getElementById("viewAllProjectsBtn");
+   var submitProjectBtn = document.getElementById("submitProjectBtn");
+
+   // Get the <span> elements that close the modals
+   var closeViewAllProjectsModal = document.getElementById("closeViewAllProjectsModal");
+   var closeSubmitProjectModal = document.getElementById("closeSubmitProjectModal");
+
+   // When the user clicks the button, open the modal
+   viewAllProjectsBtn.onclick = function() {
+     viewAllProjectsModal.style.display = "block";
+   }
+
+   submitProjectBtn.onclick = function() {
+     submitProjectModal.style.display = "block";
+   }
+
+   // When the user clicks on <span> (x), close the modal
+   closeViewAllProjectsModal.onclick = function() {
+     viewAllProjectsModal.style.display = "none";
+   }
+
+   closeSubmitProjectModal.onclick = function() {
+     submitProjectModal.style.display = "none";
+   }
+
+   // When the user clicks anywhere outside of the modal, close it
+   window.onclick = function(event) {
+     if (event.target == viewAllProjectsModal) {
+       viewAllProjectsModal.style.display = "none";
+     }
+     if (event.target == submitProjectModal) {
+       submitProjectModal.style.display = "none";
+     }
+   }
+  </script>
+ </body>
+</html>

@@ -1,0 +1,528 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Blog | Admin Dashboard | Kenyatta University Telecommunications & Technology Association (KUTTA)
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hover-border:hover {
+    border: 4px solid #1E3A8A;
+    /* Dark blue */
+    border-radius: 0;
+    /* Remove border radius */
+   }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+   }
+   .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+   }
+   .close:hover,
+   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+   }
+  </style>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const modals = document.querySelectorAll(".modal");
+    const closeButtons = document.querySelectorAll(".close");
+
+    closeButtons.forEach((button) => {
+     button.addEventListener("click", function () {
+      const modal = button.closest(".modal");
+      modal.style.display = "none";
+     });
+    });
+
+    window.onclick = function (event) {
+     modals.forEach((modal) => {
+      if (event.target == modal) {
+       modal.style.display = "none";
+      }
+     });
+    };
+   });
+
+   function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+   }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <div class="w-full">
+
+   <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-4 text-center">
+     Blog
+    </h1>
+    <!-- Blog Dashboard Overview -->
+    <!-- Blog Overview Dashboard -->
+<div class="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-md mb-6">
+    <h2 class="text-xl font-bold mb-4">Blog Overview</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h3 class="text-lg font-bold mb-2">Total Published Posts</h3>
+            <p class="text-3xl font-bold text-blue-600">120</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h3 class="text-lg font-bold mb-2">Most Popular Articles</h3>
+            <p class="text-3xl font-bold text-green-600">5</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h3 class="text-lg font-bold mb-2">Pending Drafts & Reviews</h3>
+            <p class="text-3xl font-bold text-yellow-600">8</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h3 class="text-lg font-bold mb-2">Top Contributors</h3>
+            <p class="text-3xl font-bold text-red-600">3</p>
+        </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="mt-6">
+        <canvas id="blogChart" class="h-48 sm:h-56 w-full"></canvas>
+    </div>
+</div>
+
+<!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var ctx = document.getElementById("blogChart").getContext("2d");
+        var blogChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["Published Posts", "Popular Articles", "Pending Drafts", "Top Contributors"],
+                datasets: [{
+                    label: "Blog Statistics",
+                    data: [120, 5, 8, 3],
+                    backgroundColor: ["#2563eb", "#16a34a", "#eab308", "#dc2626"],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    });
+</script>
+
+    <!-- Blog Post Creation & Management -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Blog Post Creation &amp; Management
+     </h2>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mb-4" onclick="openModal('createPostModal')">
+      Add New Blog Post
+     </button>
+     <div class="overflow-x-auto">
+      <table class="min-w-full bg-white">
+       <thead>
+        <tr>
+         <th class="py-2 px-4 border-b">
+          Title
+         </th>
+         <th class="py-2 px-4 border-b">
+          Author
+         </th>
+         <th class="py-2 px-4 border-b">
+          Category
+         </th>
+         <th class="py-2 px-4 border-b">
+          Status
+         </th>
+         <th class="py-2 px-4 border-b">
+          Actions
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="py-2 px-4 border-b">
+          The Future of AI
+         </td>
+         <td class="py-2 px-4 border-b">
+          John Doe
+         </td>
+         <td class="py-2 px-4 border-b">
+          Tech News
+         </td>
+         <td class="py-2 px-4 border-b">
+          Published
+         </td>
+         <td class="py-2 px-4 border-b">
+          <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700" onclick="openModal('editPostModal')">
+           Edit
+          </button>
+          <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">
+           Delete
+          </button>
+         </td>
+        </tr>
+        <tr>
+         <td class="py-2 px-4 border-b">
+          Introduction to Cybersecurity
+         </td>
+         <td class="py-2 px-4 border-b">
+          Jane Smith
+         </td>
+         <td class="py-2 px-4 border-b">
+          Tutorials
+         </td>
+         <td class="py-2 px-4 border-b">
+          Draft
+         </td>
+         <td class="py-2 px-4 border-b">
+          <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700" onclick="openModal('editPostModal')">
+           Edit
+          </button>
+          <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">
+           Delete
+          </button>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <!-- Categories & Filtering -->
+    <!-- Categories & Filtering Section -->
+<div class="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-md mb-6">
+    <h2 class="text-xl font-bold mb-4 text-center sm:text-left">Categories & Filtering</h2>
+
+    <!-- Manage Categories Button -->
+    <div class="mb-4 text-center">
+        <button class="bg-blue-600 text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition">
+            Manage Categories
+        </button>
+    </div>
+
+    <!-- Filtering Buttons -->
+    <div class="grid grid-cols-2 sm:flex sm:justify-center sm:space-x-3 gap-3">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+            Filter by Date
+        </button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+            Filter by Author
+        </button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+            Filter by Category
+        </button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+            Filter by Popularity
+        </button>
+    </div>
+</div>
+
+    <!-- Author & Contributor Management -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Author &amp; Contributor Management
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Assign author credits to blog posts, display author profiles, and allow members to submit blog drafts for review.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('authorManagementModal')">
+      Manage Authors
+     </button>
+    </div>
+    <!-- Engagement & Interaction Features -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Engagement &amp; Interaction Features
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Enable comments, likes, shares, and bookmarks. Implement view counters and display related posts.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('engagementModal')">
+      Manage Engagement
+     </button>
+    </div>
+    <!-- Blog Visibility & Sharing -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Blog Visibility &amp; Sharing
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Enable social media sharing, generate custom shareable links, and display latest posts on the homepage.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('visibilityModal')">
+      Manage Visibility
+     </button>
+    </div>
+    <!-- Blog Performance Analytics -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Blog Performance Analytics
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Track page views, shares, and reading time. Display real-time engagement statistics and generate monthly blog reports.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('analyticsModal')">
+      View Analytics
+     </button>
+    </div>
+    <!-- Notifications & Alerts -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+     <h2 class="text-xl font-bold mb-4">
+      Notifications &amp; Alerts
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Send new blog alerts to members, notify authors when their article is approved or commented on, and display real-time notifications for trending topics.
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" onclick="openModal('notificationsModal')">
+      Manage Notifications
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+  <div class="modal" id="createPostModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('createPostModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Add New Blog Post
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Title
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter blog title"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Subtitle
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter blog subtitle"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Featured Image
+      </label>
+      <input class="w-full p-2 border rounded" type="file"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Category
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Tech News
+       </option>
+       <option>
+        Tutorials
+       </option>
+       <option>
+        Industry Insights
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Tags
+      </label>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Enter tags separated by commas"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Content
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="10" placeholder="Enter blog content...">
+</textarea>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       SEO Optimization
+      </label>
+      <input class="w-full p-2 border rounded mb-2" type="text" placeholder="Meta title"/>
+      <input class="w-full p-2 border rounded mb-2" type="text" placeholder="Meta description"/>
+      <input class="w-full p-2 border rounded" type="text" placeholder="Meta keywords"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Publishing Options
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Publish Instantly
+       </option>
+       <option>
+        Schedule for Later
+       </option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Create Post
+     </button>
+    </form>
+   </div>
+  </div>
+  <div class="modal" id="editPostModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('editPostModal')">
+     ×
+    </span>
+    <h2 class="text-2xl font-bold mb-4">
+     Edit Blog Post
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Title
+      </label>
+      <input class="w-full p-2 border rounded" type="text" value="The Future of AI"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Subtitle
+      </label>
+      <input class="w-full p-2 border rounded" type="text" value="Exploring the advancements in AI"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Featured Image
+      </label>
+      <input class="w-full p-2 border rounded" type="file"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Category
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Tech News
+       </option>
+       <option>
+        Tutorials
+       </option>
+       <option>
+        Industry Insights
+       </option>
+      </select>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Tags
+      </label>
+      <input class="w-full p-2 border rounded" type="text" value="AI, Machine Learning, Future"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Content
+      </label>
+      <textarea class="w-full p-2 border rounded" rows="10">
+AI is transforming the world...
+</textarea>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       SEO Optimization
+      </label>
+      <input class="w-full p-2 border rounded mb-2" type="text" value="The Future of AI"/>
+      <input class="w-full p-2 border rounded mb-2" type="text" value="Exploring the advancements in AI"/>
+      <input class="w-full p-2 border rounded" type="text" value="AI, Machine Learning, Future"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700">
+       Publishing Options
+      </label>
+      <select class="w-full p-2 border rounded">
+       <option>
+        Publish Instantly
+       </option>
+       <option>
+        Schedule for Later
+       </option>
+      </select>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Update Post
+     </button>
+    </form>
+   </div>
+  </div>
+      <div class="modal" id="manageCategoriesModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('manageCategoriesModal')">×</span>
+        <h2 class="text-2xl font-bold mb-4">Manage Categories</h2>
+        <form>
+          <div class="mb-4">
+            <label class="block text-gray-700">Add New Category</label>
+            <input class="w-full p-2 border rounded" type="text" placeholder="Enter category name" />
+          </div>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Add Category
+          </button>
+        </form>
+        <div class="mt-4">
+          <h3 class="text-lg font-bold mb-2">Existing Categories</h3>
+          <ul class="list-disc list-inside">
+            <li class="flex justify-between items-center py-2">
+              Tech News
+              <div>
+                <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700">Edit</button>
+                <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">Delete</button>
+              </div>
+            </li>
+            <li class="flex justify-between items-center py-2">
+              Tutorials
+              <div>
+                <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700">Edit</button>
+                <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">Delete</button>
+              </div>
+            </li>
+            <li class="flex justify-between items-center py-2">
+              Industry Insights
+              <div>
+                <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700">Edit</button>
+                <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">Delete</button>
+              </div>
+            </li>
+            <li class="flex justify-between items-center py-2">
+              Member Spotlights
+              <div>
+                <button class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700">Edit</button>
+                <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 ml-2">Delete</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
